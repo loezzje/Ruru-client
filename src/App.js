@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import Routes from './routes'
 import './App.css';
 import Navbar from './components/Navbar'
 
@@ -8,6 +8,7 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar />
+        <Routes />
       </div>
     );
   }

@@ -9,13 +9,8 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar />
-<<<<<<< Updated upstream
         <Routes />
         <Footer />
-||||||| merged common ancestors
-=======
-        <Footer />
->>>>>>> Stashed changes
       </div>
     );
   }

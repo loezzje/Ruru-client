@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react'
 // import PropTypes from 'prop-types'
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom'
 
-class Footer extends PureComponent {
+export class Footer extends PureComponent {
   render () {
     return (
       <div className='footer'>
@@ -16,13 +16,12 @@ class Footer extends PureComponent {
         </div>
         <div className='footerSocialLinks'>
           <div className="instagram">
-            <i class="fa fa-instagram" aria-hidden="true"></i>
+            <i className="fa fa-instagram" aria-hidden="true"></i>
           </div>
         </div>
       </div>
     )
   }
 }
-
 
 export default Footer

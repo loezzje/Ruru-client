@@ -15,7 +15,9 @@ class Footer extends PureComponent {
           </ul>
         </div>
         <div className='footerSocialLinks'>
-          
+          <div className="instagram">
+            <i class="fa fa-instagram" aria-hidden="true"></i>
+          </div>
         </div>
       </div>
     )

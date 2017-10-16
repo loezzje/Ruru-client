@@ -6,13 +6,22 @@ import './Menu.css'
 
 
 
-class Navbar extends PureComponent {
+
+class Menu extends PureComponent {
+  renderMenu(){
+  return  <div>hello</div>
+
+  }
+
+
 
   render() {
+    const { menuShow } = this.props
+    if (!menuShow) return null
 
     return (
       <div className="menu">
-
+        { this.renderMenu() }
 
       </div>
 
@@ -20,6 +29,6 @@ class Navbar extends PureComponent {
     )
   }
 }
+const mapStateToProps = ({ menuShow }) => ({ menuShow })
 
-
-export default Navbar;
+export default connect(mapStateToProps)(Menu)

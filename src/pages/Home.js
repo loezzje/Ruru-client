@@ -12,7 +12,7 @@ export class Home extends PureComponent {
           <h5>An information handbook for newcomers to the Netherlands</h5>
         </header>
         <main>
-          <categoryButton />
+          <categoryButton _id={ '59e5f0eb328dbdcd3ce88c73' } description={'something'} />
         </main>
       </div>
     )

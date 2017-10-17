@@ -1,8 +1,31 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
-import categoryButton from '../components/categoryButton'
+import CategoryButton from '../components/categoryButton'
+import fetchCategories from '../actions/categories/fetch'
 
 export class Home extends PureComponent {
+  componentWillMount() {
+    this.props.fetchCategories()
+  }
+
+  showButton() {
+    const frontCats = this.filterCat()
+
+    return frontCats.map(function(category){
+      return <CategoryButton key={category._id} { ...category } />
+    })
+  }
+
+  filterCat(){
+    const { categories } = this.props
+
+    return categories.filter(function(category) {
+        if(category.frontPage){
+          return true
+        }
+        return false
+    })
+  }
 
   render() {
     return(
@@ -12,11 +35,14 @@ export class Home extends PureComponent {
           <h5>An information handbook for newcomers to the Netherlands</h5>
         </header>
         <main>
-          <categoryButton _id={ '59e5f0eb328dbdcd3ce88c73' } description={'something'} />
+          { this.showButton()}
         </main>
       </div>
     )
   }
 }
 
-export default connect(null, null)(Home)
+const mapStateToProps = ({ categories }) => ({ categories })
+const mapDispatchToProps = { fetchCategories }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home)

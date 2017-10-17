@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import FaFacebookSquare from 'react-icons/lib/fa/facebook-square'
+import hideMenu from '../actions/menuHidden.js'
 
 export class Organization extends PureComponent {
   static propTypes = {
@@ -15,8 +16,14 @@ export class Organization extends PureComponent {
     facebook: PropTypes.string,
   }
 
+
+
   renderFeatures(feature, index) {
     return <li key={index}>{ feature }</li>
+  }
+
+  componentDidUpdate(){
+    this.props.hideMenu()
   }
 
   renderFB(facebook) {
@@ -26,9 +33,9 @@ export class Organization extends PureComponent {
   }
 
   render() {
-    const { name, logo, about, features, website, phone, address, facebook } = this.props
+    const { name, logo, about, features, website, phone, address, facebook, } = this.props
 
-    if (!name) return null
+    // if (!name) return null
 
     return(
       <div className="organization">
@@ -41,7 +48,8 @@ export class Organization extends PureComponent {
         <div className="features">
           <p>They can help you with:</p>
           <ul>
-            { features.map(this.renderFeatures.bind(this)) }
+            { console.log(features) }
+            { features === undefined ? null :features.map(this.renderFeatures.bind(this)) }
           </ul>
         </div>
         <p>Contact</p>
@@ -54,6 +62,23 @@ export class Organization extends PureComponent {
   }
 }
 
-const mapStateToProps = ({ organization }) => ({ organization })
+const mapStateToProps = ({ organizations }, { match }) => {
 
-export default connect(mapStateToProps, null)(Organization)
+  const organization = organizations.reduce((prev, next) => {
+    if (next._id === match.params.organizationId) {
+      return next
+    }
+    return prev
+  }, {})
+
+  return {
+    organization,
+    ...organization
+  }
+
+}
+
+const mapDispatchToProps = ({hideMenu})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Organization)
+// { features.map(this.renderFeatures.bind(this)) }

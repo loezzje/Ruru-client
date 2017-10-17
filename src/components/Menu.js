@@ -2,14 +2,15 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import './Menu.css'
+import MenuItem from './MenuItem.js'
 
 
 
 
 
 class Menu extends PureComponent {
-  renderMenu(){
-  return  <div>hello</div>
+  renderMenu(categorie, index){
+  return  <MenuItem key={index} {...categorie}/>
 
   }
 
@@ -21,14 +22,15 @@ class Menu extends PureComponent {
 
     return (
       <div className="menu">
-        { this.renderMenu() }
-
+        <ul>
+          { this.props.categories.map(this.renderMenu.bind(this))}
+        </ul>
       </div>
 
 
     )
   }
 }
-const mapStateToProps = ({ menuShow }) => ({ menuShow })
+const mapStateToProps = ({ menuShow, categories }) => ({ menuShow, categories })
 
 export default connect(mapStateToProps)(Menu)

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Switch, Route } from 'react-router-dom'
 import Organization from './containers/Organization.js'
+import Home from './pages/Home'
 
 // import {
 //   Home,
@@ -18,7 +19,7 @@ export default class Routes extends Component {
   render() {
     return (
       <Switch>
-        <Route exact path="/" component={() => <p>Home page</p> } />
+        <Route exact path="/" component={ Home } />
         <Route path="/about" render={ () => <p>"About us" page</p> } />
         <Route path="/admin" render={ () => <p>"Admin" page</p> } />
         <Route path="/faq" render={ () => <p>"Frequenty asked questions" page</p> } />

@@ -10,12 +10,16 @@ class MenuItem extends PureComponent {
   constructor(props) {
     super()
 
-    const {  } = props
+
 
     this.state = {
       submenu: false
     }
   }
+
+
+  
+
   toggleSubMenu(){
     const { submenu } = this.state
 
@@ -54,14 +58,12 @@ class MenuItem extends PureComponent {
   mapOrganisations(){
     const { organizations} = this.props
     if (organizations === undefined) {
-      console.log("--------Undefined",organizations)
+
       return null
     } else if(organizations.length > 1) {
-      console.log("--------one", organizations)
+
       return organizations.map(this.renderSubMenu.bind(this))
     } else {
-      console.log("array", organizations)
-      // const subitem = organizations.map(this.renderSubMenu.bind(this))
       return this.renderSubMenu(organizations)
 
     }
@@ -71,7 +73,7 @@ class MenuItem extends PureComponent {
 
 
   render() {
-    const { name, organizations} = this.props
+    const { name } = this.props
 
     return (
       <li className="menu-item">

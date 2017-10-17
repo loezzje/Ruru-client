@@ -3,7 +3,8 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import './MenuItem.css'
 import DownIcon from 'react-icons/lib/fa/angle-down'
-
+import UpIcon from 'react-icons/lib/fa/angle-up'
+import SubmenuItem from './SubmenuItem.js'
 
 class MenuItem extends PureComponent {
   constructor(props) {
@@ -30,11 +31,21 @@ class MenuItem extends PureComponent {
 
   }
 
-  renderSubMenu(){
+  toggleArrow(){
+    const { submenu } = this.state
+    if (submenu) {
+      return <UpIcon className="down-arrow" />
+    } else {
+      return  <DownIcon className="down-arrow" />
+    }
+
+  }
+
+  renderSubMenu(organization, index){
     const { submenu } = this.state
 
     if (submenu) {
-      return <div> submenu</div>
+      return <SubmenuItem  key={index} {...organization}/>
     } else {
       return null
     }
@@ -44,14 +55,14 @@ class MenuItem extends PureComponent {
     const { name } = this.props
     return (
       <li className="menu-item">
-        <div onClick={this.toggleSubMenu.bind(this)}>
+        <div className="menu-category" onClick={this.toggleSubMenu.bind(this)}>
           <h1>
             {name}
           </h1>
-          <DownIcon className="down-arrow" />
+          {this.toggleArrow()}
         </div>
         <nav>
-          <ul>
+          <ul className="submenu">
             {this.renderSubMenu()}
           </ul>
         </nav>

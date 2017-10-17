@@ -2,9 +2,21 @@
   background-color: #EE644B;
   list-style: none;
   margin-left: 0;
-  padding-left: 10px; }
+  padding-left: 10px;
+  border-bottom: 1px solid white; }
+  .menu-item .menu-category {
+    overflow: hidden; }
   .menu-item h1 {
     margin: 1px 0;
     padding: 6px 0;
     color: white;
-    font-family: 'Roboto', sans-serif; }
+    font-family: 'Roboto', sans-serif;
+    float: left; }
+  .menu-item .down-arrow {
+    float: right;
+    margin: 5px 5px 0 0;
+    font-size: 35px;
+    color: white; }
+
+.submenu {
+  display: block; }

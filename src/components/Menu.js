@@ -22,8 +22,9 @@ class Menu extends PureComponent {
 
     return (
       <div className="menu">
-        { this.props.categories.map(this.renderMenu.bind(this))}
-
+        <ul>
+          { this.props.categories.map(this.renderMenu.bind(this))}
+        </ul>
       </div>
 
 

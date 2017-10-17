@@ -1,2 +1,15 @@
 .submenu-item {
-  color: white; }
+  color: white;
+  padding: 10px 0; }
+  .submenu-item a:link {
+    color: white;
+    text-decoration: none; }
+  .submenu-item a:visited {
+    color: white;
+    text-decoration: none; }
+  .submenu-item a:hover {
+    color: white;
+    text-decoration: underline; }
+  .submenu-item a:active {
+    color: white;
+    text-decoration: none; }

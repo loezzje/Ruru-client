@@ -6,11 +6,12 @@ import './Navbar.css'
 import showMenu from '../actions/menuShow.js'
 import hideMenu from '../actions/menuHidden.js'
 import fetchCatagories from '../actions/categories/fetch.js'
-
+import fetchOrganizations from '../actions/organizations/fetch.js'
 class Navbar extends PureComponent {
 
   componentWillMount(){
     this.props.fetchCatagories()
+    this.props.fetchOrganizations()
   }
 
   toggleMenu(){
@@ -52,5 +53,5 @@ class Navbar extends PureComponent {
 }
 
 const mapStateToProps = ({ menuShow }) => ({ menuShow })
-const mapDispatchToProps = { showMenu, hideMenu, fetchCatagories }
+const mapDispatchToProps = { showMenu, hideMenu, fetchCatagories, fetchOrganizations }
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar)

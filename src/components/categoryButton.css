@@ -1,7 +1,10 @@
 .categoryButton {
-  background-color: red;
+  background-color: #EE644B;
+  font-family: 'Roboto', sans-serif;
   padding: 1em;
-  text-align: center; }
+  margin-bottom: 1em;
+  text-align: center;
+  font-weight: bold; }
   .categoryButton a:link {
     color: white;
     text-decoration: none; }
@@ -11,7 +14,6 @@
     color: white; }
   .categoryButton a:active {
     color: white; }
-
-.categoryButton img {
-  height: 30px;
-  padding: 0.3em; }
+  .categoryButton img {
+    height: 30px;
+    padding: 0.3em; }

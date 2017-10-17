@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import React, { Component } from 'react'
 import { Switch, Route } from 'react-router-dom'
 
 // import {
@@ -13,7 +13,7 @@ import { Switch, Route } from 'react-router-dom'
 //   Event
 // } from './containers'
 
-export default class Routes extends PureComponent {
+export default class Routes extends Component {
   render() {
     return (
       <Switch>

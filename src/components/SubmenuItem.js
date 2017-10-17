@@ -11,12 +11,12 @@ class SubMenuItem extends PureComponent {
     const { name } = this.props
     return (
       <li className="submenu-item">
-        Subiemenu
+        {name}
       </li>
 
     )
   }
 }
-const mapStateToProps = ({ categories}) => ({  categories })
 
-export default connect(mapStateToProps)(SubMenuItem)
+
+export default SubMenuItem

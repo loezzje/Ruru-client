@@ -51,8 +51,28 @@ class MenuItem extends PureComponent {
     }
   }
 
+  mapOrganisations(){
+    const { organizations} = this.props
+    if (organizations === undefined) {
+      console.log("--------Undefined",organizations)
+      return null
+    } else if(organizations.length > 1) {
+      console.log("--------one", organizations)
+      return organizations.map(this.renderSubMenu.bind(this))
+    } else {
+      console.log("array", organizations)
+      // const subitem = organizations.map(this.renderSubMenu.bind(this))
+      return this.renderSubMenu(organizations)
+
+    }
+
+  }
+
+
+
   render() {
-    const { name } = this.props
+    const { name, organizations} = this.props
+
     return (
       <li className="menu-item">
         <div className="menu-category" onClick={this.toggleSubMenu.bind(this)}>
@@ -63,7 +83,9 @@ class MenuItem extends PureComponent {
         </div>
         <nav>
           <ul className="submenu">
-            {this.renderSubMenu()}
+
+          {this.mapOrganisations()}
+
           </ul>
         </nav>
 
@@ -72,6 +94,6 @@ class MenuItem extends PureComponent {
     )
   }
 }
-const mapStateToProps = ({ categories, organizations }) => ({ organizations, ...categories })
+const mapStateToProps = ({ categories }) => ({  ...categories })
 
 export default connect(mapStateToProps)(MenuItem)

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import FaFacebookSquare from 'react-icons/lib/fa/facebook-square'
 import hideMenu from '../actions/menuHidden.js'
-
+import './Organization.css'
 export class Organization extends PureComponent {
   static propTypes = {
     name: PropTypes.string.isRequired,
@@ -22,9 +22,11 @@ export class Organization extends PureComponent {
     return <li key={index}>{ feature }</li>
   }
 
-  componentDidUpdate(){
+  componentWillMount(){
     this.props.hideMenu()
   }
+
+
 
   renderFB(facebook) {
     if (!facebook) return null
@@ -33,16 +35,18 @@ export class Organization extends PureComponent {
   }
 
   render() {
-    const { name, logo, about, features, website, phone, address, facebook, } = this.props
+    const { menuShow, name, logo, about, features, website, phone, address, facebook, } = this.props
 
-    // if (!name) return null
+    if (menuShow) {
+      return null
+    } 
 
     return(
       <div className="organization">
         <div className="routeToThisOrg">
          <p>Where the intelligent routing goes</p>
         </div>
-        <span className="logo"><img src={ logo } alt='logo_of_organization' /></span>
+        <span className="organization-logo"><img src={ logo } alt='logo_of_organization' /></span>
         <div className="name"><h3>{ name }</h3></div>
         <div className="about"><p>{ about }</p></div>
         <div className="features">
@@ -62,7 +66,7 @@ export class Organization extends PureComponent {
   }
 }
 
-const mapStateToProps = ({ organizations }, { match }) => {
+const mapStateToProps = ({ organizations, menuShow }, { match }) => {
 
   const organization = organizations.reduce((prev, next) => {
     if (next._id === match.params.organizationId) {
@@ -72,6 +76,7 @@ const mapStateToProps = ({ organizations }, { match }) => {
   }, {})
 
   return {
+    menuShow,
     organization,
     ...organization
   }

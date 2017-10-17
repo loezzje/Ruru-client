@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
-// import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
+import './Footer.css'
+import FaInstagram from 'react-icons/lib/fa/instagram'
 
 export class Footer extends PureComponent {
   render () {
@@ -15,9 +16,9 @@ export class Footer extends PureComponent {
           </ul>
         </div>
         <div className='footerSocialLinks'>
-          <div className="instagram">
-            <i className="fa fa-instagram" aria-hidden="true"></i>
-          </div>
+          <span className="instagram">
+            <FaInstagram className="instagram"/>
+          </span>
         </div>
       </div>
     )

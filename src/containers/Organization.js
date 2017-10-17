@@ -36,6 +36,7 @@ export class Organization extends PureComponent {
          <p>Where the intelligent routing goes</p>
         </div>
         <span className="logo"><img src={ logo } alt='logo_of_organization' /></span>
+        <div className="name"><h3>{ name }</h3></div>
         <div className="about"><p>{ about }</p></div>
         <div className="features">
           <p>They can help you with:</p>

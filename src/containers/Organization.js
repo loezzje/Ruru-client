@@ -15,7 +15,7 @@ export class Organization extends PureComponent {
     facebook: PropTypes.string,
   }
 
-  renderRecipe(feature, index) {
+  renderFeatures(feature, index) {
     return <li key={index}>{ feature }</li>
   }
 

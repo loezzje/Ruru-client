@@ -1,0 +1,9 @@
+.thumbnail {
+  width: 30%;
+  display: table-cell;
+  margin: 10px; }
+
+.topic {
+  width: 70%;
+  display: table-cell;
+  vertical-align: middle; }

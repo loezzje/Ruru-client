@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import CategoryButton from '../components/categoryButton'
 import fetchCategories from '../actions/categories/fetch'
+import './Home.css'
 
 export class Home extends PureComponent {
   componentWillMount() {

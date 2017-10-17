@@ -1,6 +1,6 @@
 import API from '../../api'
 
-export const CREATE_CATEGORY = 'CREATE_CATEGORY'
+export const DELETE_CATEGORY = 'DELETE_CATEGORY'
 
 const api = new API()
 
@@ -10,10 +10,10 @@ export default (category) => {
     api.app.authenticate()
       .then(() => {
         const backend = api.service('categories')
-        backend.create(category)
+        backend.remove(category)
           .then((result) => {
             dispatch({
-              type: CREATE_CATEGORY,
+              type: DELETE_CATEGORY,
               payload: result
             })
           })

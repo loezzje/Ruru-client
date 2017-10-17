@@ -1,0 +1,17 @@
+.categoryButton {
+  background-color: red;
+  padding: 1em;
+  text-align: center; }
+  .categoryButton a:link {
+    color: white;
+    text-decoration: none; }
+  .categoryButton a:visited {
+    color: white; }
+  .categoryButton a:hover {
+    color: white; }
+  .categoryButton a:active {
+    color: white; }
+
+.categoryButton img {
+  height: 30px;
+  padding: 0.3em; }

@@ -47,10 +47,10 @@ class MenuItem extends PureComponent {
 
   renderSubMenu(organization, index){
     const { submenu } = this.state
-    const { name } = this.props
-    console.log("category name", name)
+    const { _id } = this.props
+    console.log("category name", _id)
     if (submenu) {
-      return <SubmenuItem  key={index} { ...organization} content={name}/>
+      return <SubmenuItem  key={index} { ...organization} content={_id}/>
     } else {
       return null
     }

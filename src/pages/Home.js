@@ -13,7 +13,7 @@ export class Home extends PureComponent {
     const frontCats = this.filterCat()
 
     return frontCats.map(function(category){
-      return <CategoryButton key={category._id} { ...category } description="Organzations that help with living and housing in the Netherlands" />
+      return <CategoryButton key={category._id} { ...category } />
     })
   }
 
@@ -35,7 +35,7 @@ export class Home extends PureComponent {
           <h3>Welcome to RuRu</h3>
           <h5>An information handbook for newcomers to the Netherlands</h5>
         </header>
-        <main>
+        <main className="cat-btn-container">
           { this.showButton()}
         </main>
       </div>

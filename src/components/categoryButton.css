@@ -1,5 +1,16 @@
+.categoryButton:nth-child(1) {
+  background-color: #398b7d; }
+
+.categoryButton:nth-child(2) {
+  background-color: #987314; }
+
+.categoryButton:nth-child(3) {
+  background-color: #a16a81; }
+
+.categoryButton:nth-child(4) {
+  background-color: #e4676e; }
+
 .categoryButton {
-  background-color: #398b7d;
   font-family: 'Roboto', sans-serif;
   padding: 1em;
   margin-bottom: 1em;
@@ -7,7 +18,7 @@
   .categoryButton .name {
     font-size: 18px;
     font-weight: bold; }
-  .categoryButton .description {
+  .categoryButton .tagline {
     margin-top: 0.5em;
     font-size: 12px;
     font-weight: normal; }

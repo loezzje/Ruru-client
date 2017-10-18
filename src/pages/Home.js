@@ -35,7 +35,7 @@ export class Home extends PureComponent {
           <h3>Welcome to RuRu</h3>
           <h5>An information handbook for newcomers to the Netherlands</h5>
         </header>
-        <main>
+        <main className="cat-btn-container">
           { this.showButton()}
         </main>
       </div>

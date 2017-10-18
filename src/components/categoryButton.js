@@ -9,7 +9,7 @@ export class categoryButton extends PureComponent {
     return(
       <article className='categoryButton'>
         <Link to={`/categories/${_id}`}>
-          <div className='icon'><img src={ icon } alt='icon' /></div>
+          <div><i className="material-icons md-46">{ icon }</i></div>
           <span className='name'>{ name }</span>
           <div className='tagline'>{ tagline }</div>
         </Link>

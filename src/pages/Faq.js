@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import fetchFaq from '../actions/faq/fetch'
 import FaqItem from '../containers/FaqItem'
+import './Faq.css'
 
 export class Faq extends PureComponent {
   componentWillMount() {
@@ -14,15 +15,15 @@ export class Faq extends PureComponent {
 
   render() {
     return(
-      <div className='faq-page'>
-      <header>
-        <h3>FAQ</h3>
-        <p>Here answer some frequently asked questions about our organisation.</p>
-      </header>
+      <div className='faqpage'>
+        <header>
+          <h3>FAQ</h3>
+          <p>Here answer some frequently asked questions about our organisation.</p>
+        </header>
 
-      <main>
-        { this.props.faq.map(this.renderFaq.bind(this)) }
-      </main>
+        <main>
+          { this.props.faq.map(this.renderFaq.bind(this)) }
+        </main>
       </div>
     )
   }

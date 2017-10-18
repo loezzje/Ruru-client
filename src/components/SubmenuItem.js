@@ -1,22 +1,22 @@
 import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 import './SubmenuItem.css'
-
+import { Link } from 'react-router-dom'
+import hideMenu from '../actions/menuHidden.js'
+import { connect } from 'react-redux'
 
 class SubMenuItem extends PureComponent {
 
 
   render() {
-    const { name } = this.props
+    const { name, _id } = this.props
     return (
       <li className="submenu-item">
-        Subiemenu
+        <Link to={`/organizations/${_id}`} onClick={this.props.hideMenu} >{name}</Link>
       </li>
 
     )
   }
 }
-const mapStateToProps = ({ categories}) => ({  categories })
+const mapDispatchToProps = ({hideMenu})
 
-export default connect(mapStateToProps)(SubMenuItem)
+export default connect(null, mapDispatchToProps)(SubMenuItem)

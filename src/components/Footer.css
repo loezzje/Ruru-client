@@ -1,14 +1,14 @@
 .footer {
-  background-color: black;
+  background-color: #000000;
   padding: 3em;
   padding-bottom: 5em; }
 
 .instagram {
-  color: white;
+  color: #ffffff;
   font-size: 25px;
   float: right;
   margin-right: 20px;
-  background-color: green;
+  background-color: #398b7d;
   padding: 10px;
   border-radius: 50%; }
 
@@ -17,11 +17,11 @@
   padding-left: 1em;
   margin: 0; }
   .footerPageLinks ul a:link {
-    color: white;
+    color: #ffffff;
     text-decoration: none; }
   .footerPageLinks ul a:visited {
-    color: white; }
+    color: #ffffff; }
   .footerPageLinks ul a:hover {
-    color: white; }
+    color: #ffffff; }
   .footerPageLinks ul a:active {
-    color: white; }
+    color: #ffffff; }

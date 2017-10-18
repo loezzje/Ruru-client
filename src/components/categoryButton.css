@@ -1,0 +1,25 @@
+.categoryButton {
+  background-color: #398b7d;
+  font-family: 'Roboto', sans-serif;
+  padding: 1em;
+  margin-bottom: 1em;
+  text-align: center; }
+  .categoryButton .name {
+    font-size: 18px;
+    font-weight: bold; }
+  .categoryButton .description {
+    margin-top: 0.5em;
+    font-size: 12px;
+    font-weight: normal; }
+  .categoryButton a:link {
+    color: #ffffff;
+    text-decoration: none; }
+  .categoryButton a:visited {
+    color: #ffffff; }
+  .categoryButton a:hover {
+    color: #ffffff; }
+  .categoryButton a:active {
+    color: #ffffff; }
+  .categoryButton img {
+    height: 30px;
+    padding: 0.3em; }

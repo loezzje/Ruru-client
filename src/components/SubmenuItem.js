@@ -12,7 +12,7 @@ class SubMenuItem extends PureComponent {
     // console.log("cat name",this.props.content)
     return (
       <li className="submenu-item">
-        <Link to={{ pathname: `/categories/${this.props.content}/organizations/${_id}`}} onClick={this.props.hideMenu} >{name}</Link>
+        <Link to={{ pathname: `/categories/${this.props.content}/organizations/${_id}`, catId: _id }} onClick={this.props.hideMenu} >{name}</Link>
       </li>
 
     )

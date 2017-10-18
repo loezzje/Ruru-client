@@ -35,16 +35,17 @@ export class Organization extends PureComponent {
   }
 
   render() {
-    const { menuShow, name, logo, about, features, website, phone, address, facebook, } = this.props
+    const {match, menuShow, name, logo, about, features, website, phone, address, facebook, } = this.props
 
     if (menuShow) {
       return null
-    } 
-
+    }
+    console.log(this.props.location.category)
     return(
+
       <div className="organization">
         <div className="routeToThisOrg">
-         <p>Where the intelligent routing goes</p>
+         <p>{this.props.location.category}</p>
         </div>
         <span className="organization-logo"><img src={ logo } alt='logo_of_organization' /></span>
         <div className="name"><h3>{ name }</h3></div>
@@ -76,6 +77,7 @@ const mapStateToProps = ({ organizations, menuShow }, { match }) => {
   }, {})
 
   return {
+    match,
     menuShow,
     organization,
     ...organization

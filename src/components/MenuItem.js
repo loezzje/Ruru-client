@@ -18,7 +18,7 @@ class MenuItem extends PureComponent {
   }
 
 
-  
+
 
   toggleSubMenu(){
     const { submenu } = this.state
@@ -47,9 +47,10 @@ class MenuItem extends PureComponent {
 
   renderSubMenu(organization, index){
     const { submenu } = this.state
+    const {name} = this.props
 
     if (submenu) {
-      return <SubmenuItem  key={index} {...organization}/>
+      return <SubmenuItem  key={index} { ...organization} content={name}/>
     } else {
       return null
     }

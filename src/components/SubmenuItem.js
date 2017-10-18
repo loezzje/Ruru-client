@@ -9,9 +9,10 @@ class SubMenuItem extends PureComponent {
 
   render() {
     const { name, _id } = this.props
+    
     return (
       <li className="submenu-item">
-        <Link to={`/organizations/${_id}`} onClick={this.props.hideMenu} >{name}</Link>
+        <Link to={{ pathname: `/organizations/${_id}`, category: this.props.content }} onClick={this.props.hideMenu} >{name}</Link>
       </li>
 
     )

@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import fetchOrganizations from '../actions/organizations/fetch'
 import getCategory from '../actions/categories/get'
+import CategoryButton from '../components/categoryButton'
 import TopicCard from '../components/TopicCard'
 
 class TopicCardList extends PureComponent {
@@ -37,7 +38,7 @@ class TopicCardList extends PureComponent {
   render() {
     return (
       <div>
-        Category full width tile here.
+        <CategoryButton { ...this.props.category } />
         <hr />
         { this.mapOrganisationsFromCategory() }
       </div>

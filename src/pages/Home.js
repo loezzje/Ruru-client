@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import ReactDOM from 'react-dom';
 import { connect } from 'react-redux'
 import CategoryButton from '../components/categoryButton'
 import fetchCategories from '../actions/categories/fetch'
@@ -28,6 +29,19 @@ export class Home extends PureComponent {
     })
   }
 
+  getTheStyle() {
+    // https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle
+    // https://stackoverflow.com/questions/35170581/how-to-access-styles-from-react
+    // var elem = ReactDOM.findDOMNode(this.refs.container)
+    // var theCSSprop = window.getComputedStyle(elem, null).getPropertyValue("background-color")
+    // debugger
+
+    // var test = document.getElementById('Health')
+    // var test2 = test === null ? "koekoe" : test.style.backgroundColor = "red"
+    //
+    // console.log(test2)
+   }
+
   render() {
     return(
       <div className='homepage'>
@@ -36,7 +50,7 @@ export class Home extends PureComponent {
           <h5>An information handbook for newcomers to the Netherlands</h5>
         </header>
         <main className="cat-btn-container">
-          { this.showButton()}
+          { this.showButton() }
         </main>
       </div>
     )

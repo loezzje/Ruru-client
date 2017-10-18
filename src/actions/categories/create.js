@@ -7,8 +7,8 @@ const api = new API()
 export default (category) => {
   return (dispatch) => {
 
-    api.app.authenticate()
-      .then(() => {
+    // api.app.authenticate()
+    //   .then(() => {
         const backend = api.service('categories')
         backend.create(category)
           .then((result) => {
@@ -20,6 +20,6 @@ export default (category) => {
           .catch((error) => {
             console.log(error)
           })
-      })
+      // })
   }
 }

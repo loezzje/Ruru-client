@@ -8,6 +8,8 @@ class OrganizationEditor extends PureComponent {
   constructor(props) {
     super(props);
 
+    const { name } = props
+
     this.state = {
       name: '',
       tagline: '',
@@ -126,6 +128,7 @@ class OrganizationEditor extends PureComponent {
     }
 
     this.props.save(newOrganization)
+    // if form is used as editor too, the below should only be in the create new org form page, not on the edit page
 
     this.setState({
       name: '',

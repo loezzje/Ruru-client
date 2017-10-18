@@ -7,8 +7,8 @@ const api = new API()
 export default (organization) => {
   return (dispatch) => {
 
-    api.authenticate()
-    .then(() => {
+    // api.authenticate()
+    // .then(() => {
     const backend = api.service('organizations')
     backend.create(organization)
     .then((result) => {
@@ -21,4 +21,5 @@ export default (organization) => {
       console.log(error)
     })
   }
-)}}
+// )}
+}

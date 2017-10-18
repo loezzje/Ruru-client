@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Switch, Route } from 'react-router-dom'
 import Organization from './containers/Organization.js'
 import Home from './pages/Home'
+import CreateOrganization from './components/CreateOrganization'
 
 // import {
 //   Home,
@@ -21,6 +22,7 @@ export default class Routes extends Component {
       <Switch>
         <Route exact path="/" component={ Home } />
         <Route path="/about" render={ () => <p>"About us" page</p> } />
+        <Route exact path="/admin/create-organization" component={ CreateOrganization } />
         <Route path="/admin" render={ () => <p>"Admin" page</p> } />
         <Route path="/faq" render={ () => <p>"Frequenty asked questions" page</p> } />
         <Route path="/contact" render={ () => <p>"Contact us" page</p> } />

@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import FaFacebookSquare from 'react-icons/lib/fa/facebook-square'
 import hideMenu from '../actions/menuHidden.js'
 import './Organization.css'
-import { Link } from 'react-router-dom'
+
 import BreadCrumb from '../components/Breadcrumb'
 export class Organization extends PureComponent {
   static propTypes = {
@@ -42,12 +42,12 @@ export class Organization extends PureComponent {
     if (menuShow) {
       return null
     }
-    console.log(this.props.match.params.categorieId)
+
     return(
 
       <div className="organization">
         <div className="routeToThisOrg">
-          <BreadCrumb {...match}/>
+          <BreadCrumb {...match} />
         </div>
         <span className="organization-logo"><img src={ logo } alt='logo_of_organization' /></span>
         <div className="name"><h3>{ name }</h3></div>
@@ -55,7 +55,7 @@ export class Organization extends PureComponent {
         <div className="features">
           <p>They can help you with:</p>
           <ul>
-          
+
             { features === undefined ? null :features.map(this.renderFeatures.bind(this)) }
           </ul>
         </div>

@@ -29,6 +29,7 @@ export default class Routes extends Component {
         <Route exact path="/categories/:categorieId" component={ ({ match }) => (
           <p>Category { match.params.categorieId } page</p>
         )} />
+        <Route exact path="/categories/:categorieId/organizations/:organizationId" component={Organization}/>
         <Route exact path="/organizations/:organizationId" component={Organization}/>
         <Route exact path="/events" render={ () => <p>"Events" page</p> } />
         <Route exact path="/events/:eventId" component={ ({ match }) => (

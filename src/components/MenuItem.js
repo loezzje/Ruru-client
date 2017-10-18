@@ -47,8 +47,8 @@ class MenuItem extends PureComponent {
 
   renderSubMenu(organization, index){
     const { submenu } = this.state
-    const {name} = this.props
-
+    const { name } = this.props
+    console.log("category name", name)
     if (submenu) {
       return <SubmenuItem  key={index} { ...organization} content={name}/>
     } else {
@@ -58,7 +58,7 @@ class MenuItem extends PureComponent {
 
   mapOrganisations(){
     const { organizations} = this.props
-    if (organizations === undefined) {
+    if (organizations === null) {
 
       return null
     } else if(organizations.length > 1) {

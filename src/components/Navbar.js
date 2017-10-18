@@ -7,6 +7,11 @@ import showMenu from '../actions/menuShow.js'
 import hideMenu from '../actions/menuHidden.js'
 import fetchCatagories from '../actions/categories/fetch.js'
 import fetchOrganizations from '../actions/organizations/fetch.js'
+import ruruLogo from '../assets/logos/ruruLogo.png'
+import { Link } from 'react-router-dom'
+
+
+
 class Navbar extends PureComponent {
 
   componentWillMount(){
@@ -39,6 +44,8 @@ class Navbar extends PureComponent {
       <div>
         <div className="navbar">
 
+
+          <Link to={`/`} ><img src={ruruLogo} className="rurulogo" alt="logo" onClick={this.props.hideMenu}/></Link>
           <div className="hamburger">
             {this.toggleHamburger()}
           </div>

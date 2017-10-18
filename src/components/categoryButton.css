@@ -1,5 +1,5 @@
 .categoryButton {
-  background-color: #EE644B;
+  background-color: #398b7d;
   font-family: 'Roboto', sans-serif;
   padding: 1em;
   margin-bottom: 1em;
@@ -12,14 +12,14 @@
     font-size: 12px;
     font-weight: normal; }
   .categoryButton a:link {
-    color: white;
+    color: #ffffff;
     text-decoration: none; }
   .categoryButton a:visited {
-    color: white; }
+    color: #ffffff; }
   .categoryButton a:hover {
-    color: white; }
+    color: #ffffff; }
   .categoryButton a:active {
-    color: white; }
+    color: #ffffff; }
   .categoryButton img {
     height: 30px;
     padding: 0.3em; }

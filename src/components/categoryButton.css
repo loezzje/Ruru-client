@@ -3,8 +3,14 @@
   font-family: 'Roboto', sans-serif;
   padding: 1em;
   margin-bottom: 1em;
-  text-align: center;
-  font-weight: bold; }
+  text-align: center; }
+  .categoryButton .name {
+    font-size: 18px;
+    font-weight: bold; }
+  .categoryButton .description {
+    margin-top: 0.5em;
+    font-size: 12px;
+    font-weight: normal; }
   .categoryButton a:link {
     color: white;
     text-decoration: none; }

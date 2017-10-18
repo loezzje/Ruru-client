@@ -4,6 +4,7 @@ import TopicCardList from './pages/TopicCardList'
 import Organization from './containers/Organization.js'
 import Home from './pages/Home'
 import Faq from './pages/Faq'
+import Contact from './pages/Contact'
 
 // import {
 //   Home,
@@ -25,7 +26,7 @@ export default class Routes extends Component {
         <Route path="/about" render={ () => <p>"About us" page</p> } />
         <Route path="/admin" render={ () => <p>"Admin" page</p> } />
         <Route path="/faq" component={ Faq } />
-        <Route path="/contact" render={ () => <p>"Contact us" page</p> } />
+        <Route path="/contact" component={ Contact } />
         {/* <Route exact path="/categories" component={Categories} /> */}
         <Route exact path="/categories" render={ () => <p>"Categories" page</p> } />
         {/* <Route exact path="/categories/:categorieId" component={ ({ match }) => (

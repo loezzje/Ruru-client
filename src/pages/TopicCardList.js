@@ -13,7 +13,7 @@ class TopicCardList extends PureComponent {
   /* It should be read from the 'tagline' property in organizations schema */
   renderTopic(topics, index) {
     return (
-        <Link to={'/service/' + topics._id}>
+        <Link to={'/organizations/' + topics._id}>
           <TopicCard
             key={index}
             title={topics.about} />

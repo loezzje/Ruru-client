@@ -12,6 +12,17 @@ class TopicCardList extends PureComponent {
     getCategory(this.props.match.params.categorieId)
   }
 
+  mapOrganisationsFromCategory() {
+      const { category } = this.props
+      if (category === null) {
+        return null
+      } else if (category.organizations.length > 1) {
+        return category.organizations.map(this.renderTopic.bind(this))
+      } else {
+        return this.renderTopic(category.organizations)
+      }
+    }
+
   /* It should be read from the 'tagline' property in organizations schema */
   renderTopic(topics, index) {
     return (
@@ -24,33 +35,15 @@ class TopicCardList extends PureComponent {
   }
 
   render() {
-    // console.log("Match params: ", this.props.match.params)
-    console.log('Show single category: ', this.props.category)
     return (
       <div>
         Category full width tile here.
         <hr />
-        {this.props.organizations.map(this.renderTopic.bind(this))}
+        { this.mapOrganisationsFromCategory() }
       </div>
     )
   }
 }
-
-// const mapStateToProps = ({ organizations, categories }, { match }) => ({
-//
-//   const category = categories.reduce((prev, next) => {
-//     if (next._id === match.params.categorieId) {
-//       return next
-//     }
-//     return prev
-//   }, {})
-//
-//   return {
-//     category,
-//     ...category,
-//     organizations
-//   }
-// })
 
 const mapStateToProps = ({ organizations, category }) => ({
   organizations,

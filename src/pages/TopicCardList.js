@@ -17,10 +17,11 @@ class TopicCardList extends PureComponent {
       const { category } = this.props
       if (category === null) {
         return null
-      } else if (category.organizations.length > 1) {
-        return category.organizations.map(this.renderTopic.bind(this))
+      // } else if (category.organizations.length > 1) {
+      //   return category.organizations.map(this.renderTopic.bind(this))
       } else {
-        return this.renderTopic(category.organizations)
+        // return this.renderTopic(category.organizations)
+        return category.organizations.map(this.renderTopic.bind(this))
       }
     }
 

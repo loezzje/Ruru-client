@@ -18,16 +18,16 @@ export class AdminHome extends PureComponent {
     this.props.fetchFaq()
   }
 
-  renderOrgs(org, index) {
-    return <ListItemAdmin key={index} name={ org.name } />
+  renderOrgs(org) {
+    return <ListItemAdmin key={org._id} name={ org.name } />
   }
 
-  renderCats(cat, index) {
-    return <ListItemAdmin key={index} name={ cat.name } />
+  renderCats(cat) {
+    return <ListItemAdmin key={cat._id} name={ cat.name } />
   }
 
-  renderFaq(faq, index) {
-    return <ListItemAdmin key={index} name={truncate(faq.question, 5)} />
+  renderFaq(faq) {
+    return <ListItemAdmin key={faq._id} name={truncate(faq.question, 5)} />
   }
 
   render() {

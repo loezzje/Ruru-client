@@ -10,7 +10,7 @@ class ListItemAdmin extends PureComponent {
     return (
       <li className="listitem-admin">
         <span>{ this.props.name }</span>
-        <Link to={{ pathname: `/admin`}}>Edit</Link>
+        <Link to={{ pathname: `/admin/${_id}`}}>Edit</Link>
       </li>
 
     )

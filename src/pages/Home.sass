@@ -1,9 +1,13 @@
 .homepage
   text-align: center
-
+  h2
+    margin: 0
+    padding-top: 20px
 .main-container
-  max-width: 1000spx
+  max-width: 1000px
   margin: 0 auto
+  background-color: rgb(245, 245, 245)
+  padding: 0 40px
 
 header
   max-width: 100%
@@ -12,6 +16,9 @@ header
 .catbuttons
   display: flex
   flex-direction: column
+  align-items: center
+  // height: 130px
+
 
 .frontorgs
   a:link
@@ -27,5 +34,6 @@ header
 
 @media screen and (min-width: 800px)
   .catbuttons
-    justify-content: space-around
+    justify-content: space-between
     flex-direction: row
+    margin: 0 auto

@@ -15,7 +15,9 @@
   padding: 1em;
   margin-bottom: 1em;
   text-align: center;
-  max-width: 350px; }
+  max-width: 350px;
+  margin: 10px;
+  height: 130px; }
   .categoryButton .name {
     font-size: 18px;
     font-weight: bold; }
@@ -38,4 +40,8 @@
 
 @media screen and (min-width: 800px) {
   .categoryButton {
-    width: 300px; } }
+    width: 350px; } }
+
+@media screen and (max-width: 850px) {
+  .categoryButton {
+    width: 100%; } }

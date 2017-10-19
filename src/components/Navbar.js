@@ -10,7 +10,7 @@ import fetchOrganizations from '../actions/organizations/fetch.js'
 import ruruLogo from '../assets/logos/ruruLogo.png'
 import { Link } from 'react-router-dom'
 import Headroom from '../headroom/index'
-
+import { CSSTransitionGroup } from 'react-transition-group'
 
 class Navbar extends PureComponent {
 
@@ -56,7 +56,13 @@ class Navbar extends PureComponent {
               <span></span>
               </div>
           </div>
-        <Menu />
+          <CSSTransitionGroup
+          transitionName="example"
+          transitionEnterTimeout={500}
+          transitionLeaveTimeout={300}>
+          <Menu />
+        </CSSTransitionGroup>
+
         </Headroom>
 
 

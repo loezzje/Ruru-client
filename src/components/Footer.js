@@ -18,7 +18,7 @@ export class Footer extends PureComponent {
           </ul>
         </nav>
         <div className='footerSocialLinks'>
-            <a href="https://material.io/icons/" target="_blank" rel="noopener noreferrer"><FaInstagram className="instagram"/></a>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer"><FaInstagram className="instagram"/></a>
         </div>
       </div>
     )

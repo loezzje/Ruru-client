@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import fetchFaq from '../actions/faq/fetch'
 import fetchCategories from '../actions/categories/fetch'
 import fetchOrganizations from '../actions/organizations/fetch'
@@ -16,6 +17,14 @@ export class AdminHome extends PureComponent {
     this.props.fetchFaq()
   }
 
+  renderOrgs(org, index) {
+    return <li><ListItemAdmin key={index} name={ org.name } /></li>
+  }
+
+  renderCats(cat, index) {
+    return <li><ListItemAdmin key={index} name={ cat.name } /></li>
+  }
+
   renderFaq(faq, index) {
     return <li><ListItemAdmin key={index} name={truncate(faq.question, 5)} /></li>
   }
@@ -24,18 +33,32 @@ export class AdminHome extends PureComponent {
     return(
       <div className='adminpage'>
         <header>
-          <h3>EDITS</h3>
-          <p>admin!</p>
+          <h2>ADMIN HOME</h2>
+          <p>Introduction to admin.</p>
+          <hr />
         </header>
 
         <main>
-          <p>Orgs</p>
-          <p>Cats</p>
+          <div classname="catlist">
+            <p>CURRENT CATEGORIES</p>
+            <ul>
+              { this.props.categories.map(this.renderCats.bind(this)) }
+            </ul>
+            <div className="addbutton"><Link to={{ pathname: '/admin/create-category'}}>Add</Link></div>
+          </div>
+          <div classname="orglist">
+            <p>CURRENT ORGANIZATIONS</p>
+            <ul>
+              { this.props.organizations.map(this.renderOrgs.bind(this)) }
+            </ul>
+            <div className="addbutton"><Link to={{ pathname: '/admin/create-organization'}}>Add</Link></div>
+          </div>
           <div classname="faqlist">
             <p>CURRENT FAQ</p>
             <ul>
               { this.props.faq.map(this.renderFaq.bind(this)) }
             </ul>
+            <div className="addbutton"><Link to={{ pathname: '/admin/create-faq'}}>Add</Link></div>
           </div>
         </main>
       </div>

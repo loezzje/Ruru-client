@@ -26,6 +26,7 @@ class TopicCardList extends PureComponent {
 
   /* It should be read from the 'tagline' property in organizations schema */
   renderTopic(topics, index) {
+
     if (topics === null ) {
       return null
     } else {
@@ -33,7 +34,8 @@ class TopicCardList extends PureComponent {
           <Link to={'/organizations/' + topics._id}>
             <TopicCard
               key={index}
-              title={topics.about} />
+              title={topics.about} 
+              image={topics.logo} />
           </Link>
       )
     }

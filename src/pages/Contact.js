@@ -12,7 +12,7 @@ export class Contact extends PureComponent {
         </header>
 
         <main>
-          <p>Keen to help us grow? Send us an <Mailto email="e.a.peene@gmail.com" obfuscate={true}>
+          <p>Keen to help us grow? Send us an <Mailto email="info@theruru.org" obfuscate={true}>
           e-mail</Mailto>.</p>
         </main>
       </div>

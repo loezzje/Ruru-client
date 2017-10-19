@@ -1,10 +1,25 @@
-.thumbnail
-  width: 30%
-  display: table-cell
-  margin: 10px
+@import themeRuru.sass
 
-.topic
-  width: 70%
-  display: table-cell
-  vertical-align: middle
-  text-decoration: none
+.card
+  border-top: 1px solid grey
+  border-bottom: 1px solid grey
+  display: flex
+  margin: 1em
+  height: 100px
+
+  .thumbnail
+    width: 30%
+    margin: 0.5em
+
+    img
+      max-width: 100%
+      max-height: 100%
+
+
+  p
+    padding-top: 5px
+    width: 70%
+    margin-left: 0.5em
+    text-align: left
+    font-size: 14px
+    font-weight: bold

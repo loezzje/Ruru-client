@@ -16,7 +16,7 @@ export class Home extends PureComponent {
     const frontOrgs = this.filterOrg()
 
     return frontOrgs.map(function(organization){
-      return <Link to={'/organizations/' + organization._id}><TopicCard key={organization._id} title={organization.about} /></Link>
+      return <Link to={'/organizations/' + organization._id}><TopicCard key={organization._id} title={organization.about} image={organization.logo} /></Link>
     })
   }
 

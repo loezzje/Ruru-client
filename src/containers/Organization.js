@@ -49,20 +49,29 @@ export class Organization extends PureComponent {
         <div className="routeToThisOrg">
           <BreadCrumb {...match} />
         </div>
-        <span className="organization-logo"><img src={ logo } alt='logo_of_organization' /></span>
-        <div className="name"><h3>{ name }</h3></div>
-        <div className="about"><p>{ about }</p></div>
-        <div className="features">
-          <p>They can help you with:</p>
+        <div className="organization-info">
+          <div className="organization-logo"><img src={ logo } alt='logo_of_organization' /></div>
+          <div className="name"><h2>{ name }</h2></div>
+          <div className="about"><p>{ about }</p></div>
+          <div className="features">
+            <h3>They can help you with:</h3>
+            <ul>
+
+              { features === undefined ? null :features.map(this.renderFeatures.bind(this)) }
+            </ul>
+          </div>
+        </div>
+
+        <div className="contact-org">
+          <h3>Contact</h3>
           <ul>
 
-            { features === undefined ? null :features.map(this.renderFeatures.bind(this)) }
+            <li>Website: { website }</li>
+            <li>Phone: { phone }</li>
+            <li>Address: { address }</li>
           </ul>
         </div>
-        <p>Contact</p>
-        <p>Website: { website }</p>
-        <p>Phone: { phone }</p>
-        <p>Address: { address }</p>
+
         <div className="facebook">{ this.renderFB(facebook) }</div>
       </div>
     )

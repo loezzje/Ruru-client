@@ -1,2 +1,29 @@
-.organization-logo img {
-  max-width: 100%; }
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Roboto");
+.organization-logo {
+  margin: 0 auto;
+  width: 200px; }
+  .organization-logo img {
+    max-width: 100%; }
+
+.organization p, .organization li {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px; }
+
+.organization h2 {
+  font-size: 16px; }
+
+.organization h3 {
+  font-size: 13px; }
+
+.organization-info {
+  padding: 0 10px 0 20px; }
+
+.contact-org {
+  text-align: center;
+  border-top: 1px solid black;
+  margin-bottom: 20px; }
+  .contact-org ul {
+    margin: 0;
+    padding: 0; }
+  .contact-org li {
+    list-style-type: none; }

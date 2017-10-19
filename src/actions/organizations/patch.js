@@ -7,8 +7,8 @@ const api = new API()
 export default (id, newdata) => {
   return (dispatch) => {
 
-    api.authenticate()
-    .then(() => {
+    // api.authenticate()
+    // .then(() => {
     const backend = api.service('organizations')
     backend.update(id, {$set:newdata})
     .then((result) => {
@@ -20,5 +20,6 @@ export default (id, newdata) => {
     .catch((error) => {
       console.log(error)
     })
-  }
-)}}
+//   }
+// )
+}}

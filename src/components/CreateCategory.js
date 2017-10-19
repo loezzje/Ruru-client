@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import createCategory from '../actions/categories/create'
+import './Forms.css'
 
 class CategoryEditor extends PureComponent {
   constructor(props) {
@@ -79,48 +80,46 @@ class CategoryEditor extends PureComponent {
       icon: '',
       frontpage: false,
       tagline: '',
-  })
-}
-
+    })
+  }
 
   render() {
-
     return (
       <div className="editor">
-      <form>Name of the Category:
-      <br />
-        <input type="text"
-          value={this.state.name}
-          onChange={this.updateName.bind(this)}
-          className="name" />
-        <br />
-        Tagline:
-        <br />
-        <input type="text"
-          value={this.state.tagline}
-          onChange={this.updateTagline.bind(this)}
-          className="tagline"
-          placeholder="e.g. organizations where you can find more information about..."/>
-        <br />
-        Icon:
-        <br />
-        please choose an Icon of your liking on <a href="https://material.io/icons/" target="_blank">this page</a>. Copy the name in the field below.
-        <br />
-        <input type="text"
-          value={this.state.icon}
-          onChange={this.updateIcon.bind(this)}
-          className="icon" />
-        <br />
-        Frontpage:
-        <br />
-        ***add the radio button for this.
-        <br />
+        <form>
+          <p>Name of the Category:</p>
 
-        <br />
+          <input type="text"
+            value={this.state.name}
+            onChange={this.updateName.bind(this)}
+            className="name" />
 
-        <input type="submit"
-          value="Submit"
-          onClick={this.saveCategory.bind(this)} />
+          <p>Tagline:</p>
+
+          <input type="text"
+            value={this.state.tagline}
+            onChange={this.updateTagline.bind(this)}
+            className="tagline"
+            placeholder="e.g. organizations where you can find more information about..."/>
+
+          <p>Icon:</p>
+
+          <p><div className='instruction'>please choose an Icon of your liking on <a href="https://material.io/icons/" target="_blank" rel="noopener noreferrer">this page</a>. Copy the name in the field below.</div></p>
+
+          <input type="text"
+            value={this.state.icon}
+            onChange={this.updateIcon.bind(this)}
+            className="icon" />
+
+          <p>Frontpage:</p>
+
+          <p>***add the radio button for this.</p>
+
+          <div className="submitbutton">
+            <input type="submit"
+              value="Submit"
+              onClick={this.saveCategory.bind(this)} />
+          </div>
         </form>
       </div>
     )

@@ -8,10 +8,8 @@ class ListItemAdmin extends PureComponent {
 
     return (
       <li className="listitem-admin">
-        <span>
-        <p>{ this.props.name }</p>
+        <span>{ this.props.name }   </span>
         <Link to={{ pathname: `/admin`}}>edit</Link>
-        </span>
       </li>
 
     )

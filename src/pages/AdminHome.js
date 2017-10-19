@@ -3,6 +3,11 @@ import { connect } from 'react-redux'
 import fetchFaq from '../actions/faq/fetch'
 import fetchCategories from '../actions/categories/fetch'
 import fetchOrganizations from '../actions/organizations/fetch'
+import ListItemAdmin from '../components/ListItemAdmin'
+
+function truncate(str, no_words) {
+    return str.split(" ").splice(0,no_words).join(" ");
+}
 
 export class AdminHome extends PureComponent {
   componentWillMount() {
@@ -11,8 +16,8 @@ export class AdminHome extends PureComponent {
     this.props.fetchFaq()
   }
 
-  renderFaq(question, index) {
-    
+  renderFaq(faq, index) {
+    return <li><ListItemAdmin key={index} name={truncate(faq.question, 5)} /></li>
   }
 
   render() {
@@ -27,8 +32,10 @@ export class AdminHome extends PureComponent {
           <p>Orgs</p>
           <p>Cats</p>
           <div classname="faqlist">
-            <p>FAQ list:</p>
-            { this.props.faq.map(this.renderFaq.bind(this)) }
+            <p>CURRENT FAQ</p>
+            <ul>
+              { this.props.faq.map(this.renderFaq.bind(this)) }
+            </ul>
           </div>
         </main>
       </div>

@@ -1,14 +1,15 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
+// import fetchCategories from '../actions'
 
 
 import createOrganization from '../actions/organizations/create'
 
 class OrganizationEditor extends PureComponent {
+
+
   constructor(props) {
     super(props);
-
-    const { name } = props
 
     this.state = {
       name: '',
@@ -20,7 +21,6 @@ class OrganizationEditor extends PureComponent {
       phone: '',
       address: '',
       facebook: '',
-      categories: '',
     }
   }
 
@@ -113,6 +113,7 @@ class OrganizationEditor extends PureComponent {
       phone,
       address,
       facebook,
+      categories
     } = this.state
 
     const newOrganization = {
@@ -125,6 +126,7 @@ class OrganizationEditor extends PureComponent {
       phone,
       address,
       facebook,
+      categories
     }
 
     this.props.save(newOrganization)
@@ -140,12 +142,14 @@ class OrganizationEditor extends PureComponent {
       phone: '',
       address: '',
       facebook: '',
-      categories: [],
     })
   }
 
 
+
   render() {
+    const { categories } = this.props
+
 
     return (
       <div className="editor">
@@ -225,7 +229,12 @@ class OrganizationEditor extends PureComponent {
         <br />
         Categories:
         <br />
-        ** need to build
+        {categories.map((category) => (
+          <div><input type="checkbox"
+          value={category._id} />
+          <label>{category.name}</label></div>
+        ))}
+        <br />
         <br />
         <input type="submit"
           value="Submit"
@@ -236,6 +245,7 @@ class OrganizationEditor extends PureComponent {
   }
 }
 
+const mapStateToProps = ({categories}) => ({categories})
 const mapDispatchToProps = { save: createOrganization }
 
-export default connect(null, mapDispatchToProps)(OrganizationEditor)
+export default connect(mapStateToProps, mapDispatchToProps)(OrganizationEditor)

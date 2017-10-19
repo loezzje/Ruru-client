@@ -40,8 +40,6 @@ class CategoryEditor extends PureComponent {
     });
   };
 
-
-
   validate() {
     const isNameValid = this.validateName()
     this.setState({

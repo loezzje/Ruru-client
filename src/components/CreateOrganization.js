@@ -11,6 +11,7 @@ class OrganizationEditor extends PureComponent {
   constructor(props) {
     super(props);
 
+
     this.state = {
       name: '',
       tagline: '',
@@ -21,6 +22,8 @@ class OrganizationEditor extends PureComponent {
       phone: '',
       address: '',
       facebook: '',
+      frontpage: false,
+      categories: []
     }
   }
 
@@ -79,11 +82,23 @@ class OrganizationEditor extends PureComponent {
   };
 
   // need to update this to fit with api
-  updateCategories = (event, value) => {
+  // updateCategories = (event, value) => {
+  //   this.setState({
+  //   categories: event.target.value,
+  //   });
+  // };
+
+  handleCheck = (event, value) => {
+    var addCategories = this.state.categories
+     if (addCategories.includes(event.target.value)) {
+       var index = addCategories.indexOf(event.target.value)
+       addCategories.splice(index, 1)
+     } else {
+    addCategories.push(event.target.value)
     this.setState({
-    categories: event.target.value,
-    });
-  };
+      categories: addCategories
+    })
+  }}
 
   validate() {
     const isNameValid = this.validateName()
@@ -130,6 +145,8 @@ class OrganizationEditor extends PureComponent {
     }
 
     this.props.save(newOrganization)
+    console.log(newOrganization)
+
     // if form is used as editor too, the below should only be in the create new org form page, not on the edit page
 
     this.setState({
@@ -142,8 +159,11 @@ class OrganizationEditor extends PureComponent {
       phone: '',
       address: '',
       facebook: '',
+
     })
   }
+
+
 
 
 
@@ -231,7 +251,8 @@ class OrganizationEditor extends PureComponent {
         <br />
         {categories.map((category) => (
           <div><input type="checkbox"
-          value={category._id} />
+          value={category._id}
+          onClick={this.handleCheck} />
           <label>{category.name}</label></div>
         ))}
         <br />

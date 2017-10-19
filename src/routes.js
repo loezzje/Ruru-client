@@ -4,6 +4,7 @@ import TopicCardList from './pages/TopicCardList'
 import Organization from './containers/Organization.js'
 import Home from './pages/Home'
 import CreateOrganization from './components/CreateOrganization'
+import CreateCategory from './components/CreateCategory'
 import Faq from './pages/Faq'
 import Contact from './pages/Contact'
 

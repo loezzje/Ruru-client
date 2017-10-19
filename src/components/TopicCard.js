@@ -4,14 +4,13 @@ import './TopicCard.css'
 class TopicCard extends PureComponent {
   render() {
     return (
-      <div>
+      <div className="card">
         <div className='thumbnail'>
           <img src={this.props.image} alt='thumbnail' />
         </div>
         <div className='topic'>
           <span>{this.props.title}</span>
         </div>
-        <hr />
       </div>
     )
   }

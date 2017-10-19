@@ -1,12 +1,10 @@
-.thumbnail {
-  width: 30%;
-  display: table-cell;
-  margin: 0.5em; }
-  .thumbnail img {
-    max-width: 100%; }
-
-.topic {
-  width: 70%;
-  display: table-cell;
-  vertical-align: left;
-  text-decoration: none; }
+.card {
+  display: flex;
+  margin: 1em; }
+  .card .thumbnail {
+    width: 30%;
+    margin: 0.5em; }
+    .card .thumbnail img {
+      max-width: 100%; }
+  .card .topic {
+    width: 70%; }

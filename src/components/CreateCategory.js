@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import createCategory from '../actions/categories/create'
+import getCategory from '../actions/categories/get'
+import patchCategory from '../actions/categories/patch'
 
 class CategoryEditor extends PureComponent {
   constructor(props) {
@@ -13,6 +15,36 @@ class CategoryEditor extends PureComponent {
       icon: '',
       frontpage: false,
       tagline: '',
+      mode: '',
+    }
+  }
+
+  componentDidMount() {
+    console.log('Component will mount:')
+    console.log("Detected categoryId from URI: ", this.props.match.params.categoryId)
+
+    const { getCategory } = this.props
+
+    if (this.props.match.params.categoryId !== undefined) {
+      getCategory(this.props.match.params.categoryId)
+      // getCategory()
+      this.setState({
+        mode: 'edit',
+      })
+    } else {
+      this.setState({
+        mode: 'create'
+      })
+    }
+  }
+
+  showName() {
+    const { name } = this.props.category
+    console.log("Name is ", name)
+    if (name === null) {
+      return ""
+    } else {
+      return name
     }
   }
 
@@ -84,6 +116,9 @@ class CategoryEditor extends PureComponent {
 }
 
   render() {
+    console.log("Category form is in", this.state.mode, "mode!")
+    console.log("Category ==========> ", this.props.category)
+    console.log("What is: ", typeof this.props.category)
     return (
       <div className="editor">
       <form>
@@ -92,6 +127,7 @@ class CategoryEditor extends PureComponent {
           <input
             id="name"
             type="text"
+            // value={this.state.mode === 'edit' ? this.showName() : this.state.name}
             value={this.state.name}
             onChange={this.updateName.bind(this)}
           />
@@ -138,6 +174,11 @@ class CategoryEditor extends PureComponent {
   }
 }
 
-const mapDispatchToProps = { save: createCategory }
+const mapStateToProps = ({ category, categories }) => ({
+  category,
+  categories
+})
 
-export default connect(null, mapDispatchToProps)(CategoryEditor)
+const mapDispatchToProps = { save: createCategory, getCategory }
+
+export default connect(mapStateToProps, mapDispatchToProps)(CategoryEditor)

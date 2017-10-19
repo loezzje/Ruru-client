@@ -50,13 +50,18 @@ export class Home extends PureComponent {
   }
 
   render() {
+    const { menuShow } = this.props
+    if (menuShow) {
+      return null
+    }
+
     return(
-      <div className='homepage'>
+      <div className='homepage main-container'>
         <header>
           <h2>Welcome to RuRu</h2>
           <h5>An information handbook for newcomers to the Netherlands</h5>
         </header>
-        <main>
+        <main className="main-container">
           <h4>EXPLORE</h4>
           <div className="catbuttons">{ this.showButton() }</div>
           <h4>Highlighted Organizations</h4>
@@ -67,7 +72,7 @@ export class Home extends PureComponent {
   }
 }
 
-const mapStateToProps = ({ categories, organizations }) => ({ categories, organizations })
+const mapStateToProps = ({ categories, organizations, menuShow }) => ({ categories, organizations, menuShow })
 const mapDispatchToProps = { fetchCategories }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)

@@ -30,7 +30,7 @@ class CategoryEditor extends PureComponent {
 
   updateFrontPage = (event, value) => {
     this.setState({
-    frontpage: event.target.value,
+    frontpage: event.target.checked,
     });
   };
 
@@ -68,11 +68,12 @@ class CategoryEditor extends PureComponent {
     const newCategory = {
       name,
       icon,
-      frontpage,
       tagline,
+      frontpage,
     }
 
     this.props.save(newCategory)
+    console.log('Clicked Submit for Category form')
 
     this.setState({
       name: '',
@@ -82,47 +83,57 @@ class CategoryEditor extends PureComponent {
   })
 }
 
-
   render() {
-
     return (
       <div className="editor">
-      <form>Name of the Category:
-      <br />
-        <input type="text"
-          value={this.state.name}
-          onChange={this.updateName.bind(this)}
-          className="name" />
+      <form>
+        <label for="name">Category name</label>
         <br />
-        Tagline:
+          <input
+            id="name"
+            type="text"
+            value={this.state.name}
+            onChange={this.updateName.bind(this)}
+          />
+        {/* ===================================== */}
         <br />
-        <input type="text"
-          value={this.state.tagline}
-          onChange={this.updateTagline.bind(this)}
-          className="tagline"
-          placeholder="e.g. organizations where you can find more information about..."/>
+          <label for="tagline">Tagline</label>
         <br />
-        Icon:
+          <input
+            type="text"
+            value={this.state.tagline}
+            onChange={this.updateTagline.bind(this)}
+            id="tagline"
+            placeholder="e.g. organizations where you can find more information about..."
+          />
+        {/* ===================================== */}
         <br />
-        please choose an Icon of your liking on <a href="https://material.io/icons/" target="_blank">this page</a>. Copy the name in the field below.
+          <label for="icon">Icon</label>
         <br />
-        <input type="text"
-          value={this.state.icon}
-          onChange={this.updateIcon.bind(this)}
-          className="icon" />
+          Please choose an Icon of your liking on <a href="https://material.io/icons/" target="_blank">this page</a>. Copy the name in the field below.
         <br />
-        Frontpage:
+          <input
+            type="text"
+            value={this.state.icon}
+            onChange={this.updateIcon.bind(this)}
+            id="icon"
+          />
+        {/* ===================================== */}
         <br />
-        ***add the radio button for this.
+          <label for="frontpage">Frontpage</label>
+          <input
+            id="frontpage"
+            type="checkbox"
+            value={this.state.frontpage}
+            onChange={this.updateFrontPage.bind(this)} />
         <br />
-
+        {/* ===================================== */}
         <br />
-
-        <input type="submit"
-          value="Submit"
-          onClick={this.saveCategory.bind(this)} />
-        </form>
-      </div>
+          <input type="submit"
+            value="Submit"
+            onClick={this.saveCategory.bind(this)} />
+          </form>
+        </div>
     )
   }
 }

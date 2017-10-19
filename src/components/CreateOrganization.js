@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Redirect } from 'react-router'
 
 // import fetchCategories from '../actions'
-
+import './Forms.css'
 
 import createOrganization from '../actions/organizations/create'
 

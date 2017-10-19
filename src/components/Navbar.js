@@ -9,7 +9,7 @@ import fetchCatagories from '../actions/categories/fetch.js'
 import fetchOrganizations from '../actions/organizations/fetch.js'
 import ruruLogo from '../assets/logos/ruruLogo.png'
 import { Link } from 'react-router-dom'
-
+import Headroom from '../headroom/index'
 
 
 class Navbar extends PureComponent {
@@ -41,8 +41,9 @@ class Navbar extends PureComponent {
   render() {
 
     return (
-      <div>
-        <div className="navbar">
+
+        <Headroom>
+          <div className="navbar">
 
 
           <Link to={`/`} ><img src={ruruLogo} className="rurulogo" alt="logo" onClick={this.props.hideMenu}/></Link>
@@ -52,7 +53,8 @@ class Navbar extends PureComponent {
 
         </div>
         <Menu />
-      </div>
+        </Headroom>
+      
 
 
     )

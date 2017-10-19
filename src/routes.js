@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import CreateOrganization from './components/CreateOrganization'
 import Faq from './pages/Faq'
 import Contact from './pages/Contact'
+import CreateCategory from './components/CreateCategory'
 
 // import {
 //   Home,

@@ -61,6 +61,10 @@ export class AdminHome extends PureComponent {
             </ul>
             <div className="addbutton"><Link to={{ pathname: '/admin/create-faq'}}>Add</Link></div>
           </div>
+          <div classname="rurustatus">
+            <p>CURRENT RURU-INFO</p>
+            <div className="addbutton"><Link to={{ pathname: '/admin/update-ruru'}}>Edit</Link></div>
+          </div>
         </main>
       </div>
     )

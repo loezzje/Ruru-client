@@ -1,8 +1,12 @@
+.adminpage {
+  margin-left: 1em;
+  margin-right: 1em; }
+
 .addbutton {
   border: 1px solid green;
   background-color: green;
   min-width: 400px;
-  width: 40%;
+  width: 50%;
   padding: 0.5em;
   padding-left: 1em;
   margin-left: 2.5em;

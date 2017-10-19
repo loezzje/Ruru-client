@@ -1,20 +1,26 @@
+.eye {
+  position: relative;
+  bottom: 1.5em;
+  height: 2.5em; }
+
 .footer {
   background-color: #000000;
-  padding: 3em;
-  padding-bottom: 5em; }
+  padding-left: 2em;
+  padding-bottom: 5em;
+  margin-top: 2.5em; }
 
 .instagram {
   color: #ffffff;
   font-size: 25px;
   float: right;
-  margin-right: 20px;
+  margin-right: 1em;
   background-color: #398b7d;
   padding: 10px;
   border-radius: 50%; }
 
 .footerPageLinks ul {
   list-style-type: none;
-  padding-left: 1em;
+  padding-left: 0;
   margin: 0; }
   .footerPageLinks ul a:link {
     color: #ffffff;

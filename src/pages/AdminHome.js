@@ -19,15 +19,15 @@ export class AdminHome extends PureComponent {
   }
 
   renderOrgs(org) {
-    return <ListItemAdmin key={org._id} name={ org.name } />
+    return <ListItemAdmin key={org._id} name={ org.name } path={`/admin/${org._id}/create-organization`} />
   }
 
   renderCats(cat) {
-    return <ListItemAdmin key={cat._id} name={ cat.name } />
+    return <ListItemAdmin key={cat._id} name={ cat.name } path={`/admin/${cat._id}/create-category`}  />
   }
 
   renderFaq(faq) {
-    return <ListItemAdmin key={faq._id} name={truncate(faq.question, 5)} />
+    return <ListItemAdmin key={faq._id} name={truncate(faq.question, 5)} path={`/admin/${faq._id}/create-faq`} />
   }
 
   render() {

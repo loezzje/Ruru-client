@@ -31,7 +31,8 @@ class TopicCardList extends PureComponent {
         <Link to={'/organizations/' + topics._id}>
           <TopicCard
             key={index}
-            title={topics.about} />
+            title={topics.about}
+            image={topics.logo} />
         </Link>
     )
   }

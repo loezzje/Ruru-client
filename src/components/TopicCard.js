@@ -6,7 +6,7 @@ class TopicCard extends PureComponent {
     return (
       <div>
         <div className='thumbnail'>
-          <img src="http://via.placeholder.com/100x100" alt='thumbnail' />
+          <img src={this.props.image} alt='thumbnail' />
         </div>
         <div className='topic'>
           <span>{this.props.title}</span>

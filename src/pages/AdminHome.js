@@ -11,6 +11,10 @@ export class AdminHome extends PureComponent {
     this.props.fetchFaq()
   }
 
+  renderFaq(question, index) {
+    
+  }
+
   render() {
     return(
       <div className='adminpage'>
@@ -22,14 +26,15 @@ export class AdminHome extends PureComponent {
         <main>
           <p>Orgs</p>
           <p>Cats</p>
-          <p>Faq</p>
+          <div classname="faqlist">
+            <p>FAQ list:</p>
+            { this.props.faq.map(this.renderFaq.bind(this)) }
+          </div>
         </main>
       </div>
     )
   }
 }
-
-//{ this.props.faq.map(this.renderFaq.bind(this)) }
 
 const mapStateToProps = ({ faq, organizations, categories }) => ({ faq, organizations, categories })
 const mapDispatchToProps = { fetchFaq, fetchOrganizations, fetchCategories }

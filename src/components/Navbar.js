@@ -21,7 +21,6 @@ class Navbar extends PureComponent {
 
   toggleMenu(){
     const { menuShow} = this.props
-
     if (menuShow) {
       this.props.hideMenu()
     } else {
@@ -38,23 +37,28 @@ class Navbar extends PureComponent {
     }
   }
 
-  render() {
 
+
+  render() {
+    const { menuShow } = this.props
     return (
+
 
         <Headroom>
           <div className="navbar">
 
 
           <Link to={`/`} ><img src={ruruLogo} className="rurulogo" alt="logo" onClick={this.props.hideMenu}/></Link>
-          <div className="hamburger">
-            {this.toggleHamburger()}
-          </div>
+          <div id="hamburger" className={menuShow ? "open": "close"} onClick={this.toggleMenu.bind(this)}>
 
-        </div>
+              <span></span>
+              <span></span>
+              <span></span>
+              </div>
+          </div>
         <Menu />
         </Headroom>
-      
+
 
 
     )

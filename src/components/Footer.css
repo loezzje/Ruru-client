@@ -1,11 +1,11 @@
 .eye {
   position: relative;
-  bottom: 3.5em;
+  bottom: 1.5em;
   height: 2.5em; }
 
 .footer {
   background-color: #000000;
-  padding: 2em;
+  padding-left: 2em;
   padding-bottom: 5em;
   margin-top: 2.5em; }
 
@@ -13,7 +13,7 @@
   color: #ffffff;
   font-size: 25px;
   float: right;
-  margin-right: 20px;
+  margin-right: 1em;
   background-color: #398b7d;
   padding: 10px;
   border-radius: 50%; }

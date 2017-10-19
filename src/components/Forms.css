@@ -1,0 +1,25 @@
+.editor {
+  background-color: #398b7d;
+  min-width: 480px;
+  padding: 2em;
+  margin: 1em;
+  margin-right: 5em;
+  border-radius: 20px; }
+  .editor p {
+    font-weight: bold;
+    line-height: 0.2em; }
+    .editor p a {
+      color: #ffffff;
+      background-color: #000000;
+      text-decoration: none;
+      padding: 0.5em;
+      border-radius: 6px; }
+  .editor input {
+    width: 80%;
+    margin-bottom: 1em; }
+  .editor .check {
+    width: 2em; }
+  .editor .submitbutton {
+    width: 200px; }
+  .editor .instruction {
+    font-size: 12px; }

@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react'
 import { Link } from 'react-router-dom'
+import './ListItemAdmin.css'
 
 class ListItemAdmin extends PureComponent {
 
@@ -8,8 +9,8 @@ class ListItemAdmin extends PureComponent {
 
     return (
       <li className="listitem-admin">
-        <span>{ this.props.name }   </span>
-        <Link to={{ pathname: `/admin`}}>edit</Link>
+        <span>{ this.props.name }</span>
+        <Link to={{ pathname: `/admin`}}>Edit</Link>
       </li>
 
     )

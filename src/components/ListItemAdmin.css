@@ -1,0 +1,20 @@
+.listitem-admin {
+  list-style-type: none;
+  border: 1px solid grey;
+  margin-bottom: 0.2em;
+  min-width: 400px;
+  width: 40%;
+  padding: 0.5em;
+  padding-left: 1em; }
+  .listitem-admin a {
+    float: right;
+    margin-right: 1em; }
+  .listitem-admin a:link {
+    color: #987314;
+    text-decoration: none; }
+  .listitem-admin a:visited {
+    color: #987314; }
+  .listitem-admin a:hover {
+    color: #987314; }
+  .listitem-admin a:active {
+    color: #987314; }

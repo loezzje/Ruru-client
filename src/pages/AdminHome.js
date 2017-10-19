@@ -5,6 +5,7 @@ import fetchFaq from '../actions/faq/fetch'
 import fetchCategories from '../actions/categories/fetch'
 import fetchOrganizations from '../actions/organizations/fetch'
 import ListItemAdmin from '../components/ListItemAdmin'
+import './AdminHome.css'
 
 function truncate(str, no_words) {
     return str.split(" ").splice(0,no_words).join(" ");
@@ -18,15 +19,15 @@ export class AdminHome extends PureComponent {
   }
 
   renderOrgs(org, index) {
-    return <li><ListItemAdmin key={index} name={ org.name } /></li>
+    return <ListItemAdmin key={index} name={ org.name } />
   }
 
   renderCats(cat, index) {
-    return <li><ListItemAdmin key={index} name={ cat.name } /></li>
+    return <ListItemAdmin key={index} name={ cat.name } />
   }
 
   renderFaq(faq, index) {
-    return <li><ListItemAdmin key={index} name={truncate(faq.question, 5)} /></li>
+    return <ListItemAdmin key={index} name={truncate(faq.question, 5)} />
   }
 
   render() {

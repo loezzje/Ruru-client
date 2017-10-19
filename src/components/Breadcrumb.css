@@ -1,0 +1,13 @@
+.breadCrumb {
+  list-style-type: none;
+  margin: 0;
+  padding: 8px 0 15px 8px;
+  font-size: 13px; }
+  .breadCrumb a:link, .breadCrumb a:visited, .breadCrumb a:active {
+    color: #413c31;
+    text-decoration: none; }
+  .breadCrumb a:hover {
+    color: #413c31;
+    text-decoration: underline; }
+  .breadCrumb li {
+    display: inline-block; }

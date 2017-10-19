@@ -18,7 +18,7 @@ class MenuItem extends PureComponent {
   }
 
 
-  
+
 
   toggleSubMenu(){
     const { submenu } = this.state
@@ -47,9 +47,10 @@ class MenuItem extends PureComponent {
 
   renderSubMenu(organization, index){
     const { submenu } = this.state
-
+    const { _id } = this.props
+    console.log("category name", _id)
     if (submenu) {
-      return <SubmenuItem  key={index} {...organization}/>
+      return <SubmenuItem  key={index} { ...organization} content={_id}/>
     } else {
       return null
     }
@@ -57,15 +58,10 @@ class MenuItem extends PureComponent {
 
   mapOrganisations(){
     const { organizations} = this.props
-    if (organizations === undefined) {
-
+    if (organizations === null) {
       return null
-    } else if(organizations.length > 1) {
-
+    } else  {
       return organizations.map(this.renderSubMenu.bind(this))
-    } else {
-      return this.renderSubMenu(organizations)
-
     }
 
   }
@@ -73,8 +69,12 @@ class MenuItem extends PureComponent {
 
 
   render() {
-    const { name } = this.props
+    const { name, organizations} = this.props
 
+
+    if (organizations[0] === null) {
+      return null
+    }
     return (
       <li className="menu-item">
         <div className="menu-category" onClick={this.toggleSubMenu.bind(this)}>

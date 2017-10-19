@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import FaFacebookSquare from 'react-icons/lib/fa/facebook-square'
 import hideMenu from '../actions/menuHidden.js'
 import './Organization.css'
+
+import BreadCrumb from '../components/Breadcrumb'
 export class Organization extends PureComponent {
   static propTypes = {
     name: PropTypes.string.isRequired,
@@ -35,16 +37,17 @@ export class Organization extends PureComponent {
   }
 
   render() {
-    const { menuShow, name, logo, about, features, website, phone, address, facebook, } = this.props
+    const { match, menuShow, name, logo, about, features, website, phone, address, facebook, } = this.props
 
     if (menuShow) {
       return null
-    } 
+    }
 
     return(
+
       <div className="organization">
         <div className="routeToThisOrg">
-         <p>Where the intelligent routing goes</p>
+          <BreadCrumb {...match} />
         </div>
         <span className="organization-logo"><img src={ logo } alt='logo_of_organization' /></span>
         <div className="name"><h3>{ name }</h3></div>
@@ -52,7 +55,7 @@ export class Organization extends PureComponent {
         <div className="features">
           <p>They can help you with:</p>
           <ul>
-            { console.log(features) }
+
             { features === undefined ? null :features.map(this.renderFeatures.bind(this)) }
           </ul>
         </div>
@@ -76,6 +79,7 @@ const mapStateToProps = ({ organizations, menuShow }, { match }) => {
   }, {})
 
   return {
+    match,
     menuShow,
     organization,
     ...organization

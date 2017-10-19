@@ -7,7 +7,7 @@ import CreateOrganization from './components/CreateOrganization'
 import CreateCategory from './components/CreateCategory'
 import Faq from './pages/Faq'
 import Contact from './pages/Contact'
-import CreateCategory from './components/CreateCategory'
+
 
 // import {
 //   Home,

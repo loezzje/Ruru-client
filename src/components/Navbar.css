@@ -10,7 +10,12 @@
   float: right;
   margin-right: 20px;
   margin-top: 20px;
-  cursor: pointer; }
+  cursor: pointer;
+  opacity: 1; }
+
+.hamburger:active {
+  opacity: 0;
+  transition: height 2s; }
 
 .rurulogo {
   height: 70px;

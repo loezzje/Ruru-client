@@ -11,3 +11,8 @@ header {
 .catbuttons {
   display: flex;
   flex-direction: column; }
+
+@media screen and (min-width: 800px) {
+  .catbuttons {
+    justify-content: space-around;
+    flex-direction: row; } }

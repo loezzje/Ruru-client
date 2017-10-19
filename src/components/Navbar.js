@@ -56,12 +56,9 @@ class Navbar extends PureComponent {
               <span></span>
               </div>
           </div>
-          <CSSTransitionGroup
-          transitionName="example"
-          transitionEnterTimeout={500}
-          transitionLeaveTimeout={300}>
+
           <Menu />
-        </CSSTransitionGroup>
+          
 
         </Headroom>
 

@@ -29,6 +29,7 @@ export default class Routes extends Component {
         <Route exact path="/" component={ Home } />
         <Route path="/about" render={ () => <p>"About us" page</p> } />
         <Route exact path="/admin/create-category" component={ CreateCategory } />
+        <Route exact path="/admin/category/:categoryId/edit" component={ CreateCategory } />
         <Route exact path="/admin/create-organization" component={ CreateOrganization } />
         <Route path="/admin" component={ AdminHome } />
         <Route path="/faq" component={ Faq } />

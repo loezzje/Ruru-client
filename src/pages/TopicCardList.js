@@ -17,23 +17,26 @@ class TopicCardList extends PureComponent {
       const { category } = this.props
       if (category === null) {
         return null
-      // } else if (category.organizations.length > 1) {
-      //   return category.organizations.map(this.renderTopic.bind(this))
+      } else if (category.organizations.length === 0) {
+        return null
       } else {
-        // return this.renderTopic(category.organizations)
         return category.organizations.map(this.renderTopic.bind(this))
       }
     }
 
   /* It should be read from the 'tagline' property in organizations schema */
   renderTopic(topics, index) {
-    return (
-        <Link to={'/organizations/' + topics._id}>
-          <TopicCard
-            key={index}
-            title={topics.about} />
-        </Link>
-    )
+    if (topics === null ) {
+      return null
+    } else {
+      return (
+          <Link to={'/organizations/' + topics._id}>
+            <TopicCard
+              key={index}
+              title={topics.about} />
+          </Link>
+      )
+    }
   }
 
   render() {

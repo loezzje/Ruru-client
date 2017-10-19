@@ -1,2 +1,18 @@
 .homepage {
   text-align: center; }
+
+.main-container {
+  max-width: 1000spx;
+  margin: 0 auto; }
+
+header {
+  max-width: 100%; }
+
+.catbuttons {
+  display: flex;
+  flex-direction: column; }
+
+@media screen and (min-width: 800px) {
+  .catbuttons {
+    justify-content: space-around;
+    flex-direction: row; } }

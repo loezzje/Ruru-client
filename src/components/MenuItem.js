@@ -5,6 +5,7 @@ import './MenuItem.css'
 import DownIcon from 'react-icons/lib/fa/angle-down'
 import UpIcon from 'react-icons/lib/fa/angle-up'
 import SubmenuItem from './SubmenuItem.js'
+import { CSSTransitionGroup } from 'react-transition-group'
 
 class MenuItem extends PureComponent {
   constructor(props) {
@@ -76,6 +77,7 @@ class MenuItem extends PureComponent {
       return null
     }
     return (
+
       <li className="menu-item">
         <div className="menu-category" onClick={this.toggleSubMenu.bind(this)}>
           <h1>
@@ -85,10 +87,19 @@ class MenuItem extends PureComponent {
         </div>
         <nav>
           <ul className="submenu">
+            <CSSTransitionGroup
 
-          {this.mapOrganisations()}
-
+            transitionName="example"
+            transitionEnter={true}
+            transitionEnterTimeout={500}
+            transitionLeaveTimeout={300}>
+              {this.mapOrganisations()}
+            </CSSTransitionGroup>
           </ul>
+
+
+
+
         </nav>
 
       </li>

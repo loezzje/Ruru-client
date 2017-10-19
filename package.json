@@ -11,11 +11,12 @@
     "react": "^15.6.2",
     "react-dom": "^15.6.2",
     "react-fontawesome": "^1.6.1",
+    "react-headroom": "^2.2.1",
     "react-icons": "^2.2.7",
-    "react-mailto": "^0.4.0",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.14",
+    "react-transition-group": "1.x",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
     "superagent": "^3.6.3"

@@ -9,8 +9,8 @@ import fetchCatagories from '../actions/categories/fetch.js'
 import fetchOrganizations from '../actions/organizations/fetch.js'
 import ruruLogo from '../assets/logos/ruruLogo.png'
 import { Link } from 'react-router-dom'
-
-
+import Headroom from '../headroom/index'
+import { CSSTransitionGroup } from 'react-transition-group'
 
 class Navbar extends PureComponent {
 
@@ -21,7 +21,6 @@ class Navbar extends PureComponent {
 
   toggleMenu(){
     const { menuShow} = this.props
-
     if (menuShow) {
       this.props.hideMenu()
     } else {
@@ -38,21 +37,31 @@ class Navbar extends PureComponent {
     }
   }
 
-  render() {
 
+
+  render() {
+    const { menuShow } = this.props
     return (
-      <div>
-        <div className="navbar">
+
+
+        <Headroom>
+          <div className="navbar">
 
 
           <Link to={`/`} ><img src={ruruLogo} className="rurulogo" alt="logo" onClick={this.props.hideMenu}/></Link>
-          <div className="hamburger">
-            {this.toggleHamburger()}
+          <div id="hamburger" className={menuShow ? "open": "close"} onClick={this.toggleMenu.bind(this)}>
+
+              <span></span>
+              <span></span>
+              <span></span>
+              </div>
           </div>
 
-        </div>
-        <Menu />
-      </div>
+          <Menu />
+          
+
+        </Headroom>
+
 
 
     )

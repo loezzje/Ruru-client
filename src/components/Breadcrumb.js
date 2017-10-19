@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 import './Breadcrumb.css'
 import RightIcon from 'react-icons/lib/fa/angle-right'
 
-
 class BreadCrumb extends PureComponent {
 
   getCategoryName(){

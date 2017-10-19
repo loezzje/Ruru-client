@@ -1,7 +1,9 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
-// import fetchCategories from '../actions'
+import { Redirect } from 'react-router'
 
+// import fetchCategories from '../actions'
+import './Forms.css'
 
 import createOrganization from '../actions/organizations/create'
 
@@ -10,6 +12,7 @@ class OrganizationEditor extends PureComponent {
 
   constructor(props) {
     super(props);
+
 
     this.state = {
       name: '',
@@ -21,6 +24,9 @@ class OrganizationEditor extends PureComponent {
       phone: '',
       address: '',
       facebook: '',
+      frontpage: false,
+      categories: [],
+      redirect: false
     }
   }
 
@@ -78,12 +84,23 @@ class OrganizationEditor extends PureComponent {
     });
   };
 
-  // need to update this to fit with api
-  updateCategories = (event, value) => {
+  updateFrontPage = (event, value) => {
     this.setState({
-    categories: event.target.value,
+      frontpage: event.target.value === "true" ? true : false
     });
   };
+
+  handleCheck = (event, value) => {
+    var addCategories = this.state.categories
+     if (addCategories.includes(event.target.value)) {
+       var index = addCategories.indexOf(event.target.value)
+       addCategories.splice(index, 1)
+     } else {
+    addCategories.push(event.target.value)
+    this.setState({
+      categories: addCategories
+    })
+  }}
 
   validate() {
     const isNameValid = this.validateName()
@@ -113,6 +130,7 @@ class OrganizationEditor extends PureComponent {
       phone,
       address,
       facebook,
+      frontpage,
       categories
     } = this.state
 
@@ -126,30 +144,29 @@ class OrganizationEditor extends PureComponent {
       phone,
       address,
       facebook,
+      frontpage,
       categories
     }
 
     this.props.save(newOrganization)
-    // if form is used as editor too, the below should only be in the create new org form page, not on the edit page
+    console.log(newOrganization)
+    this.setState({redirect: true})
 
-    this.setState({
-      name: '',
-      tagline: '',
-      about: '',
-      logo: '',
-      features: [],
-      website: '',
-      phone: '',
-      address: '',
-      facebook: '',
-    })
   }
 
 
 
-  render() {
-    const { categories } = this.props
 
+
+  render() {
+
+    const { redirect } = this.state;
+
+    if (redirect) {
+      return <Redirect to='/admin' />
+    }
+
+    const { categories } = this.props
 
     return (
       <div className="editor">
@@ -230,11 +247,23 @@ class OrganizationEditor extends PureComponent {
         Categories:
         <br />
         {categories.map((category) => (
-          <div><input type="checkbox"
-          value={category._id} />
+          <div key={category._id}><input type="checkbox"
+          value={category._id}
+          onClick={this.handleCheck} />
           <label>{category.name}</label></div>
         ))}
         <br />
+        Show on Front page?
+        <br />
+          <input type="radio"
+          name="frontpage"
+          value="false"
+          defaultChecked
+          onChange={this.updateFrontPage.bind(this)}/> False
+          <input type="radio"
+          name="frontpage"
+          value="true"
+          onChange={this.updateFrontPage.bind(this)} /> True
         <br />
         <input type="submit"
           value="Submit"

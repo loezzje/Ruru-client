@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import createCategory from '../actions/categories/create'
 import getCategory from '../actions/categories/get'
 import patchCategory from '../actions/categories/patch'
+import './Forms.css'
 
 class CategoryEditor extends PureComponent {
   constructor(props) {

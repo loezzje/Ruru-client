@@ -7,7 +7,6 @@ import CreateOrganization from './components/CreateOrganization'
 import Faq from './pages/Faq'
 import Contact from './pages/Contact'
 
-
 // import {
 //   Home,
 //   About,
@@ -26,6 +25,7 @@ export default class Routes extends Component {
       <Switch>
         <Route exact path="/" component={ Home } />
         <Route path="/about" render={ () => <p>"About us" page</p> } />
+        <Route exact path="/admin/create-category" component={ CreateCategory } />
         <Route exact path="/admin/create-organization" component={ CreateOrganization } />
         <Route path="/admin" render={ () => <p>"Admin" page</p> } />
         <Route path="/faq" component={ Faq } />

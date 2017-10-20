@@ -18,7 +18,7 @@ export class Faq extends PureComponent {
       <div className='faqpage'>
         <header>
           <h3>FAQ</h3>
-          <p>Here answer some frequently asked questions about our organisation.</p>
+          <p>Here answer some frequently asked questions about our organization and about refugees in general.</p>
         </header>
 
         <main>

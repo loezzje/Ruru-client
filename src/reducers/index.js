@@ -4,6 +4,7 @@ import categories from './categories'
 import category from './category'
 import ruru from './ruru'
 import faq from './faq'
+import currentUser from './currentUser'
 
 export default {
   menuShow,
@@ -12,4 +13,5 @@ export default {
   category,
   ruru,
   faq,
+  currentUser
 }

@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import Mailto from 'react-mailto'
+// import Mailto from 'react-mailto'
 import './Contact.css'
 
 export class Contact extends PureComponent {
@@ -12,8 +12,7 @@ export class Contact extends PureComponent {
         </header>
 
         <main>
-          <p>Keen to help us grow? Send us an <Mailto email="info@theruru.org" obfuscate={true}>
-          e-mail</Mailto>.</p>
+          <p>Keen to help us grow? Send us an </p>
         </main>
       </div>
     )

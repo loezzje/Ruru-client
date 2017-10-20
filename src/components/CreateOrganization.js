@@ -2,6 +2,8 @@ import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router'
 import fetchOrganizations from '../actions/organizations/fetch'
+// import fetchCategories from '../actions'
+import './Forms.css'
 import createOrganization from '../actions/organizations/create'
 import updateOrganization from '../actions/organizations/patch'
 
@@ -32,6 +34,7 @@ class OrganizationEditor extends PureComponent {
     frontpage: organization.frontpage,
     categories: categories,
     redirect: false
+
   }
 }
 
@@ -160,12 +163,14 @@ class OrganizationEditor extends PureComponent {
     if (!this.props.organization._id)
     {this.props.createOrganization(newOrganization)
     console.log(newOrganization)
+
     this.setState({redirect: true})}
     else
 
     {this.props.updateOrganization(this.props.organization._id, newOrganization)
     console.log(newOrganization)
     this.setState({redirect: true})}
+
   }
 
   render() {
@@ -177,7 +182,9 @@ class OrganizationEditor extends PureComponent {
       return <Redirect to='/admin' />
     }
 
+
     const { categories } = this.props
+
 
     return (
       <div className="editor">

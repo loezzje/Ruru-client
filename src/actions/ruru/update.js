@@ -7,8 +7,8 @@ const api = new API()
 export default (id, newData) => {
   return (dispatch) => {
 
-    api.app.authenticate()
-      .then(() => {
+    // api.app.authenticate()
+    //   .then(() => {
         const backend = api.service('ruru')
         backend.update(id, { $set: newData })
           .then((result) => {
@@ -20,6 +20,6 @@ export default (id, newData) => {
           .catch((error) => {
             console.log(error)
           })
-      })
+      // })
   }
 }

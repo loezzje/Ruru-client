@@ -109,11 +109,12 @@ class UpdateRuru extends PureComponent {
     const ruruId = this.props.ruru[0]._id
     this.props.updateRuru(ruruId, NewRuru)
 
-    this.setState({ redirect: true })
+    // this.setState({ redirect: true })
   }
 
   render() {
 
+    // const { redirect } = this.p
     //
     // if (redirect) {
     //   return <Redirect to='/admin' />
@@ -125,11 +126,11 @@ class UpdateRuru extends PureComponent {
 
     return (
       <div className="editor">
-        <form>
           <p>About Ruru:</p>
           <input
             type="text"
             ref="about"
+            className="about"
             value={this.state.about}
             onChange={this.updateAbout.bind(this)}
             onKeyDown={this.updateAbout.bind(this)} />
@@ -191,7 +192,6 @@ class UpdateRuru extends PureComponent {
           <div className="actions">
             <button className="submitbutton" onClick={this.saveRuru.bind(this)}>Update</button>
           </div>
-        </form>
       </div>
     )
   }

@@ -9,37 +9,46 @@ import updateOrganization from '../actions/organizations/patch'
 
 class OrganizationEditor extends PureComponent {
 
-  componentwillMount() {
-    const { organization } =this.props
-    if (!organization) fetchOrganizations()
-      this.setState({
-        organization: organization
-      });
-  }
+
 
   constructor(props) {
     super(props);
-    const { organization, categories } = this.props
 
     this.state = {
-    name: organization.name,
-    tagline: organization.tagline,
-    about: organization.about,
-    logo: organization.logo,
-    features: organization.features,
-    website: organization.website,
-    phone: organization.phone,
-    address: organization.address,
-    facebook: organization.facebook,
-    frontpage: organization.frontpage,
-    categories: categories,
+    name: '',
+    tagline: "",
+    about: "",
+    logo: "",
+    features: "",
+    website: "",
+    phone: "",
+    address: "",
+    facebook: "",
+    frontpage: "",
+    categories: "",
     redirect: false
 
   }
 }
 
 
-
+  setOrgsState() {
+    const { organization, categories } = this.props
+      this.state = {
+      name: organization.name,
+      tagline: organization.tagline,
+      about: organization.about,
+      logo: organization.logo,
+      features: organization.features,
+      website: organization.website,
+      phone: organization.phone,
+      address: organization.address,
+      facebook: organization.facebook,
+      frontpage: organization.frontpage,
+      categories: categories,
+      redirect: false
+    }
+  }
 
 
   updateName(event, value) {
@@ -162,13 +171,11 @@ class OrganizationEditor extends PureComponent {
 
     if (!this.props.organization._id)
     {this.props.createOrganization(newOrganization)
-    console.log(newOrganization)
 
     this.setState({redirect: true})}
     else
 
     {this.props.updateOrganization(this.props.organization._id, newOrganization)
-    console.log(newOrganization)
     this.setState({redirect: true})}
 
   }
@@ -185,6 +192,9 @@ class OrganizationEditor extends PureComponent {
 
     const { categories } = this.props
 
+    if (!this.state.name) {
+      this.setOrgsState()
+    }
 
     return (
       <div className="editor-container ">
@@ -299,7 +309,7 @@ class OrganizationEditor extends PureComponent {
 }
 
 const mapStateToProps = ({ categories, organizations }, { match }) => {
-  console.log("hi there its me", organizations)
+
   const organization = organizations.reduce((prev, next) => {
     if (next._id === match.params.organizationId) {
       return next

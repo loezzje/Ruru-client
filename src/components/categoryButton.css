@@ -53,8 +53,13 @@
   .categoryButton {
     width: 350px;
     margin-right: 10px;
-    height: 160px; } }
+    height: 160px; }
+  .catheader article {
+    width: 100%;
+    height: 140px; } }
 
 @media screen and (max-width: 850px) {
   .categoryButton {
+    width: 100%; }
+  .catheader article {
     width: 100%; } }

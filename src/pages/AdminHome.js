@@ -21,10 +21,19 @@ export class AdminHome extends PureComponent {
       fireRedirect: false
     }
   }
+
   componentWillMount() {
     this.props.fetchCategories()
     this.props.fetchOrganizations()
     this.props.fetchFaq()
+
+    const { currentUser } = this.props
+
+    if (currentUser === null) {
+      this.setState({
+        fireRedirect: true
+      })
+    }
   }
 
   renderOrgs(org) {
@@ -54,7 +63,7 @@ export class AdminHome extends PureComponent {
     if (fireRedirect) {
       return <Redirect to='/admin/signin' />
     }
-
+    // console.log("Currentuser is: ", this.props.currentUser.email)
     return(
       <div className='adminpage'>
         <header>
@@ -98,7 +107,7 @@ export class AdminHome extends PureComponent {
   }
 }
 
-const mapStateToProps = ({ faq, organizations, categories }) => ({ faq, organizations, categories })
+const mapStateToProps = ({ faq, organizations, categories, currentUser }) => ({ faq, organizations, categories, currentUser })
 const mapDispatchToProps = { fetchFaq, fetchOrganizations, fetchCategories, signOut }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AdminHome)

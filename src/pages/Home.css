@@ -6,12 +6,9 @@
 
 .main-container {
   max-width: 1000px;
+  box-sizing: border-box;
   margin: 0 auto;
-  background-color: whitesmoke;
-  padding: 0 40px; }
-
-header {
-  max-width: 100%; }
+  background-color: whitesmoke; }
 
 .catbuttons {
   display: flex;
@@ -35,4 +32,6 @@ header {
   .catbuttons {
     justify-content: space-between;
     flex-direction: row;
-    margin: 0 auto; } }
+    margin: 0 auto; }
+  .main-container {
+    padding: 0 40px; } }

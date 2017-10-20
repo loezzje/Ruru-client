@@ -24,6 +24,14 @@ class SignIn extends PureComponent {
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    if(this.props.currentUser !== nextProps.currentUser)
+
+    this.setState({
+      fireRedirect: true
+    })
+  } 
+
   updateEmail(event, value) {
     this.setState({
       email: event.target.value
@@ -43,6 +51,7 @@ class SignIn extends PureComponent {
       password: this.state.password
     }
     this.props.AdminSignIn(user)
+    console.log("Signing in...")
     this.setState({ fireRedirect: true })
     // this.props.push('/admin')
   }

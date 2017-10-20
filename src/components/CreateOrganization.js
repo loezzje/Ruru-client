@@ -1,34 +1,46 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router'
-
+import fetchOrganizations from '../actions/organizations/fetch'
 // import fetchCategories from '../actions'
 import './Forms.css'
-
 import createOrganization from '../actions/organizations/create'
+import updateOrganization from '../actions/organizations/patch'
 
 class OrganizationEditor extends PureComponent {
 
+  componentwillMount() {
+    const { organization } =this.props
+    if (!organization) fetchOrganizations()
+      this.setState({
+        organization: organization
+      });
+  }
 
   constructor(props) {
     super(props);
-
+    const { organization, categories } = this.props
 
     this.state = {
-      name: '',
-      tagline: '',
-      about: '',
-      logo: '',
-      features: '',
-      website: '',
-      phone: '',
-      address: '',
-      facebook: '',
-      frontpage: false,
-      categories: [],
-      redirect: false
-    }
+    name: organization.name,
+    tagline: organization.tagline,
+    about: organization.about,
+    logo: organization.logo,
+    features: organization.features,
+    website: organization.website,
+    phone: organization.phone,
+    address: organization.address,
+    facebook: organization.facebook,
+    frontpage: organization.frontpage,
+    categories: categories,
+    redirect: false
+
   }
+}
+
+
+
+
 
   updateName(event, value) {
     this.setState({
@@ -148,17 +160,21 @@ class OrganizationEditor extends PureComponent {
       categories
     }
 
-    this.props.save(newOrganization)
+    if (!this.props.organization._id)
+    {this.props.createOrganization(newOrganization)
     console.log(newOrganization)
-    this.setState({redirect: true})
+
+    this.setState({redirect: true})}
+    else
+
+    {this.props.updateOrganization(this.props.organization._id, newOrganization)
+    console.log(newOrganization)
+    this.setState({redirect: true})}
 
   }
 
-
-
-
-
   render() {
+
 
     const { redirect } = this.state;
 
@@ -166,7 +182,9 @@ class OrganizationEditor extends PureComponent {
       return <Redirect to='/admin' />
     }
 
+
     const { categories } = this.props
+
 
     return (
       <div className="editor">
@@ -274,7 +292,25 @@ class OrganizationEditor extends PureComponent {
   }
 }
 
-const mapStateToProps = ({categories}) => ({categories})
-const mapDispatchToProps = { save: createOrganization }
+const mapStateToProps = ({ categories, organizations }, { match }) => {
+  console.log("hi there its me", organizations)
+  const organization = organizations.reduce((prev, next) => {
+    if (next._id === match.params.organizationId) {
+      return next
+    }
+    return prev
+  }, {})
+
+  return {
+    categories,
+    organization,
+  }
+}
+
+
+
+
+
+const mapDispatchToProps = { createOrganization, fetchOrganizations, updateOrganization }
 
 export default connect(mapStateToProps, mapDispatchToProps)(OrganizationEditor)

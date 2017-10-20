@@ -26,17 +26,17 @@ class OrganizationEditor extends PureComponent {
     tagline: organization.tagline,
     about: organization.about,
     logo: organization.logo,
-    features: organization.features,
+    features: organization.features ? organization.features.join('; ') : '',
     website: organization.website,
     phone: organization.phone,
     address: organization.address,
     facebook: organization.facebook,
     frontpage: organization.frontpage,
-    categories: categories,
+    categories: categories.filter(this.containsOrganization),
     redirect: false
-
+    }
+    debugger;
   }
-}
 
 
 
@@ -104,15 +104,21 @@ class OrganizationEditor extends PureComponent {
 
   handleCheck = (event, value) => {
     var addCategories = this.state.categories
-     if (addCategories.includes(event.target.value)) {
-       var index = addCategories.indexOf(event.target.value)
-       addCategories.splice(index, 1)
-     } else {
-    addCategories.push(event.target.value)
-    this.setState({
-      categories: addCategories
-    })
-  }}
+    if (addCategories.includes(event.target.value)) {
+      var index = addCategories.indexOf(event.target.value)
+      addCategories.splice(index, 1)
+    } else {
+      addCategories.push(event.target.value)
+      this.setState({
+        categories: addCategories
+      })
+    }
+  }
+
+  containsOrganization = (category) => {
+    const { organization } = this.props
+    return category.organizationsId.includes(organization._id)
+  }
 
   validate() {
     const isNameValid = this.validateName()
@@ -161,30 +167,20 @@ class OrganizationEditor extends PureComponent {
     }
 
     if (!this.props.organization._id)
-    {this.props.createOrganization(newOrganization)
-    console.log(newOrganization)
-
-    this.setState({redirect: true})}
+      {this.props.createOrganization(newOrganization)
+      console.log(newOrganization)
+      this.setState({redirect: true})}
     else
-
-    {this.props.updateOrganization(this.props.organization._id, newOrganization)
-    console.log(newOrganization)
-    this.setState({redirect: true})}
-
+      {this.props.updateOrganization(this.props.organization._id, newOrganization)
+      console.log(newOrganization)
+      this.setState({redirect: true})}
   }
 
   render() {
-
-
+    const { categories } = this.props
     const { redirect } = this.state;
 
-    if (redirect) {
-      return <Redirect to='/admin' />
-    }
-
-
-    const { categories } = this.props
-
+    if (redirect) { return <Redirect to='/admin' /> }
 
     return (
       <div className="editor">
@@ -267,7 +263,8 @@ class OrganizationEditor extends PureComponent {
         {categories.map((category) => (
           <div key={category._id}><input type="checkbox"
           value={category._id}
-          onClick={this.handleCheck} />
+          onClick={this.handleCheck}
+          defaultChecked={this.containsOrganization(category)} />
           <label>{category.name}</label></div>
         ))}
         <br />

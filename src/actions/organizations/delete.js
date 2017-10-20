@@ -9,16 +9,17 @@ export default (organizationId) => {
 
     api.authenticate()
     .then(() => {
-    const backend = api.service('organizations')
-    backend.remove(organizationId)
-    .then((result) => {
-      dispatch({
-        type: DELETE_ORGANIZATION,
-        payload: result
+      const backend = api.service('organizations')
+      backend.remove(organizationId)
+      .then((result) => {
+        dispatch({
+          type: DELETE_ORGANIZATION,
+          payload: result
+        })
       })
-    })
-    .catch((error) => {
-      console.log(error)
-    })
-  }
-)}}
+      .catch((error) => {
+        console.log(error)
+      })
+    }
+  )}
+}

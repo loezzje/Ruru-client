@@ -7,6 +7,7 @@ const api = new API()
 
 export default (user) => {
   return(dispatch) => {
+
     api.authenticate(user)
     .then((user) => {
       api.app.set('user', user)

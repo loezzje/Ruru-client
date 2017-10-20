@@ -10,7 +10,7 @@ export default (id, newData) => {
     api.app.authenticate()
     .then(() => {
       const backend = api.service('ruru')
-      backend.update(id, { $set: newData })
+      backend.update(id, newData)
         .then((result) => {
           dispatch({
             type: UPDATE_RURU,

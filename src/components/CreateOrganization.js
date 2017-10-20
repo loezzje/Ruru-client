@@ -32,10 +32,9 @@ class OrganizationEditor extends PureComponent {
     address: organization.address,
     facebook: organization.facebook,
     frontpage: organization.frontpage,
-    categories: categories.filter(this.containsOrganization),
+    categories: categories.filter(this.containsOrganization).map(org => org._id),
     redirect: false
     }
-    debugger;
   }
 
 
@@ -263,7 +262,7 @@ class OrganizationEditor extends PureComponent {
         {categories.map((category) => (
           <div key={category._id}><input type="checkbox"
           value={category._id}
-          onClick={this.handleCheck}
+          onClick={this.handleCheck.bind(this)}
           defaultChecked={this.containsOrganization(category)} />
           <label>{category.name}</label></div>
         ))}

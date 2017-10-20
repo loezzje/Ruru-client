@@ -14,6 +14,16 @@ class SignIn extends PureComponent {
     }
   }
 
+  componentWillMount() {
+    const { currentUser } = this.props
+
+    if (!!currentUser && !!currentUser._id) {
+      this.setState({
+        fireRedirect: true
+      })
+    }
+  }
+
   updateEmail(event, value) {
     this.setState({
       email: event.target.value
@@ -62,6 +72,8 @@ class SignIn extends PureComponent {
   }
 }
 
+const mapStateToProps = ({ currentUser }) => ({ currentUser })
+
 const mapDispatchToProps = { AdminSignIn }
 
-export default connect(null, mapDispatchToProps)(SignIn)
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn)

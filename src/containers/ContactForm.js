@@ -44,7 +44,7 @@ export class ContactForm extends PureComponent {
       message,
     }
 
-    this.props.sendMail(NewMail)
+    this.props.sendMail(NewMail) //doesn't exist yet
 
     this.state = {
       email: '',

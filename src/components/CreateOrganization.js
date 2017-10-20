@@ -290,12 +290,13 @@ class OrganizationEditor extends PureComponent {
             <input type="radio"
             name="frontpage"
             value="false"
-            defaultChecked
-            onChange={this.updateFrontPage.bind(this)}/> False
+            checked={this.state.frontpage === false}
+            onChange={this.updateFrontPage.bind(this)}/> No
             <input type="radio"
             name="frontpage"
             value="true"
-            onChange={this.updateFrontPage.bind(this)} /> True
+            checked={this.state.frontpage === true}
+            onChange={this.updateFrontPage.bind(this)} /> Yes
           <br />
           </div>
           <input type="submit"

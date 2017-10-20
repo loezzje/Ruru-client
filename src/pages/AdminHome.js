@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 import fetchFaq from '../actions/faq/fetch'
 import fetchCategories from '../actions/categories/fetch'
 import fetchOrganizations from '../actions/organizations/fetch'
+import signOut from '../actions/users/sign-out'
+import { Redirect } from 'react-router-dom'
 import ListItemAdmin from '../components/ListItemAdmin'
 import './AdminHome.css'
 
@@ -12,6 +14,13 @@ function truncate(str, no_words) {
 }
 
 export class AdminHome extends PureComponent {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      fireRedirect: false
+    }
+  }
   componentWillMount() {
     this.props.fetchCategories()
     this.props.fetchOrganizations()
@@ -30,13 +39,29 @@ export class AdminHome extends PureComponent {
     return <ListItemAdmin key={faq._id} name={truncate(faq.question, 5)} path={`/admin/${faq._id}/create-faq`} />
   }
 
+  signOut(event) {
+    event.preventDefault()
+    this.props.signOut()
+
+    this.setState({
+      fireRedirect: true
+    })
+  }
+
   render() {
+    const { fireRedirect } = this.state;
+
+    if (fireRedirect) {
+      return <Redirect to='/admin/signin' />
+    }
+
     return(
       <div className='adminpage'>
         <header>
           <h2>ADMIN HOME</h2>
           <p>Introduction to admin.</p>
           <hr />
+          <button onClick={this.signOut.bind(this)}>Sign out</button>
         </header>
 
         <main>
@@ -72,6 +97,6 @@ export class AdminHome extends PureComponent {
 }
 
 const mapStateToProps = ({ faq, organizations, categories }) => ({ faq, organizations, categories })
-const mapDispatchToProps = { fetchFaq, fetchOrganizations, fetchCategories }
+const mapDispatchToProps = { fetchFaq, fetchOrganizations, fetchCategories, signOut }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AdminHome)

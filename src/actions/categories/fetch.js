@@ -6,6 +6,7 @@ const api = new API()
 
 export default () => {
   return (dispatch) => {
+
     const backend = api.service('categories')
     backend.find()
     .then((result) => {

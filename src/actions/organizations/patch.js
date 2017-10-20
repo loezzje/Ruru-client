@@ -9,16 +9,17 @@ export default (id, newdata) => {
 
     api.authenticate()
     .then(() => {
-    const backend = api.service('organizations')
-    backend.update(id, {$set:newdata})
-    .then((result) => {
-      dispatch({
-        type: PATCH_ORGANIZATION,
-        payload: result
+      const backend = api.service('organizations')
+      backend.update(id, {$set:newdata})
+      .then((result) => {
+        dispatch({
+          type: PATCH_ORGANIZATION,
+          payload: result
+        })
       })
-    })
-    .catch((error) => {
-      console.log(error)
-    })
-  }
-)}}
+      .catch((error) => {
+        console.log(error)
+      })
+    }
+  )}
+}

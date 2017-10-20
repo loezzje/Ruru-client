@@ -7,10 +7,10 @@ const api = new API()
 
 export default (user) => {
   return(dispatch) => {
+
     api.signIn(user)
     .then((user) => {
       api.app.set('user', user)
-
       history.replace('/')
 
       dispatch({

@@ -8,18 +8,18 @@ export default (id, newData) => {
   return (dispatch) => {
 
     api.app.authenticate()
-      .then(() => {
-        const backend = api.service('ruru')
-        backend.update(id, { $set: newData })
-          .then((result) => {
-            dispatch({
-              type: UPDATE_RURU,
-              payload: result
-            })
+    .then(() => {
+      const backend = api.service('ruru')
+      backend.update(id, { $set: newData })
+        .then((result) => {
+          dispatch({
+            type: UPDATE_RURU,
+            payload: result
           })
-          .catch((error) => {
-            console.log(error)
-          })
-      })
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    })
   }
 }

@@ -6,6 +6,7 @@ const api = new API()
 
 export default () => {
   return (dispatch) => {
+
     const backend = api.service('ruru')
     backend.find()
     .then((result) => {

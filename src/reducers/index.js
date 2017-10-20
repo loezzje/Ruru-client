@@ -5,6 +5,7 @@ import category from './category'
 import ruru from './ruru'
 import faq from './faq'
 import currentUser from './currentUser'
+import fbEvents from './fbEvents'
 
 export default {
   menuShow,
@@ -13,5 +14,6 @@ export default {
   category,
   ruru,
   faq,
-  currentUser
+  currentUser,
+  fbEvents
 }

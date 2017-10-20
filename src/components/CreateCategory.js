@@ -14,7 +14,18 @@ class CategoryEditor extends PureComponent {
       icon: '',
       frontpage: false,
       tagline: '',
-      redirect: false
+      redirect: false,
+      fireRedirect: false
+    }
+  }
+
+  componentWillMount() {
+    const { currentUser } = this.props
+
+    if (currentUser === null) {
+      this.setState({
+        fireRedirect: true
+      })
     }
   }
 
@@ -105,12 +116,15 @@ class CategoryEditor extends PureComponent {
 
   render() {
 
-    const { redirect } = this.state;
+    const { redirect, fireRedirect } = this.state;
 
     if (redirect) {
       return <Redirect to='/admin' />
     }
 
+    if (fireRedirect) {
+      return <Redirect to='/admin/signin' />
+    }
 
     if (!this.state.name) {
       this.setCategoryState()
@@ -173,7 +187,7 @@ class CategoryEditor extends PureComponent {
   }
 }
 
-const mapStateToProps = ({ categories }, { match }) => {
+const mapStateToProps = ({ categories, currentUser }, { match }) => {
 
   const category = categories.reduce((prev, next) => {
     if (next._id === match.params.categoryId) {
@@ -184,6 +198,7 @@ const mapStateToProps = ({ categories }, { match }) => {
 
   return {
     category,
+    currentUser
   }
 }
 

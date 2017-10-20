@@ -53,6 +53,12 @@ class CategoryEditor extends PureComponent {
     });
   };
 
+  updateFrontPage = (event, value) => {
+    this.setState({
+      frontpage: event.target.value === "true" ? true : false
+    });
+  };
+
   validate() {
     const isNameValid = this.validateName()
     this.setState({
@@ -139,9 +145,21 @@ class CategoryEditor extends PureComponent {
               onChange={this.updateIcon.bind(this)}
               className="icon" />
 
-            <p>Frontpage:</p>
-
-            <p>***add the radio button for this.</p>
+              <div className="edit-cats">
+              Show on Front page?
+              <br />
+                <input type="radio"
+                name="frontpage"
+                value="false"
+                checked={this.state.frontpage === false}
+                onChange={this.updateFrontPage.bind(this)}/> False
+                <input type="radio"
+                name="frontpage"
+                value="true"
+                checked={this.state.frontpage === true}
+                onChange={this.updateFrontPage.bind(this)} /> True
+              <br />
+              </div>
 
             <div className="submitbutton">
               <input type="submit"

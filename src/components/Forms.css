@@ -33,3 +33,6 @@
     width: 200px; }
   .editor .instruction {
     font-size: 12px; }
+
+.edit-cats input {
+  width: 20px; }

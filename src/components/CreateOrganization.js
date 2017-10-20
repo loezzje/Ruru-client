@@ -169,7 +169,7 @@ class OrganizationEditor extends PureComponent {
     const { categories } = this.props
 
     return (
-      <div className="editor-container">
+      <div className="editor-container ">
         <div className="editor">
         <form>Name of the Organization:
         <br />
@@ -245,15 +245,18 @@ class OrganizationEditor extends PureComponent {
             className="facebook"
             placeholder="link to the facebook page"/>
           <br />
+          <div className="edit-cats">
           Categories:
           <br />
-          {categories.map((category) => (
-            <div key={category._id}><input type="checkbox"
-            value={category._id}
-            onClick={this.handleCheck} />
-            <label>{category.name}</label></div>
-          ))}
-          <br />
+            {categories.map((category) => (
+              <div key={category._id}><input type="checkbox"
+              value={category._id}
+              onClick={this.handleCheck} />
+              <label>{category.name}</label></div>
+            ))}
+            <br />
+          </div>
+          <div className="edit-cats">
           Show on Front page?
           <br />
             <input type="radio"
@@ -266,6 +269,7 @@ class OrganizationEditor extends PureComponent {
             value="true"
             onChange={this.updateFrontPage.bind(this)} /> True
           <br />
+          </div>
           <input type="submit"
             value="Submit"
             onClick={this.saveOrganization.bind(this)} />

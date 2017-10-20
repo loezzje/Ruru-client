@@ -1,15 +1,30 @@
 .adminpage {
   margin-left: 1em;
-  margin-right: 1em; }
+  margin-right: 1em;
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: whitesmoke;
+  padding: 30px 20px 60px 20px;
+  box-sizing: border-box; }
+  .adminpage h2 {
+    margin: 0; }
+  .adminpage ul {
+    text-align: left;
+    padding: 0; }
+  .adminpage main {
+    text-align: center;
+    margin: 0 auto; }
+  .adminpage main > awddiv {
+    margin: 30px 0; }
 
 .addbutton {
   border: 1px solid green;
   background-color: green;
-  min-width: 400px;
-  width: 50%;
+  min-width: 200px;
+  max-width: 10%;
   padding: 0.5em;
   padding-left: 1em;
-  margin-left: 2.5em;
+  margin-left: 0;
   margin-bottom: 1em; }
   .addbutton a:link {
     color: white;

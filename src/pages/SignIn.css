@@ -8,7 +8,7 @@
   box-sizing: border-box; }
 
 .editor {
-  background-color: #398b7d;
+  background-color: green;
   padding: 2em;
   margin: 1em;
   border-radius: 20px; }
@@ -19,8 +19,8 @@
       display: inline-block;
       margin: 5px 0; }
     .editor p a {
-      color: #ffffff;
-      background-color: #000000;
+      color: white;
+      background-color: black;
       text-decoration: none;
       padding: 0.5em;
       border-radius: 6px; }

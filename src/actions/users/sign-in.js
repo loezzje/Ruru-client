@@ -8,10 +8,11 @@ const api = new API()
 export default (user) => {
   return(dispatch) => {
 
-    api.signIn(user)
+    api.authenticate(user)
     .then((user) => {
       api.app.set('user', user)
-      history.replace('/')
+
+      // history.replace('/admin')
 
       dispatch({
         type: USER_SIGNED_IN,

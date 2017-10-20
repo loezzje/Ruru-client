@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import fetchRuru from '../actions/ruru/fetch'
-// import { Redirect } from 'react-router'
 import updateRuru from '../actions/ruru/update'
 import './Forms.css'
 
@@ -109,16 +108,9 @@ class UpdateRuru extends PureComponent {
     const ruruId = this.props.ruru[0]._id
     this.props.updateRuru(ruruId, NewRuru)
 
-    // this.setState({ redirect: true })
   }
 
   render() {
-
-    // const { redirect } = this.p
-    //
-    // if (redirect) {
-    //   return <Redirect to='/admin' />
-    // }
 
     if (!this.state.about) {
       this.setRuru()

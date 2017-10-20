@@ -1,0 +1,28 @@
+.catpage {
+  padding-bottom: 3em; }
+
+.main-container {
+  padding-bottom: 3em; }
+
+.catheader {
+  align-items: center;
+  width: 100%; }
+
+.orgs a:link {
+  color: black;
+  text-decoration: none; }
+
+.orgs a:visited {
+  color: black; }
+
+.orgs a:hover {
+  color: black; }
+
+.orgs a:active {
+  color: black; }
+
+@media screen and (min-width: 800px) {
+  .catpage {
+    padding-bottom: 3em; }
+  .main-container {
+    padding-bottom: 3em; } }

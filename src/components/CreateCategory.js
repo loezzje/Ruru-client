@@ -1,19 +1,31 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router'
 import createCategory from '../actions/categories/create'
+import updateCategory from '../actions/categories/patch'
 import './Forms.css'
 
 class CategoryEditor extends PureComponent {
   constructor(props) {
     super(props);
 
-    const { name } = props
-
     this.state = {
       name: '',
       icon: '',
       frontpage: false,
       tagline: '',
+      redirect: false
+    }
+  }
+
+  setCategoryState() {
+    const {category} = this.props
+    this.state = {
+      name: category.name,
+      icon: category.icon,
+      frontpage: category.frontpage,
+      tagline: category.tagline,
+      redirect: false
     }
   }
 
@@ -73,59 +85,92 @@ class CategoryEditor extends PureComponent {
       tagline,
     }
 
-    this.props.save(newCategory)
+    if(!this.props.category._id)
+    {this.props.createCategory(newCategory)
+    this.setState({redirect: true})}
 
-    this.setState({
-      name: '',
-      icon: '',
-      frontpage: false,
-      tagline: '',
-    })
+    else {
+
+      this.props.updateCategory(this.props.category._id, newCategory)
+      this.setState({redirect: true})
+    }
+
   }
 
   render() {
+
+    const { redirect } = this.state;
+
+    if (redirect) {
+      return <Redirect to='/admin' />
+    }
+
+
+    if (!this.state.name) {
+      this.setCategoryState()
+    }
+
     return (
-      <div className="editor">
-        <form>
-          <p>Name of the Category:</p>
+      <div className="editor-container">
 
-          <input type="text"
-            value={this.state.name}
-            onChange={this.updateName.bind(this)}
-            className="name" />
+        <div className="editor">
+          <form>
+            <p>Name of the Category:</p>
 
-          <p>Tagline:</p>
+            <input type="text"
+              value={this.state.name}
+              onChange={this.updateName.bind(this)}
+              className="name" />
 
-          <input type="text"
-            value={this.state.tagline}
-            onChange={this.updateTagline.bind(this)}
-            className="tagline"
-            placeholder="e.g. organizations where you can find more information about..."/>
+            <p>Tagline:</p>
 
-          <p>Icon:</p>
+            <input type="text"
+              value={this.state.tagline}
+              onChange={this.updateTagline.bind(this)}
+              className="tagline"
+              placeholder="e.g. organizations where you can find more information about..."/>
 
-          <p><div className='instruction'>please choose an Icon of your liking on <a href="https://material.io/icons/" target="_blank" rel="noopener noreferrer">this page</a>. Copy the name in the field below.</div></p>
+            <p>Icon:</p>
 
-          <input type="text"
-            value={this.state.icon}
-            onChange={this.updateIcon.bind(this)}
-            className="icon" />
+            <p className="instruction">please choose an Icon of your liking on <span><a href="https://material.io/icons/" target="_blank" rel="noopener noreferrer">this page</a></span>. Copy the name in the field below.</p>
 
-          <p>Frontpage:</p>
+            <input type="text"
+              value={this.state.icon}
+              onChange={this.updateIcon.bind(this)}
+              className="icon" />
 
-          <p>***add the radio button for this.</p>
+            <p>Frontpage:</p>
 
-          <div className="submitbutton">
-            <input type="submit"
-              value="Submit"
-              onClick={this.saveCategory.bind(this)} />
-          </div>
-        </form>
+            <p>***add the radio button for this.</p>
+
+            <div className="submitbutton">
+              <input type="submit"
+                value="Submit"
+                onClick={this.saveCategory.bind(this)} />
+            </div>
+          </form>
+        </div>
       </div>
     )
   }
 }
 
-const mapDispatchToProps = { save: createCategory }
+const mapStateToProps = ({ categories }, { match }) => {
 
-export default connect(null, mapDispatchToProps)(CategoryEditor)
+  const category = categories.reduce((prev, next) => {
+    if (next._id === match.params.categoryId) {
+      return next
+    }
+    return prev
+  }, {})
+
+  return {
+    category,
+  }
+}
+
+
+
+const mapDispatchToProps = { createCategory, updateCategory }
+
+export default connect(mapStateToProps, mapDispatchToProps)(CategoryEditor)

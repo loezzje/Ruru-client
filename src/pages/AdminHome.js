@@ -64,21 +64,23 @@ export class AdminHome extends PureComponent {
           <button onClick={this.signOut.bind(this)}>Sign out</button>
         </header>
 
-        <main>
+        <main className="main-admin">
           <div classname="catlist">
             <p>CURRENT CATEGORIES</p>
             <ul>
               { this.props.categories.map(this.renderCats.bind(this)) }
             </ul>
-            <div className="addbutton"><Link to={{ pathname: '/admin/create-category'}}>Add</Link></div>
+            <div className="addbutton"><Link to={{ pathname: '/admin/create-category'}}>Add category</Link></div>
           </div>
+
           <div classname="orglist">
             <p>CURRENT ORGANIZATIONS</p>
             <ul>
               { this.props.organizations.map(this.renderOrgs.bind(this)) }
             </ul>
-            <div className="addbutton"><Link to={{ pathname: '/admin/create-organization'}}>Add</Link></div>
+            <div className="addbutton"><Link to={{ pathname: '/admin/create-organization'}}>Add organization</Link></div>
           </div>
+
           <div classname="faqlist">
             <p>CURRENT FAQ</p>
             <ul>

@@ -6,6 +6,7 @@ import CategoryButton from '../components/categoryButton'
 import fetchCategories from '../actions/categories/fetch'
 import TopicCard from '../components/TopicCard'
 import './Home.css'
+import Slider from '../components/Slider'
 
 export class Home extends PureComponent {
   componentWillMount() {
@@ -75,6 +76,7 @@ export class Home extends PureComponent {
           <h2>Welcome to RuRu</h2>
           <h5>An information handbook for newcomers to the Netherlands</h5>
         </header>
+        <Slider />
         <main className="main-container">
           <h4>EXPLORE</h4>
           <div className="catbuttons">{ this.showButton() }</div>

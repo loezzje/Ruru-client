@@ -1,6 +1,6 @@
 import API from '../../api'
 
-export const PATCH_ORGANIZATION = 'PATCH_ORGANIZATION'
+export const PATCH_CATEGORY = 'PATCH_CATEGORY'
 
 const api = new API()
 
@@ -9,11 +9,11 @@ export default (id, newdata) => {
 
     // api.authenticate()
     // .then(() => {
-    const backend = api.service('organizations')
+    const backend = api.service('categories')
     backend.update(id, {$set:newdata})
     .then((result) => {
       dispatch({
-        type: PATCH_ORGANIZATION,
+        type: PATCH_CATEGORY,
         payload: result
       })
     })

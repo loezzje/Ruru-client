@@ -1,2 +1,7 @@
 .faqpage {
-  text-align: center; }
+  text-align: center;
+  padding-top: 1em;
+  padding-bottom: 2em; }
+  .faqpage p {
+    margin-left: 1em;
+    margin-right: 1em; }

@@ -7,7 +7,19 @@
   background-color: #000000;
   padding-left: 2em;
   padding-bottom: 5em;
-  margin-top: 2.5em; }
+  height: 10vh; }
+  .footer .footerPageLinks {
+    max-width: 300px;
+    padding-top: 30px;
+    float: left; }
+  .footer .footerSocialLinks {
+    float: right;
+    padding-top: 50px; }
+
+.footer-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0; }
 
 .instagram {
   color: #ffffff;

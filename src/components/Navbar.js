@@ -45,7 +45,8 @@ class Navbar extends PureComponent {
 
 
         <Headroom>
-          <div className="navbar">
+        <div className="navbar-container">
+          <div className="navbar main-container">
 
 
           <Link to={`/`} ><img src={ruruLogo} className="rurulogo" alt="logo" onClick={this.props.hideMenu}/></Link>
@@ -56,9 +57,18 @@ class Navbar extends PureComponent {
               <span></span>
               </div>
           </div>
-
+          </div>
+          <CSSTransitionGroup
+          transitionAppear={true}
+          transitionName="example"
+          // transitionEnter={true}
+          transitionAppearTimeout={500}
+          transitionEnterTimeout={500}
+          transitionLeaveTimeout={300}>
           <Menu />
-          
+        </CSSTransitionGroup>
+
+
 
         </Headroom>
 

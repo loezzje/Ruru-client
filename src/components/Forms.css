@@ -1,13 +1,23 @@
+.editor-container {
+  margin-left: 1em;
+  margin-right: 1em;
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: whitesmoke;
+  padding: 30px 0px 60px 0px;
+  box-sizing: border-box; }
+
 .editor {
   background-color: #398b7d;
-  min-width: 480px;
   padding: 2em;
   margin: 1em;
-  margin-right: 5em;
   border-radius: 20px; }
   .editor p {
     font-weight: bold;
-    line-height: 0.2em; }
+    margin: 5px 0; }
+    .editor p span {
+      display: inline-block;
+      margin: 5px 0; }
     .editor p a {
       color: #ffffff;
       background-color: #000000;
@@ -23,3 +33,6 @@
     width: 200px; }
   .editor .instruction {
     font-size: 12px; }
+
+.edit-cats input {
+  width: 20px; }

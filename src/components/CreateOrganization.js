@@ -9,13 +9,11 @@ import updateOrganization from '../actions/organizations/patch'
 
 class OrganizationEditor extends PureComponent {
 
-
-
   constructor(props) {
     super(props);
 
     this.state = {
-    name: '',
+    name: "",
     tagline: "",
     about: "",
     logo: "",
@@ -26,10 +24,20 @@ class OrganizationEditor extends PureComponent {
     facebook: "",
     frontpage: "",
     categories: "",
-    redirect: false
+    redirect: false,
+    fireRedirect: false
     }
   }
 
+  componentWillMount() {
+    const { currentUser } = this.props
+
+    if (currentUser === null) {
+      this.setState({
+        fireRedirect: true
+      })
+    }
+  }
 
   setOrgsState() {
     const { organization, categories } = this.props
@@ -48,7 +56,6 @@ class OrganizationEditor extends PureComponent {
       redirect: false
     }
   }
-
 
   updateName(event, value) {
     this.setState({
@@ -187,13 +194,14 @@ class OrganizationEditor extends PureComponent {
 
   render() {
     const { categories } = this.props
-    const { redirect } = this.state;
+    const { redirect, fireRedirect } = this.state;
 
     if (redirect) { return <Redirect to='/admin' /> }
+    if (fireRedirect) { return <Redirect to='/admin/signin' /> }
+
     if (!this.state.name) {
       this.setOrgsState()
     }
-
 
     return (
       <div className="editor-container ">
@@ -309,7 +317,7 @@ class OrganizationEditor extends PureComponent {
   }
 }
 
-const mapStateToProps = ({ categories, organizations }, { match }) => {
+const mapStateToProps = ({ categories, organizations, currentUser }, { match }) => {
 
   const organization = organizations.reduce((prev, next) => {
     if (next._id === match.params.organizationId) {
@@ -321,12 +329,9 @@ const mapStateToProps = ({ categories, organizations }, { match }) => {
   return {
     categories,
     organization,
+    currentUser
   }
 }
-
-
-
-
 
 const mapDispatchToProps = { createOrganization, fetchOrganizations, updateOrganization }
 

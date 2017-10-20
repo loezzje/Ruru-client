@@ -8,7 +8,7 @@ import CreateCategory from './components/CreateCategory'
 import Faq from './pages/Faq'
 import Contact from './pages/Contact'
 import AdminHome from './pages/AdminHome'
-
+import UpdateRuru from './components/UpdateRuru'
 
 // import {
 //   Home,
@@ -31,6 +31,7 @@ export default class Routes extends Component {
         <Route exact path="/admin/:organizationId/create-organization" component={ CreateOrganization } />
         <Route exact path="/admin/create-category" component={ CreateCategory } />
         <Route exact path="/admin/create-organization" component={ CreateOrganization } />
+        <Route exact path="/admin/update-ruru" component={ UpdateRuru } />
         <Route path="/admin" component={ AdminHome } />
         <Route path="/faq" component={ Faq } />
         <Route path="/contact" component={ Contact } />

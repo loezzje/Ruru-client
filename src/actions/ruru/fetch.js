@@ -9,6 +9,7 @@ export default () => {
     const backend = api.service('ruru')
     backend.find()
     .then((result) => {
+      console.log(result)
       dispatch({
         type: FETCH_RURU,
         payload: result.data

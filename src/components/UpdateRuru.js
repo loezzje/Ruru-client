@@ -5,9 +5,10 @@ import updateRuru from '../actions/ruru/update'
 import './Forms.css'
 
 class UpdateRuru extends PureComponent {
-  componentWillMount() {
+  componentWillMount(){
     this.props.fetchRuru()
   }
+
 
   constructor(props) {
     super()
@@ -175,7 +176,12 @@ class UpdateRuru extends PureComponent {
   }
 }
 
-const mapStateToProps = ({ ruru }) => ({ ruru })
+const mapStateToProps = ({ ruru }, { params }) => {
+  const thisruru = ruru[0]
+  return {
+    ...thisruru
+  }
+}
 const mapDispatchToProps = { fetchRuru, updateRuru }
 
 export default connect(mapStateToProps, mapDispatchToProps)(UpdateRuru)

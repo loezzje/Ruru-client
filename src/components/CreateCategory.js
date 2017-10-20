@@ -1,19 +1,31 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router'
 import createCategory from '../actions/categories/create'
+import updateCategory from '../actions/categories/patch'
 import './Forms.css'
 
 class CategoryEditor extends PureComponent {
   constructor(props) {
     super(props);
 
-    const { name } = props
-
     this.state = {
       name: '',
       icon: '',
       frontpage: false,
       tagline: '',
+      redirect: false
+    }
+  }
+
+  setCategoryState() {
+    const {category} = this.props
+    this.state = {
+      name: category.name,
+      icon: category.icon,
+      frontpage: category.frontpage,
+      tagline: category.tagline,
+      redirect: false
     }
   }
 
@@ -73,17 +85,31 @@ class CategoryEditor extends PureComponent {
       tagline,
     }
 
-    this.props.save(newCategory)
+    if(!this.props.category._id)
+    {this.props.createCategory(newCategory)
+    this.setState({redirect: true})}
 
-    this.setState({
-      name: '',
-      icon: '',
-      frontpage: false,
-      tagline: '',
-    })
+    else {
+
+      this.props.updateCategory(this.props.category._id, newCategory)
+      this.setState({redirect: true})
+    }
+
   }
 
   render() {
+
+    const { redirect } = this.state;
+
+    if (redirect) {
+      return <Redirect to='/admin' />
+    }
+
+
+    if (!this.state.name) {
+      this.setCategoryState()
+    }
+
     return (
       <div className="editor-container">
 
@@ -129,6 +155,22 @@ class CategoryEditor extends PureComponent {
   }
 }
 
-const mapDispatchToProps = { save: createCategory }
+const mapStateToProps = ({ categories }, { match }) => {
 
-export default connect(null, mapDispatchToProps)(CategoryEditor)
+  const category = categories.reduce((prev, next) => {
+    if (next._id === match.params.categoryId) {
+      return next
+    }
+    return prev
+  }, {})
+
+  return {
+    category,
+  }
+}
+
+
+
+const mapDispatchToProps = { createCategory, updateCategory }
+
+export default connect(mapStateToProps, mapDispatchToProps)(CategoryEditor)

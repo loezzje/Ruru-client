@@ -8,7 +8,7 @@ export class About extends PureComponent {
     const { about } = this.props
 
     return(
-      <div className='aboutpage'>
+      <div className='aboutpage main-container'>
         <header>
         <img className="big-logo" src={ Logo } alt="RURU icon"/>
           <h3>ABOUT RURU</h3>

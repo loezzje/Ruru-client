@@ -10,7 +10,7 @@ export default (id, newdata) => {
     // api.authenticate()
     // .then(() => {
     const backend = api.service('organizations')
-    backend.update(id, {$set:newdata})
+    backend.update(id, newdata)
     .then((result) => {
       dispatch({
         type: PATCH_ORGANIZATION,

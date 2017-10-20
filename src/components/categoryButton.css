@@ -27,7 +27,7 @@
   padding: 1em;
   margin-bottom: 1em;
   text-align: center;
-  height: 140px;
+  height: 130px;
   box-sizing: border-box; }
   .categoryButton .name {
     font-size: 18px;
@@ -52,7 +52,8 @@
 @media screen and (min-width: 800px) {
   .categoryButton {
     width: 350px;
-    margin-right: 10px; } }
+    margin-right: 10px;
+    height: 160px; } }
 
 @media screen and (max-width: 850px) {
   .categoryButton {

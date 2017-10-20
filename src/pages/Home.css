@@ -34,4 +34,6 @@
     flex-direction: row;
     margin: 0 auto; }
   .main-container {
-    padding: 0 40px; } }
+    padding: 0 40px; }
+  .homepage {
+    padding-bottom: 3em; } }

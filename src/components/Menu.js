@@ -25,7 +25,7 @@ class Menu extends PureComponent {
             transitionAppearTimeout={500}
             transitionEnterTimeout={500}
             transitionLeaveTimeout={300}>
-            { this.props.categories.map(this.renderMenu.bind(this))}
+            {this.props.categories.map(this.renderMenu.bind(this))}
           </CSSTransitionGroup>
         </ul>
       </div>

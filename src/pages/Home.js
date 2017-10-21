@@ -1,6 +1,7 @@
 /*global FB*/
 
 import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
 // import ReactDOM from 'react-dom';
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
@@ -14,8 +15,10 @@ import fb from '../actions/facebook/get'
 export class Home extends PureComponent {
 
   componentWillMount() {
-    this.props.fetchCategories()
-    this.props.fb()
+    const { fetchCategories, fb } = this.props
+
+    fetchCategories()
+    fb()
   }
 
   showOrgs() {
@@ -28,21 +31,16 @@ export class Home extends PureComponent {
 
   filterOrg() {
     const { organizations } = this.props
-
     return organizations.filter(organization => organization.frontpage === true )
   }
 
   showButton() {
     const frontCats = this.filterCat()
-
-    return frontCats.map((category) => {
-      return <CategoryButton key={category._id} { ...category } />
-    })
+    return frontCats.map((category) => <CategoryButton key={category._id} { ...category } />)
   }
 
   filterCat() {
     const { categories } = this.props
-
     return categories.filter((category) => category.frontpage === true)
   }
 
@@ -61,13 +59,11 @@ export class Home extends PureComponent {
 
   render() {
     const { menuShow } = this.props
-    if (menuShow) {
-      return null
-    }
+    if (menuShow) return null
     // this.getfbevents()
 
     return(
-      <div className='homepage main-container'>
+      <div className="homepage main-container">
         <header>
           <h2>Welcome to RuRu</h2>
           <h5>An information handbook for newcomers to the Netherlands</h5>
@@ -75,9 +71,9 @@ export class Home extends PureComponent {
         <Slider />
         <main className="main-container">
           <h4>EXPLORE</h4>
-          <div className="catbuttons">{ this.showButton() }</div>
-          <h4>Highlighted Organizations</h4>
-          <div className="frontorgs">{ this.showOrgs() }</div>
+          <div className="catbuttons">{this.showButton()}</div>
+            <h4>Highlighted Organizations</h4>
+          <div className="frontorgs">{this.showOrgs()}</div>
         </main>
       </div>
     )
@@ -88,3 +84,11 @@ const mapStateToProps = ({ categories, organizations, menuShow }) => ({ categori
 const mapDispatchToProps = { fetchCategories, fb }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)
+
+Home.propTypes = {
+  categories: PropTypes.arrayOf(PropTypes.object).isRequired,
+  organizations: PropTypes.arrayOf(PropTypes.object).isRequired,
+  menuShow: PropTypes.bool.isRequired,
+  fetchCategories: PropTypes.func.isRequired,
+  fb: PropTypes.func.isRequired
+}

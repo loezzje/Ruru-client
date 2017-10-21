@@ -1,7 +1,7 @@
 /*global FB*/
 
 import React, { PureComponent } from 'react'
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import CategoryButton from '../components/categoryButton'
@@ -13,9 +13,6 @@ import fb from '../actions/facebook/get'
 
 export class Home extends PureComponent {
 
-
-
-
   componentWillMount() {
     this.props.fetchCategories()
     this.props.fb()
@@ -24,7 +21,7 @@ export class Home extends PureComponent {
   showOrgs() {
     const frontOrgs = this.filterOrg()
 
-    return frontOrgs.map(function(organization){
+    return frontOrgs.map((organization) => {
       return <Link to={'/organizations/' + organization._id}><TopicCard key={organization._id} title={organization.about} image={organization.logo} /></Link>
     })
   }
@@ -32,31 +29,21 @@ export class Home extends PureComponent {
   filterOrg() {
     const { organizations } = this.props
 
-    return organizations.filter(function(organization) {
-        if(organization.frontpage){
-          return true
-        }
-        return false
-    })
+    return organizations.filter(organization => organization.frontpage === true )
   }
 
   showButton() {
     const frontCats = this.filterCat()
 
-    return frontCats.map(function(category){
+    return frontCats.map((category) => {
       return <CategoryButton key={category._id} { ...category } />
     })
   }
 
-  filterCat(){
+  filterCat() {
     const { categories } = this.props
 
-    return categories.filter(function(category) {
-        if(category.frontpage){
-          return true
-        }
-        return false
-    })
+    return categories.filter((category) => category.frontpage === true)
   }
 
   getTheStyle() {

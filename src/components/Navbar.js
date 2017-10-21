@@ -5,7 +5,7 @@ import Menu from './Menu.js'
 import './Navbar.css'
 import showMenu from '../actions/menuShow.js'
 import hideMenu from '../actions/menuHidden.js'
-import fetchCatagories from '../actions/categories/fetch.js'
+import fetchCategories from '../actions/categories/fetch.js'
 import fetchOrganizations from '../actions/organizations/fetch.js'
 import ruruLogo from '../assets/logos/ruruLogo.png'
 import { Link } from 'react-router-dom'
@@ -14,13 +14,14 @@ import { CSSTransitionGroup } from 'react-transition-group'
 
 class Navbar extends PureComponent {
 
-  componentWillMount(){
-    this.props.fetchCatagories()
+  componentWillMount() {
+    this.props.fetchCategories()
     this.props.fetchOrganizations()
   }
 
-  toggleMenu(){
-    const { menuShow} = this.props
+  toggleMenu() {
+    const { menuShow } = this.props
+
     if (menuShow) {
       this.props.hideMenu()
     } else {
@@ -28,37 +29,33 @@ class Navbar extends PureComponent {
     }
   }
 
-  toggleHamburger(){
-    const { menuShow} = this.props
+  toggleHamburger() {
+    const { menuShow } = this.props
+
     if (menuShow) {
-      return <i className="material-icons md-46" onClick={this.toggleMenu.bind(this)} >close</i>
+      return <i className="material-icons md-46" onClick={this.toggleMenu.bind(this)}>close</i>
     } else {
-      return <i className="material-icons md-46" onClick={this.toggleMenu.bind(this)} >menu</i>
+      return <i className="material-icons md-46" onClick={this.toggleMenu.bind(this)}>menu</i>
     }
   }
 
-
-
   render() {
     const { menuShow } = this.props
+
     return (
-
-
-        <Headroom>
+      <Headroom>
         <div className="navbar-container">
           <div className="navbar main-container">
-
-
-          <Link to={`/`} ><img src={ruruLogo} className="rurulogo" alt="logo" onClick={this.props.hideMenu}/></Link>
-          <div id="hamburger" className={menuShow ? "open": "close"} onClick={this.toggleMenu.bind(this)}>
-
+            <Link to={`/`} ><img src={ruruLogo} className="rurulogo" alt="logo" onClick={this.props.hideMenu}/></Link>
+            <div id="hamburger" className={menuShow ? "open": "close"} onClick={this.toggleMenu.bind(this)}>
               <span></span>
               <span></span>
               <span></span>
-              </div>
+            </div>
           </div>
-          </div>
-          <CSSTransitionGroup
+        </div>
+
+        <CSSTransitionGroup
           transitionAppear={true}
           transitionName="example"
           // transitionEnter={true}
@@ -67,17 +64,20 @@ class Navbar extends PureComponent {
           transitionLeaveTimeout={300}>
           <Menu />
         </CSSTransitionGroup>
-
-
-
-        </Headroom>
-
-
-
+      </Headroom>
     )
   }
 }
 
+Navbar.propTypes = {
+  fetchCategories: PropTypes.func.isRequired,
+  fetchOrganizations: PropTypes.func.isRequired,
+  showMenu: PropTypes.func.isRequired,
+  hideMenu: PropTypes.func.isRequired,
+  menuShow: PropTypes.bool.isRequired
+}
+
 const mapStateToProps = ({ menuShow }) => ({ menuShow })
-const mapDispatchToProps = { showMenu, hideMenu, fetchCatagories, fetchOrganizations }
+const mapDispatchToProps = { showMenu, hideMenu, fetchCategories, fetchOrganizations }
+
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar)

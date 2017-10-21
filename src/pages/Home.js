@@ -10,6 +10,10 @@ import TopicCard from '../components/TopicCard'
 import './Home.css'
 import Slider from '../components/Slider'
 import fb from '../actions/facebook/get'
+import Maps from './Maps'
+
+
+
 
 export class Home extends PureComponent {
 
@@ -72,6 +76,7 @@ export class Home extends PureComponent {
     // console.log(test2)
    }
 
+
   render() {
     const { menuShow } = this.props
     if (menuShow) {
@@ -81,6 +86,7 @@ export class Home extends PureComponent {
 
     return(
       <div className='homepage main-container'>
+        <Maps/>
         <header>
           <h2>Welcome to RuRu</h2>
           <h5>An information handbook for newcomers to the Netherlands</h5>
@@ -92,6 +98,7 @@ export class Home extends PureComponent {
           <h4>Highlighted Organizations</h4>
           <div className="frontorgs">{ this.showOrgs() }</div>
         </main>
+        
       </div>
     )
   }

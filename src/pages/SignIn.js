@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import { Form, Label, Input } from 'reactstrap'
 import AdminSignIn from '../actions/users/sign-in'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
@@ -51,34 +52,30 @@ class SignIn extends PureComponent {
       password: this.state.password
     }
     this.props.AdminSignIn(user)
-    console.log("Signing in...")
     this.setState({ fireRedirect: true })
-    // this.props.push('/admin')
   }
 
   render() {
     const { fireRedirect } = this.state;
 
-    if (fireRedirect) {
-      return <Redirect to='/admin' />
-    }
+    if (fireRedirect) return <Redirect to='/admin' />
 
     return (
       <div className="editor-container">
         <div className="editor">
-          <form>
+          <Form>
             <h3>Admin sign-in</h3>
 
-            <label for="email"><p>Username</p></label>
-            <input id="email" type="text" onChange={this.updateEmail.bind(this)} />
+            <Label for="email"><p>Email</p></Label>
+            <Input id="email" type="text" onChange={this.updateEmail.bind(this)} />
 
-            <label for="password"><p>Password</p></label>
-            <input id="password" type="password" onChange={this.updatePassword.bind(this)} />
+            <Label for="password"><p>Password</p></Label>
+            <Input id="password" type="password" onChange={this.updatePassword.bind(this)} />
 
             <div className="submitbutton">
-              <input type="submit" value="Submit" onClick={this.submitForm.bind(this)} />
+              <Input type="submit" value="Submit" onClick={this.submitForm.bind(this)} />
             </div>
-          </form>
+          </Form>
         </div>
       </div>
     )
@@ -86,7 +83,6 @@ class SignIn extends PureComponent {
 }
 
 const mapStateToProps = ({ currentUser }) => ({ currentUser })
-
 const mapDispatchToProps = { AdminSignIn }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignIn)

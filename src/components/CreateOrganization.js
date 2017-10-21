@@ -55,8 +55,8 @@ class OrganizationEditor extends PureComponent {
       categories: categories.filter(this.containsOrganization).map(category => category._id),
       redirect: false
     }
-    console.log(this.props.categories.map(cat => cat.name + cat._id))
-    console.log(this.state.categories)
+    console.log('This.props.categories: ' + this.props.categories.map(cat => cat.name + cat._id))
+    console.log('This.state.categories, ids of the categories the org belongs to: ' + this.state.categories)
   }
 
   updateName(event, value) {

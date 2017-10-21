@@ -5,6 +5,7 @@ import fetchOrganizations from '../actions/organizations/fetch'
 import getCategory from '../actions/categories/get'
 import CategoryButton from '../components/categoryButton'
 import TopicCard from '../components/TopicCard'
+import './TopicCardList.css'
 
 class TopicCardList extends PureComponent {
   componentWillMount() {
@@ -34,7 +35,7 @@ class TopicCardList extends PureComponent {
           <Link to={'/organizations/' + topics._id}>
             <TopicCard
               key={index}
-              title={topics.about} 
+              title={topics.about}
               image={topics.logo} />
           </Link>
       )
@@ -43,10 +44,9 @@ class TopicCardList extends PureComponent {
 
   render() {
     return (
-      <div>
-        <CategoryButton { ...this.props.category } />
-        <hr />
-        { this.mapOrganisationsFromCategory() }
+      <div className="catpage main-container">
+        <div className="catheader"><CategoryButton { ...this.props.category } /></div>
+        <div className="orgs">{ this.mapOrganisationsFromCategory() }</div>
       </div>
     )
   }

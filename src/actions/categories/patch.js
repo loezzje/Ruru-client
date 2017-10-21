@@ -1,22 +1,25 @@
 import API from '../../api'
 
-export const FETCH_CATEGORIES = 'FETCH_CATEGORIES'
+export const PATCH_CATEGORY = 'PATCH_CATEGORY'
 
 const api = new API()
 
-export default () => {
+export default (id, newdata) => {
   return (dispatch) => {
 
+    // api.authenticate()
+    // .then(() => {
     const backend = api.service('categories')
-    backend.find()
+    backend.update(id, {$set:newdata})
     .then((result) => {
       dispatch({
-        type: FETCH_CATEGORIES,
-        payload: result.data
+        type: PATCH_CATEGORY,
+        payload: result
       })
     })
     .catch((error) => {
       console.log(error)
     })
-  }
-}
+//   }
+// )
+}}

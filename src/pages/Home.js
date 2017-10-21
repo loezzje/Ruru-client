@@ -1,3 +1,5 @@
+/*global FB*/
+
 import React, { PureComponent } from 'react'
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux'
@@ -6,10 +8,17 @@ import CategoryButton from '../components/categoryButton'
 import fetchCategories from '../actions/categories/fetch'
 import TopicCard from '../components/TopicCard'
 import './Home.css'
+import Slider from '../components/Slider'
+import fb from '../actions/facebook/get'
 
 export class Home extends PureComponent {
+
+
+
+
   componentWillMount() {
     this.props.fetchCategories()
+    this.props.fb()
   }
 
   showOrgs() {
@@ -68,6 +77,7 @@ export class Home extends PureComponent {
     if (menuShow) {
       return null
     }
+    // this.getfbevents()
 
     return(
       <div className='homepage main-container'>
@@ -75,6 +85,7 @@ export class Home extends PureComponent {
           <h2>Welcome to RuRu</h2>
           <h5>An information handbook for newcomers to the Netherlands</h5>
         </header>
+        <Slider />
         <main className="main-container">
           <h4>EXPLORE</h4>
           <div className="catbuttons">{ this.showButton() }</div>
@@ -87,6 +98,6 @@ export class Home extends PureComponent {
 }
 
 const mapStateToProps = ({ categories, organizations, menuShow }) => ({ categories, organizations, menuShow })
-const mapDispatchToProps = { fetchCategories }
+const mapDispatchToProps = { fetchCategories, fb }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)

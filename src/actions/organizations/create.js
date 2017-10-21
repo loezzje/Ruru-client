@@ -7,19 +7,19 @@ const api = new API()
 export default (organization) => {
   return (dispatch) => {
 
-    // api.authenticate()
-    // .then(() => {
-    const backend = api.service('organizations')
-    backend.create(organization)
-    .then((result) => {
-      dispatch({
-        type: CREATE_ORGANIZATION,
-        payload: result
+    api.authenticate()
+    .then(() => {
+      const backend = api.service('organizations')
+      backend.create(organization)
+      .then((result) => {
+        dispatch({
+          type: CREATE_ORGANIZATION,
+          payload: result
+        })
       })
-    })
-    .catch((error) => {
-      console.log(error)
-    })
-  }
-// )}
+      .catch((error) => {
+        console.log(error)
+      })
+    }
+  )}
 }

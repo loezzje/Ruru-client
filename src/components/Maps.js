@@ -1,12 +1,12 @@
 import React, { PureComponent } from 'react'
-
+import ruruIcon from '../assets/logos/RURU_eye.png'
 
 
  class Maps extends PureComponent {
 
    componentDidMount () {
 
-      
+
       this.geocoder = new window.google.maps.Geocoder();
       var latlng = new window.google.maps.LatLng(-34.397, 150.644);
       var mapOptions = {
@@ -14,7 +14,9 @@ import React, { PureComponent } from 'react'
         center: latlng
       }
     this.map = new window.google.maps.Map(document.getElementById('map'), mapOptions);
-
+    const map = this.map
+    const geocoder = this.geocoder
+    this.codeAddress(geocoder, map)
 
     }
 
@@ -27,6 +29,7 @@ import React, { PureComponent } from 'react'
 
 
 
+
     codeAddress(geocoder, map) {
 
       var address = this.props.address ? this.props.address : "amsterdam"
@@ -36,6 +39,8 @@ import React, { PureComponent } from 'react'
           map.setCenter(results[0].geometry.location);
           this.marker = new window.google.maps.Marker({
               map: map,
+              title: "helloo",
+              icon: ruruIcon,
               position: results[0].geometry.location
           });
         } else {

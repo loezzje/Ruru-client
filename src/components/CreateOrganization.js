@@ -44,9 +44,11 @@ class OrganizationEditor extends PureComponent {
       address: organization.address,
       facebook: organization.facebook,
       frontpage: organization.frontpage,
-      categories: categories.filter(this.containsOrganization).map(org => org._id),
+      categories: categories.filter(this.containsOrganization).map(category => category._id),
       redirect: false
     }
+    console.log(this.props.categories.map(cat => cat.name + cat._id))
+    console.log(this.state.categories)
   }
 
 
@@ -111,16 +113,15 @@ class OrganizationEditor extends PureComponent {
   };
 
   handleCheck = (event, value) => {
-    var addCategories = this.state.categories
-    if (addCategories.includes(event.target.value)) {
-      var index = addCategories.indexOf(event.target.value)
-      addCategories.splice(index, 1)
-    } else {
-      addCategories.push(event.target.value)
-      this.setState({
-        categories: addCategories
-      })
-    }
+    var orgCategories = this.state.categories
+
+    orgCategories.includes(event.target.value) ?
+      orgCategories.splice(orgCategories.indexOf(event.target.value), 1) :
+      orgCategories.push(event.target.value)
+
+    this.setState({
+      categories: orgCategories
+    })
   }
 
   containsOrganization = (category) => {

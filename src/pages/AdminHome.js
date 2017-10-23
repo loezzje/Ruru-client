@@ -10,7 +10,7 @@ import ListItemAdmin from '../components/ListItemAdmin'
 import './AdminHome.css'
 
 function truncate(str, no_words) {
-    return str.split(" ").splice(0,no_words).join(" ");
+  return str.split(" ").splice(0, no_words).join(" ");
 }
 
 export class AdminHome extends PureComponent {
@@ -23,11 +23,11 @@ export class AdminHome extends PureComponent {
   }
 
   componentWillMount() {
-    this.props.fetchCategories()
-    this.props.fetchOrganizations()
-    this.props.fetchFaq()
+    const { currentUser, fetchCategories, fetchOrganizations, fetchFaq } = this.props
 
-    const { currentUser } = this.props
+    fetchCategories()
+    fetchOrganizations()
+    fetchFaq()
 
     if (currentUser === null) {
       this.setState({
@@ -59,11 +59,9 @@ export class AdminHome extends PureComponent {
 
   render() {
     const { fireRedirect } = this.state;
+    
+    if (fireRedirect) return <Redirect to='/admin/signin' />
 
-    if (fireRedirect) {
-      return <Redirect to='/admin/signin' />
-    }
-    // console.log("Currentuser is: ", this.props.currentUser.email)
     return(
       <div className='adminpage'>
         <header>

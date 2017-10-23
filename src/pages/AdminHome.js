@@ -74,7 +74,7 @@ export class AdminHome extends PureComponent {
         </header>
 
         <main className="main-admin">
-          <div classname="catlist">
+          <div className="catlist">
             <p>CURRENT CATEGORIES</p>
             <ul>
               { this.props.categories.map(this.renderCats.bind(this)) }
@@ -82,7 +82,7 @@ export class AdminHome extends PureComponent {
             <div className="addbutton"><Link to={{ pathname: '/admin/create-category'}}>Add category</Link></div>
           </div>
 
-          <div classname="orglist">
+          <div className="orglist">
             <p>CURRENT ORGANIZATIONS</p>
             <ul>
               { this.props.organizations.map(this.renderOrgs.bind(this)) }
@@ -90,14 +90,14 @@ export class AdminHome extends PureComponent {
             <div className="addbutton"><Link to={{ pathname: '/admin/create-organization'}}>Add organization</Link></div>
           </div>
 
-          <div classname="faqlist">
+          <div className="faqlist">
             <p>CURRENT FAQ</p>
             <ul>
               { this.props.faq.map(this.renderFaq.bind(this)) }
             </ul>
             <div className="addbutton"><Link to={{ pathname: '/admin/create-faq'}}>Add</Link></div>
           </div>
-          <div classname="rurustatus">
+          <div className="rurustatus">
             <p>CURRENT RURU-INFO</p>
             <div className="addbutton"><Link to={{ pathname: '/admin/update-ruru'}}>Edit</Link></div>
           </div>

@@ -5,6 +5,8 @@ import fetchRuru from '../actions/ruru/fetch'
 import './Footer.css'
 import Eye from '../assets/logos/RURU_eye.png'
 import FaInstagram from 'react-icons/lib/fa/instagram'
+import FaFacebook from 'react-icons/lib/fa/facebook'
+import FaTwitter from 'react-icons/lib/fa/twitter'
 
 export class Footer extends PureComponent {
   componentWillMount() {
@@ -12,7 +14,7 @@ export class Footer extends PureComponent {
   }
 
   render () {
-    const { instagram } = this.props
+    const { instagram, facebook, twitter } = this.props
 
     return (
       <div className='footer'>
@@ -27,7 +29,9 @@ export class Footer extends PureComponent {
             </ul>
           </nav>
           <div className='footerSocialLinks'>
-              <a href={ instagram } target="_blank" rel="noopener noreferrer"><FaInstagram className="instagram"/></a>
+              <a href={ instagram } target="_blank" rel="noopener noreferrer"><FaInstagram className="social-icon"/></a>
+              <a href={ facebook } target="_blank" rel="noopener noreferrer"><FaFacebook className="social-icon"/></a>
+              <a href={ twitter } target="_blank" rel="noopener noreferrer"><FaTwitter className="social-icon"/></a>
           </div>
         </div>
       </div>

@@ -40,7 +40,7 @@ export default class Routes extends Component {
         <Route exact path="/admin/create-category" component={ CreateCategory } />
         <Route exact path="/admin/create-organization" component={ CreateOrganization } />
         <Route exact path="/admin/signin" component={ SignIn } />
-        <Route exact path="/admin/update-ruru" component={ RuruEditor } />
+        <Route exact path="/admin/update-ruru" component={ UpdateRuru } />
         <Route path="/admin" component={ AdminHome } />
         <Route path="/faq" component={ Faq } />
         <Route path="/contact" component={ Contact } />

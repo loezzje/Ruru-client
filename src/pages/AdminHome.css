@@ -35,3 +35,14 @@
     color: white; }
   .addbutton a:active {
     color: white; }
+
+.ruruinfos {
+  font-size: 12px;
+  text-align: left; }
+  .ruruinfos th {
+    font-style: italic; }
+  .ruruinfos td {
+    padding: 0.4em; }
+  .ruruinfos th, .ruruinfos td {
+    padding-left: 1em;
+    padding-right: 1em; }

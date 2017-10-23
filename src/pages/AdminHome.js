@@ -97,6 +97,38 @@ export class AdminHome extends PureComponent {
           </div>
           <div className="rurustatus">
             <p>CURRENT RURU-INFO</p>
+            <div className="ruruinfos">
+              <table>
+                <tr>
+                  <th>E-mail</th>
+                  <td>{ this.props.ruru[0] === undefined ? null : this.props.ruru[0].email }</td>
+                </tr>
+                <tr>
+                  <th>Phone</th>
+                  <td>{ this.props.ruru[0] === undefined ? null : this.props.ruru[0].phone }</td>
+                </tr>
+                <tr>
+                  <th>Address</th>
+                  <td>{ this.props.ruru[0] === undefined ? null : this.props.ruru[0].address }</td>
+                </tr>
+                <tr>
+                  <th>Instagram</th>
+                  <td>{ this.props.ruru[0] === undefined ? null : this.props.ruru[0].instagram }</td>
+                </tr>
+                <tr>
+                  <th>Facebook</th>
+                  <td>{ this.props.ruru[0] === undefined ? null : this.props.ruru[0].facebook }</td>
+                </tr>
+                <tr>
+                  <th>Twitter</th>
+                  <td>{ this.props.ruru[0] === undefined ? null : this.props.ruru[0].twitter }</td>
+                </tr>
+                <tr>
+                  <th>About</th>
+                  <td>{ this.props.ruru[0] === undefined ? null : this.props.ruru[0].about }</td>
+                </tr>
+              </table>
+            </div>
             <div className="addbutton"><Link to={{ pathname: '/admin/update-ruru'}}>Edit</Link></div>
           </div>
         </main>
@@ -105,7 +137,7 @@ export class AdminHome extends PureComponent {
   }
 }
 
-const mapStateToProps = ({ faq, organizations, categories, currentUser }) => ({ faq, organizations, categories, currentUser })
+const mapStateToProps = ({ faq, organizations, categories, currentUser, ruru }) => ({ faq, organizations, categories, currentUser, ruru })
 const mapDispatchToProps = { fetchFaq, fetchOrganizations, fetchCategories, signOut }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AdminHome)

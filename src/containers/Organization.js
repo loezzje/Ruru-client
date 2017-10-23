@@ -75,7 +75,7 @@ export class Organization extends PureComponent {
         </div>
 
         <div className="facebook">{ this.renderFB(facebook) }</div>
-      
+
         <Maps address={ adress }/>
       </div>
     )

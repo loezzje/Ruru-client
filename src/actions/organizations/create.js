@@ -7,7 +7,7 @@ const api = new API()
 export default (organization) => {
   return (dispatch) => {
 
-    api.authenticate()
+    api.app.authenticate()
     .then(() => {
       const backend = api.service('organizations')
       backend.create(organization)

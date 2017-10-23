@@ -3,14 +3,14 @@ import { Switch, Route } from 'react-router-dom'
 import TopicCardList from './pages/TopicCardList'
 import Organization from './containers/Organization.js'
 import Home from './pages/Home'
-import OrganizationEditor from './components/editors/OrganizationEditor'
-import CategoryEditor from './components/editors/CategoryEditor'
-import FaqEditor from './components/editors/FaqEditor'
+import OrganizationEditor from './components/OrganizationEditor'
+import CategoryEditor from './components/CategoryEditor'
+import FaqEditor from './components/FaqEditor'
 import Faq from './pages/Faq'
 import Contact from './pages/Contact'
 import AdminHome from './pages/AdminHome'
 import SignIn from './pages/SignIn'
-import RuruEditor from './components/editors/RuruEditor'
+import RuruEditor from './components/RuruEditor'
 
 // import {
 //   Home,

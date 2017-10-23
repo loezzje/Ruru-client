@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router'
-import { Input, Label, Form, FormGroup, FormText } from 'reactstrap';
+import { Badge, Input, Label, Form, FormGroup, FormText } from 'reactstrap';
 import createCategory from '../actions/categories/create'
 import updateCategory from '../actions/categories/patch'
 import './Forms.css'
@@ -164,7 +164,7 @@ class CategoryEditor extends PureComponent {
                 onChange={this.updateIcon.bind(this)}
               />
               <FormText color="black">
-                Please choose an icon of your liking on <span><a href="https://material.io/icons/" target="_blank" rel="noopener noreferrer">this page</a></span>. Copy the name in the field below.
+                Please choose an icon of your liking on <span><a href="https://material.io/icons/" target="_blank" rel="noopener noreferrer"><Badge color="secondary">this page</Badge></a></span>. Copy the name in the field below.
               </FormText>
             </FormGroup>
 

@@ -24,7 +24,7 @@ export class Events extends PureComponent {
         </header>
 
         <main>
-          <div className="events" >
+          <div className="events">
             {this.props.fbEvents.data.map(this.renderEvent.bind(this))}
           </div>
         </main>

@@ -4,7 +4,9 @@ import Timestamp from 'react-timestamp'
 import './Event.css'
 
 function truncate(str, no_words) {
-    return str.split(" ").splice(0,no_words).join(" ");
+  if (str.split(" ").length > 50)
+    return (str.split(" ").splice(0, no_words).join(" ")) + "...";
+  else return str
 }
 
 class Event extends PureComponent {

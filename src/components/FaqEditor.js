@@ -49,6 +49,10 @@ class FaqEditor extends PureComponent {
   };
 
   handleCheck = (event, value) => {
+
+    if (!this.state.categories) {
+      this.setState({categories: [event.target.value]})
+    }
     var addCategories = this.state.categories
     if (addCategories.includes(event.target.value)) {
       var index = addCategories.indexOf(event.target.value)
@@ -60,6 +64,8 @@ class FaqEditor extends PureComponent {
       })
     }
   }
+
+
 
   validate() {
     const isQuestionValid = this.validateQuestion()
@@ -83,7 +89,7 @@ class FaqEditor extends PureComponent {
   saveFaq(event) {
     event.preventDefault()
     if (!this.validate()) return
-    this.props.fetchCategories
+    
     const {
     question,
     answer,
@@ -176,7 +182,7 @@ const mapStateToProps = ({ faq, categories }, { match }) => {
   return {
     faq,
     thisFaq,
-    categories,    
+    categories,
   }
 }
 

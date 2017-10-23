@@ -8,13 +8,8 @@ import fetchCategories from '../actions/categories/fetch'
 import './Forms.css'
 
 class FaqEditor extends PureComponent {
-
-  componentWillMount(){
-    this.props.fetchFaqs()
-  }
-
   constructor(props) {
-    super();
+    super()
     const { question, answer, categories } = props
 
     this.state = {
@@ -24,22 +19,22 @@ class FaqEditor extends PureComponent {
     }
   }
 
+  componentWillMount(){
+    this.props.fetchFaqs()
+  }
+
   setFaqState() {
-    const {thisFaq, faqs, categories} = this.props
-    if (faqs === undefined ) {
+    const { thisFaq, categories } = this.props
+    if (categories === undefined) {
       return null
     }
     this.state = {
       question: thisFaq.question,
       answer: thisFaq.answer,
-      categories: categories.filter(this.containsCategory).map(cat => cat._id),
+      categories: thisFaq.categoriesId,
     }
   }
 
-  containsCategory = (thisFaq) => {
-    const { category } = this.props
-    return thisFaq.categories.includes(category._id)
-  }
 
   updateQuestion(event, value) {
     this.setState({
@@ -66,8 +61,6 @@ class FaqEditor extends PureComponent {
     }
   }
 
-
-
   validate() {
     const isQuestionValid = this.validateQuestion()
     this.setState({
@@ -83,9 +76,14 @@ class FaqEditor extends PureComponent {
     return question && question.length > 0
   }
 
+  containsCategory(category) {
+    return this.state.categories.includes(category._id)
+  }
+
   saveFaq(event) {
     event.preventDefault()
     if (!this.validate()) return
+    this.props.fetchCategories
     const {
     question,
     answer,
@@ -111,18 +109,17 @@ class FaqEditor extends PureComponent {
   }
 
   render() {
+
+    if (!this.state.question) {
+      this.setFaqState()
+    }
+
     const { categories } = this.props
     const { redirect } = this.state;
 
     if (redirect) {
       return <Redirect to='/admin' />
     }
-
-
-    if (!this.state.question) {
-      this.setFaqState()
-    }
-
     return (
       <div className="editor-container">
 
@@ -143,14 +140,16 @@ class FaqEditor extends PureComponent {
               className="answer" />
 
             <div className="edit-cats">
-            <p>Categories:</p>
-            {categories.map((category) => (
-              <div key={category._id}><input type="checkbox"
-              value={category._id}
-              onClick={this.handleCheck.bind(this)}/>
-              <label>{category.name}</label>
-              console.log("yeah baby", category.name)
-              </div>
+            Categories:
+            <br />
+              {categories.map((category) => (
+                <div key={category._id}><input type="checkbox"
+                value={category._id}
+                onClick={this.handleCheck.bind(this)}
+                defaultChecked={this.containsCategory(category)} />
+                <label>{category.name}</label></div>
+              ))}
+              <br />
             ))}
             <br />
           </div>
@@ -177,7 +176,7 @@ const mapStateToProps = ({ faq, categories }, { match }) => {
   return {
     faq,
     thisFaq,
-    categories
+    categories,    
   }
 }
 

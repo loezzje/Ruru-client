@@ -7,7 +7,7 @@ const api = new API()
 export default (id, newdata) => {
   return (dispatch) => {
 
-    api.authenticate()
+    api.app.authenticate()
     .then(() => {
       const backend = api.service('organizations')
       backend.update(id, newdata)

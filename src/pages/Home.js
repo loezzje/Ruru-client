@@ -12,6 +12,10 @@ import './Home.css'
 import Slider from '../components/Slider'
 import fb from '../actions/facebook/get'
 
+
+
+
+
 export class Home extends PureComponent {
 
   componentWillMount() {
@@ -57,6 +61,7 @@ export class Home extends PureComponent {
     // console.log(test2)
    }
 
+
   render() {
     const { menuShow } = this.props
     if (menuShow) return null
@@ -75,6 +80,7 @@ export class Home extends PureComponent {
             <h4>Highlighted Organizations</h4>
           <div className="frontorgs">{this.showOrgs()}</div>
         </main>
+
       </div>
     )
   }

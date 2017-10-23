@@ -7,7 +7,7 @@ const api = new API()
 export default (organizationId) => {
   return (dispatch) => {
 
-    api.authenticate()
+    api.app.authenticate()
     .then(() => {
       const backend = api.service('organizations')
       backend.remove(organizationId)

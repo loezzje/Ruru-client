@@ -7,19 +7,19 @@ const api = new API()
 export default (id, newdata) => {
   return (dispatch) => {
 
-    // api.authenticate()
-    // .then(() => {
-    const backend = api.service('categories')
-    backend.update(id, {$set:newdata})
-    .then((result) => {
-      dispatch({
-        type: PATCH_CATEGORY,
-        payload: result
+    api.app.authenticate()
+    .then(() => {
+      const backend = api.service('categories')
+      backend.update(id, {$set:newdata})
+      .then((result) => {
+        dispatch({
+          type: PATCH_CATEGORY,
+          payload: result
+        })
       })
-    })
-    .catch((error) => {
-      console.log(error)
-    })
-//   }
-// )
+      .catch((error) => {
+        console.log(error)
+      })
+  }
+)
 }}

@@ -12,41 +12,21 @@ const settings = {
     autoplaySpeed: 8000
   }
 
-
-
 export class Silder extends PureComponent {
-
-  fbOnlinecheck(){
-
-    if (this.props.fbEvents === null || this.props.fbEvents.data === undefined) {
-      return false
-    } else{
-      return true
-    }
-
-  }
-
-  renderEventSlide(slideNr){
-
-    if (!this.fbOnlinecheck()) {return null }
-
-    return <div className="silderimage" >
-            <p>{this.props.fbEvents.data[slideNr].name} </p>
-            <img src={this.props.fbEvents.data[slideNr].cover.source} alt="panda" />
-            </div>
-  }
 
   render() {
     // console.log(this.props.fbEvents.data === undefined ? null : this.props.fbEvents.data[0].name)
     // console.log("dataaa",this.props.fbEvents.data[0])
-    if (!this.fbOnlinecheck()) {return null }
+    if(this.props.fbEvents.data === undefined ){return null}
     return(
       <div className="slider-container">
         <Slick {...settings} >
-          {this.renderEventSlide(0)}
-          {this.renderEventSlide(1)}
-
-
+          <div className="silderimage" >
+          <p>{this.props.fbEvents.data[0].name}</p>
+          <img src={this.props.fbEvents.data[0].cover.source} alt="pand" /></div>
+          <div className="silderimage" >
+          <p>{this.props.fbEvents.data[1].name}</p>
+          <img src={this.props.fbEvents.data[1].cover.source} alt="pand" /></div>
         </Slick>
       </div>
     )

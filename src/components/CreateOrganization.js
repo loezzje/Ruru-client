@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router'
+import { Link } from 'react-router-dom'
 import fetchOrganizations from '../actions/organizations/fetch'
 import fetchCategories from '../actions/categories/fetch'
 import './Forms.css'
@@ -330,6 +331,7 @@ class OrganizationEditor extends PureComponent {
             onClick={this.saveOrganization.bind(this)} />
           </form>
         </div>
+        <div className="back"><Link to='/admin'>Back to overview</Link></div>
       </div>
     )
   }

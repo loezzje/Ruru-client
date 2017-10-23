@@ -131,14 +131,14 @@ class FaqEditor extends PureComponent {
           <form>
             <p>Question:</p>
 
-            <input type="text"
+            <textarea type="text"
               value={this.state.question}
               onChange={this.updateQuestion.bind(this)}
               className="question" />
 
             <p>Answer:</p>
 
-            <input type="text"
+            <textarea type="text"
               value={this.state.answer}
               onChange={this.updateAnswer.bind(this)}
               className="answer" />
@@ -153,7 +153,7 @@ class FaqEditor extends PureComponent {
               console.log("yeah baby", category.name)
               </div>
             ))}
-            
+
           </div>
             <div className="submitbutton">
               <input type="submit"

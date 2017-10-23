@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import FaFacebookSquare from 'react-icons/lib/fa/facebook-square'
 import hideMenu from '../actions/menuHidden.js'
 import './Organization.css'
+import Maps from '../components/Maps'
+
 
 import BreadCrumb from '../components/Breadcrumb'
 export class Organization extends PureComponent {
@@ -37,7 +39,7 @@ export class Organization extends PureComponent {
   }
 
   render() {
-    const { match, menuShow, name, logo, about, features, website, phone, address, facebook, } = this.props
+    const { match, menuShow, name, logo, about, features, website, phone, adress, facebook, } = this.props
 
     if (menuShow) {
       return null
@@ -68,11 +70,13 @@ export class Organization extends PureComponent {
 
             <li>Website: { website }</li>
             <li>Phone: { phone }</li>
-            <li>Address: { address }</li>
+            <li>Address: { adress }</li>
           </ul>
         </div>
 
         <div className="facebook">{ this.renderFB(facebook) }</div>
+
+        <Maps address={ adress }/>
       </div>
     )
   }

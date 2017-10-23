@@ -10,7 +10,7 @@ import ListItemAdmin from '../components/ListItemAdmin'
 import './AdminHome.css'
 
 function truncate(str, no_words) {
-  return str.split(" ").splice(0, no_words).join(" ");
+  return str.split(" ").splice(0, no_words).join(" ") + "  ..."
 }
 
 export class AdminHome extends PureComponent {
@@ -63,11 +63,9 @@ export class AdminHome extends PureComponent {
     if (fireRedirect) return <Redirect to='/admin/signin' />
 
     return (
-      <div className='adminpage'>
+      <div className='adminpage main-container'>
         <header>
           <h2>ADMIN HOME</h2>
-          <p>Introduction to admin.</p>
-          <hr />
           <button onClick={this.signOut.bind(this)}>Sign out</button>
         </header>
 
@@ -99,6 +97,7 @@ export class AdminHome extends PureComponent {
             <p>CURRENT RURU-INFO</p>
             <div className="ruruinfos">
               <table>
+                <tbody>
                 <tr>
                   <th>E-mail</th>
                   <td>{ this.props.ruru[0] === undefined ? null : this.props.ruru[0].email }</td>
@@ -127,6 +126,7 @@ export class AdminHome extends PureComponent {
                   <th>About</th>
                   <td>{ this.props.ruru[0] === undefined ? null : this.props.ruru[0].about }</td>
                 </tr>
+                </tbody>
               </table>
             </div>
             <div className="addbutton"><Link to={{ pathname: '/admin/update-ruru'}}>Edit</Link></div>

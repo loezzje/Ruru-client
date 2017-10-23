@@ -4,6 +4,19 @@ import Logo from '../assets/logos/ruruLogo.png'
 import './About.css'
 
 export class About extends PureComponent {
+
+  renderAbout(text) {
+    if (text === undefined) return null
+    return text.split("\n").map(function(item) {
+      return (
+        <span>
+          { item }
+          <br/>
+        </span>
+      )
+    })
+  }
+
   render() {
     const { about } = this.props
 
@@ -15,7 +28,7 @@ export class About extends PureComponent {
         </header>
 
         <main>
-          <p>{ about }</p>
+          <p>{ this.renderAbout(about) }</p>
         </main>
       </div>
     )
@@ -25,7 +38,7 @@ export class About extends PureComponent {
 const mapStateToProps = ({ ruru }, { params }) => {
   const thisruru = ruru[0]
   return {
-    ...thisruru
+    ...thisruru,
   }
 }
 

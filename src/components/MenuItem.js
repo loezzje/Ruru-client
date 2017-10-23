@@ -11,17 +11,12 @@ class MenuItem extends PureComponent {
   constructor(props) {
     super()
 
-
-
     this.state = {
       submenu: false
     }
   }
 
-
-
-
-  toggleSubMenu(){
+  toggleSubMenu() {
     const { submenu } = this.state
 
     if (submenu) {
@@ -33,51 +28,37 @@ class MenuItem extends PureComponent {
         submenu: true
       })
     }
-
   }
 
-  toggleArrow(){
+  toggleArrow() {
     const { submenu } = this.state
-    if (submenu) {
-      return <UpIcon className="down-arrow" />
-    } else {
-      return  <DownIcon className="down-arrow" />
-    }
 
+    return submenu ? <UpIcon className="down-arrow" /> : <DownIcon className="down-arrow" />
   }
 
-  renderSubMenu(organization, index){
+  renderSubMenu(organization, index) {
     const { submenu } = this.state
     const { _id } = this.props
     console.log("category name", _id)
     if (submenu) {
-      return <SubmenuItem  key={index} { ...organization} content={_id}/>
+      return <SubmenuItem key={index} { ...organization} content={_id}/>
     } else {
       return null
     }
   }
 
-  mapOrganisations(){
+  mapOrganisations() {
     const { organizations} = this.props
-    if (organizations === null) {
-      return null
-    } else  {
-      return organizations.map(this.renderSubMenu.bind(this))
-    }
 
+    return organizations !== null ? organizations.map(this.renderSubMenu.bind(this)) : null
   }
 
-
-
   render() {
-    const { name, organizations} = this.props
+    const { name, organizations } = this.props
 
+    if (organizations[0] === null) return null
 
-    if (organizations[0] === null) {
-      return null
-    }
     return (
-
       <li className="menu-item">
         <div className="menu-category" onClick={this.toggleSubMenu.bind(this)}>
           <h1>
@@ -88,25 +69,23 @@ class MenuItem extends PureComponent {
         <nav>
           <ul className="submenu">
             <CSSTransitionGroup
-
-            transitionName="example"
-            transitionEnter={true}
-            transitionEnterTimeout={500}
-            transitionLeaveTimeout={300}>
+              transitionName="example"
+              transitionEnter={true}
+              transitionEnterTimeout={500}
+              transitionLeaveTimeout={300}>
               {this.mapOrganisations()}
             </CSSTransitionGroup>
           </ul>
-
-
-
-
         </nav>
-
       </li>
-
     )
   }
 }
+
 const mapStateToProps = ({ categories }) => ({  ...categories })
 
 export default connect(mapStateToProps)(MenuItem)
+
+MenuItem.propTypes = {
+  categories: PropTypes.arrayOf(PropTypes.object).isRequired
+}

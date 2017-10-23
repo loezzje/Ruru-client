@@ -135,7 +135,7 @@ class UpdateRuru extends PureComponent {
       <div>
       <div className="editor">
           <p>About Ruru:</p>
-          <input
+          <textarea
             type="text"
             ref="about"
             className="about"
@@ -195,10 +195,12 @@ class UpdateRuru extends PureComponent {
             className="twitter"
             value={this.state.twitter}
             onChange={this.updateTwitter.bind(this)}
-            onKeyDown={this.updateTwitter.bind(this)} />
+            onKeyDown={this.updateTwitter.bind(this)} /><br /><br />
 
-          <div className="actions">
-            <button className="submitbutton" onClick={this.saveRuru.bind(this)}>Update</button>
+          <div className="submitbutton">
+            <input type="submit"
+              value="Update"
+              onClick={this.saveRuru.bind(this)} />
           </div>
       </div>
       <div className="back"><Link to='/admin'>Back to overview</Link></div>

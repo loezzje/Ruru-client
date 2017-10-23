@@ -153,7 +153,7 @@ class FaqEditor extends PureComponent {
               console.log("yeah baby", category.name)
               </div>
             ))}
-            <br />
+            
           </div>
             <div className="submitbutton">
               <input type="submit"

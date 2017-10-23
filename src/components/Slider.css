@@ -1,15 +1,21 @@
 .silderimage {
-  height: 300px;
   overflow: hidden; }
   .silderimage img {
     width: 100%; }
 
 .slick-track {
-  height: 300px; }
+  height: 200px;
+  overflow: hidden; }
 
 .slick-next {
-  right: 0 !important; }
+  right: 0 !important;
+  display: none !important; }
 
 .slick-prev {
   left: 0 !important;
-  z-index: 300; }
+  z-index: 300;
+  display: none !important; }
+
+@media screen and (min-width: 800px) {
+  .slick-track {
+    height: 300px; } }

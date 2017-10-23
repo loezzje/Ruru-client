@@ -23,10 +23,11 @@ export class Silder extends PureComponent {
         <Slick {...settings} >
           <div className="silderimage" >
           <p>{this.props.fbEvents.data[0].name}</p>
-          <img src={this.props.fbEvents.data[0].cover.source} alt="pand" /></div>
+          <a href={`https://www.facebook.com/events/${this.props.fbEvents.data[0].id}`} ><img src={this.props.fbEvents.data[0].cover.source} alt="pand" /></a></div>
           <div className="silderimage" >
           <p>{this.props.fbEvents.data[1].name}</p>
-          <img src={this.props.fbEvents.data[1].cover.source} alt="pand" /></div>
+          <a href={`https://www.facebook.com/events/${this.props.fbEvents.data[1].id}`} ><img src={this.props.fbEvents.data[1].cover.source} alt="pand" /></a>
+          </div>
         </Slick>
       </div>
     )

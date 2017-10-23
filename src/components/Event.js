@@ -11,7 +11,7 @@ function truncate(str, no_words) {
 
 class Event extends PureComponent {
   render() {
-    const { cover, name, description, place, start_time } = this.props
+    const { id, cover, name, description, place, start_time } = this.props
 
     return (
       <article className="eventitem">
@@ -28,6 +28,7 @@ class Event extends PureComponent {
         <div className="description">
           <p>{ description === undefined ? "no description" : truncate(description, 50) }</p>
         </div>
+        <a href={`https://www.facebook.com/events/${id}`} target="_blank" rel="noopener noreferrer">More details</a>
       </article>
     )
   }

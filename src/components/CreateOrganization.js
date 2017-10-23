@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router'
 import fetchOrganizations from '../actions/organizations/fetch'
-// import fetchCategories from '../actions'
+import fetchCategories from '../actions/categories/fetch'
 import './Forms.css'
 import createOrganization from '../actions/organizations/create'
 import updateOrganization from '../actions/organizations/patch'
@@ -30,8 +30,8 @@ class OrganizationEditor extends PureComponent {
   }
 
   componentWillMount() {
-    const { currentUser } = this.props
 
+    const { currentUser } = this.props
     if (currentUser === null) {
       this.setState({
         fireRedirect: true
@@ -40,7 +40,8 @@ class OrganizationEditor extends PureComponent {
   }
 
   setOrgsState() {
-    const { organization, categories } = this.props
+    const { organization } = this.props
+
       this.state = {
       name: organization.name,
       tagline: organization.tagline,
@@ -52,7 +53,7 @@ class OrganizationEditor extends PureComponent {
       address: organization.address,
       facebook: organization.facebook,
       frontpage: organization.frontpage,
-      categories: categories.filter(this.containsOrganization).map(category => category._id),
+      categoryIds: organization.categoryIds,
       redirect: false
     }
     console.log('This.props.categories: ' + this.props.categories.map(cat => cat.name + cat._id))
@@ -120,21 +121,33 @@ class OrganizationEditor extends PureComponent {
   };
 
   handleCheck = (event, value) => {
-    var orgCategories = this.state.categories
+    if (!this.state.categoryIds) {
+      this.setState({ categoryIds: [event.target.value]})
 
-    orgCategories.includes(event.target.value) ?
-      orgCategories.splice(orgCategories.indexOf(event.target.value), 1) :
-      orgCategories.push(event.target.value)
+    }
+    else {
+      var orgCategories = this.state.categoryIds
 
-    this.setState({
-      categories: orgCategories
-    })
+      orgCategories.includes(event.target.value) ?
+        orgCategories.splice(orgCategories.indexOf(event.target.value), 1) :
+        orgCategories.push(event.target.value)
+
+       this.setState({
+        categoryIds: orgCategories
+      })
+      
+    }
   }
 
-  containsOrganization = (category) => {
-    const { organization } = this.props
-    return category.organizationsId.includes(organization._id)
-  }
+  // containsOrganization = (category) => {
+  //   return (this.state.categoryIds.includes(category._id))
+  // }
+
+//   containsOrganization = (category) => {
+//
+//   return this.state.categoryIds.includes(category._id)
+// }
+
 
   validate() {
     const isNameValid = this.validateName()
@@ -165,7 +178,7 @@ class OrganizationEditor extends PureComponent {
       address,
       facebook,
       frontpage,
-      categories
+      categoryIds
     } = this.state
 
     const newOrganization = {
@@ -179,7 +192,7 @@ class OrganizationEditor extends PureComponent {
       address,
       facebook,
       frontpage,
-      categories
+      categoryIds
     }
 
     if (!this.props.organization._id)
@@ -288,7 +301,11 @@ class OrganizationEditor extends PureComponent {
               <div key={category._id}><input type="checkbox"
               value={category._id}
               onClick={this.handleCheck.bind(this)}
-              defaultChecked={this.containsOrganization(category)} />
+              defaultChecked={
+                this.state.categoryIds ?
+                this.state.categoryIds.includes(category._id) :
+                false
+              }/>
               <label>{category.name}</label></div>
             ))}
             <br />
@@ -334,6 +351,6 @@ const mapStateToProps = ({ categories, organizations, currentUser }, { match }) 
   }
 }
 
-const mapDispatchToProps = { createOrganization, fetchOrganizations, updateOrganization }
+const mapDispatchToProps = { createOrganization, fetchOrganizations, updateOrganization, fetchCategories }
 
 export default connect(mapStateToProps, mapDispatchToProps)(OrganizationEditor)

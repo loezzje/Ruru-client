@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import deleteCategory from '../actions/categories/delete'
 import deleteOrganization from '../actions/organizations/delete'
-import deleteFaq from '../actions/categories/delete'
+import deleteFaq from '../actions/faq/delete'
 import { Link } from 'react-router-dom'
 import './ListItemAdmin.css'
 

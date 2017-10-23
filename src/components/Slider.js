@@ -9,23 +9,30 @@ const settings = {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 5000
+    autoplaySpeed: 8000
   }
 
 export class Silder extends PureComponent {
 
   render() {
+    // console.log(this.props.fbEvents.data === undefined ? null : this.props.fbEvents.data[0].name)
+    // console.log("dataaa",this.props.fbEvents.data[0])
+    if(this.props.fbEvents.data === undefined ){return null}
     return(
       <div className="slider-container">
         <Slick {...settings} >
-          <div className="silderimage" ><img src="http://blog.colourfulrebel.com/files/2017/10/headings_8619_69773.jpeg" alt="pand" /></div>
-          <div className="silderimage" ><img src="http://cdn.history.com/sites/2/2017/03/GettyImages-157278376.jpg" alt="pand" /></div>
+          <div className="silderimage" >
+          <p>{this.props.fbEvents.data[0].name}</p>
+          <img src={this.props.fbEvents.data[0].cover.source} alt="pand" /></div>
+          <div className="silderimage" >
+          <p>{this.props.fbEvents.data[1].name}</p>
+          <img src={this.props.fbEvents.data[1].cover.source} alt="pand" /></div>
         </Slick>
       </div>
     )
   }
 }
 
+const mapStateToProps = ({ fbEvents }) => ({ fbEvents })
 
-
-export default connect(null)(Silder)
+export default connect(mapStateToProps)(Silder)

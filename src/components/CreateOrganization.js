@@ -9,13 +9,11 @@ import updateOrganization from '../actions/organizations/patch'
 
 class OrganizationEditor extends PureComponent {
 
-
-
   constructor(props) {
     super(props);
 
     this.state = {
-    name: '',
+    name: "",
     tagline: "",
     about: "",
     logo: "",
@@ -26,10 +24,20 @@ class OrganizationEditor extends PureComponent {
     facebook: "",
     frontpage: "",
     categories: "",
-    redirect: false
+    redirect: false,
+    fireRedirect: false
     }
   }
 
+  componentWillMount() {
+    const { currentUser } = this.props
+
+    if (currentUser === null) {
+      this.setState({
+        fireRedirect: true
+      })
+    }
+  }
 
   setOrgsState() {
     const { organization, categories } = this.props
@@ -44,11 +52,12 @@ class OrganizationEditor extends PureComponent {
       address: organization.address,
       facebook: organization.facebook,
       frontpage: organization.frontpage,
-      categories: categories.filter(this.containsOrganization).map(org => org._id),
+      categories: categories.filter(this.containsOrganization).map(category => category._id),
       redirect: false
     }
+    console.log('This.props.categories: ' + this.props.categories.map(cat => cat.name + cat._id))
+    console.log('This.state.categories, ids of the categories the org belongs to: ' + this.state.categories)
   }
-
 
   updateName(event, value) {
     this.setState({
@@ -111,16 +120,15 @@ class OrganizationEditor extends PureComponent {
   };
 
   handleCheck = (event, value) => {
-    var addCategories = this.state.categories
-    if (addCategories.includes(event.target.value)) {
-      var index = addCategories.indexOf(event.target.value)
-      addCategories.splice(index, 1)
-    } else {
-      addCategories.push(event.target.value)
-      this.setState({
-        categories: addCategories
-      })
-    }
+    var orgCategories = this.state.categories
+
+    orgCategories.includes(event.target.value) ?
+      orgCategories.splice(orgCategories.indexOf(event.target.value), 1) :
+      orgCategories.push(event.target.value)
+
+    this.setState({
+      categories: orgCategories
+    })
   }
 
   containsOrganization = (category) => {
@@ -187,13 +195,14 @@ class OrganizationEditor extends PureComponent {
 
   render() {
     const { categories } = this.props
-    const { redirect } = this.state;
+    const { redirect, fireRedirect } = this.state;
 
     if (redirect) { return <Redirect to='/admin' /> }
+    if (fireRedirect) { return <Redirect to='/admin/signin' /> }
+
     if (!this.state.name) {
       this.setOrgsState()
     }
-
 
     return (
       <div className="editor-container ">
@@ -309,7 +318,7 @@ class OrganizationEditor extends PureComponent {
   }
 }
 
-const mapStateToProps = ({ categories, organizations }, { match }) => {
+const mapStateToProps = ({ categories, organizations, currentUser }, { match }) => {
 
   const organization = organizations.reduce((prev, next) => {
     if (next._id === match.params.organizationId) {
@@ -321,12 +330,9 @@ const mapStateToProps = ({ categories, organizations }, { match }) => {
   return {
     categories,
     organization,
+    currentUser
   }
 }
-
-
-
-
 
 const mapDispatchToProps = { createOrganization, fetchOrganizations, updateOrganization }
 

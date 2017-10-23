@@ -14,6 +14,24 @@ class SignIn extends PureComponent {
     }
   }
 
+  componentWillMount() {
+    const { currentUser } = this.props
+
+    if (!!currentUser && !!currentUser._id) {
+      this.setState({
+        fireRedirect: true
+      })
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(this.props.currentUser !== nextProps.currentUser)
+
+    this.setState({
+      fireRedirect: true
+    })
+  }
+
   updateEmail(event, value) {
     this.setState({
       email: event.target.value
@@ -33,6 +51,7 @@ class SignIn extends PureComponent {
       password: this.state.password
     }
     this.props.AdminSignIn(user)
+    console.log("Signing in...")
     this.setState({ fireRedirect: true })
     // this.props.push('/admin')
   }
@@ -45,23 +64,29 @@ class SignIn extends PureComponent {
     }
 
     return (
-      <form>
-        <h3>Admin sign-in</h3>
+      <div className="editor-container">
+        <div className="editor">
+          <form>
+            <h3>Admin sign-in</h3>
 
-        <label for="email">Username</label><br />
-        <input id="email" type="text" onChange={this.updateEmail.bind(this)} /><br />
+            <label for="email"><p>Username</p></label>
+            <input id="email" type="text" onChange={this.updateEmail.bind(this)} />
 
-        <label for="password">Password</label><br />
-        <input id="password" type="password" onChange={this.updatePassword.bind(this)} /><br /><br />
+            <label for="password"><p>Password</p></label>
+            <input id="password" type="password" onChange={this.updatePassword.bind(this)} />
 
-        <div className="submitbutton">
-          <input type="submit" value="Submit" onClick={this.submitForm.bind(this)} />
+            <div className="submitbutton">
+              <input type="submit" value="Submit" onClick={this.submitForm.bind(this)} />
+            </div>
+          </form>
         </div>
-      </form>
+      </div>
     )
   }
 }
 
+const mapStateToProps = ({ currentUser }) => ({ currentUser })
+
 const mapDispatchToProps = { AdminSignIn }
 
-export default connect(null, mapDispatchToProps)(SignIn)
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn)

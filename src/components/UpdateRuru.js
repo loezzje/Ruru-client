@@ -1,14 +1,11 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 import fetchRuru from '../actions/ruru/fetch'
 import updateRuru from '../actions/ruru/update'
 import './Forms.css'
 
 class UpdateRuru extends PureComponent {
-  componentWillMount(){
-    this.props.fetchRuru()
-  }
-
   constructor(props) {
     super()
 
@@ -22,6 +19,19 @@ class UpdateRuru extends PureComponent {
       instagram,
       facebook,
       twitter,
+      fireRedirect: false
+    }
+  }
+
+  componentWillMount() {
+    this.props.fetchRuru()
+
+    const { currentUser } = this.props
+
+    if (currentUser === null) {
+      this.setState({
+        fireRedirect: true
+      })
     }
   }
 
@@ -111,10 +121,12 @@ class UpdateRuru extends PureComponent {
   }
 
   render() {
-
     if (!this.state.about) {
       this.setRuru()
     }
+
+    const { fireRedirect } = this.state;
+    if (fireRedirect) { return <Redirect to='/admin/signin' /> }
 
     return (
       <div className="editor">
@@ -189,14 +201,16 @@ class UpdateRuru extends PureComponent {
   }
 }
 
-const mapStateToProps = ({ ruru }, { params }) => {
+const mapStateToProps = ({ ruru, currentUser }, { params }) => {
   console.log("yoooooo", ruru)
   const thisruru = ruru[0]
   return {
     thisruru,
-    ruru
+    ruru,
+    currentUser
   }
 }
+
 const mapDispatchToProps = { fetchRuru, updateRuru }
 
 export default connect(mapStateToProps, mapDispatchToProps)(UpdateRuru)

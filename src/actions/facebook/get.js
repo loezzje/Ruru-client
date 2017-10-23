@@ -3,14 +3,14 @@ import graph from 'fb-react-sdk'
 
 export const FETCH_EVENT = 'FETCH_EVENT'
 
-graph.setAccessToken("EAAc01ZAOvEecBAFPZAISvVcd3yElCVKrviDjQAxJb4ZCDhiYMIZANB6L9sNjZB35VI6eTQOpDrFg7yzQa6HQfO4XnUuhwqIYsZAAmaf58AiH2a9Gy9YsC9RrUOuMq4RNwMe9ZBpZB7LG0g1Hwn4HjiRe6p3iF89na9JOTfbxvB2peKfhG3wJrsfe")
+graph.setAccessToken("EAAc01ZAOvEecBANRpqM7CLZBaHCD6wG6sr2WkIWZAVLqJFdjTJNt0iuZCe3ZBnxeofqnebBIqPlcOuLjWeIjx127xEHHsfDsA1CrwxcttEErzOZB1ZBNlcuiPhk0O3TYdPUnBZBlxXkoRR84YWxyGpkzMnggLD3hZAhp0BbbsWwZAcKQZDZD")
 
 
 
   export default () => {
     return (dispatch) => {
       graph
-       .get("/717575798435027/events?fields=id,name,cover", function(err, res) {
+       .get("/TristanKwant.Photography/events?fields=id,name,cover,description,place,start_time", function(err, res) {
          console.log(res);
          dispatch({
            type: FETCH_EVENT,

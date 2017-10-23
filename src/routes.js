@@ -12,6 +12,7 @@ import AdminHome from './pages/AdminHome'
 import SignIn from './pages/SignIn'
 import UpdateRuru from './components/UpdateRuru'
 import About from './pages/About'
+import Events from './pages/Events'
 
 
 // import {
@@ -34,7 +35,7 @@ export default class Routes extends Component {
 
         <Route path="/about" component={ About } />
         <Route exact path="/admin/:categoryId/create-category" component={ CreateCategory } />
-        <Route exact path="/admin/:faqId/create-faq" component={ FaqEditor } />      
+        <Route exact path="/admin/:faqId/create-faq" component={ FaqEditor } />
         <Route exact path="/admin/:organizationId/create-organization" component={ CreateOrganization } />
        <Route exact path="/admin/create-faq" component={ FaqEditor } />
         <Route exact path="/admin/create-category" component={ CreateCategory } />
@@ -54,10 +55,7 @@ export default class Routes extends Component {
         )} />
         <Route exact path="/categories/:categorieId/organizations/:organizationId" component={Organization}/>
         <Route exact path="/organizations/:organizationId" component={Organization}/>
-        <Route exact path="/events" render={ () => <p>"Events" page</p> } />
-        <Route exact path="/events/:eventId" component={ ({ match }) => (
-          <p>Event { match.params.eventId } page</p>
-        )} />
+        <Route exact path="/events" component={ Events } />
       </Switch>
     )
   }

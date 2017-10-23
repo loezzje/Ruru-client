@@ -68,9 +68,10 @@
 
 @media screen and (min-width: 800px) {
   .smallcover {
-    height: 200px; } }
+    height: 210px; } }
 
 @media screen and (min-width: 1010px) {
   .eventitem {
     width: 43%;
-    float: left; } }
+    float: left;
+    height: 600px; } }

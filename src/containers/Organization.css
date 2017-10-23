@@ -18,6 +18,9 @@
 .organization-info {
   padding: 0 10px 0 20px; }
 
+.organization-info.main-container {
+  background-color: white; }
+
 .contact-org {
   text-align: center;
   border-top: 1px solid black;

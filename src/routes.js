@@ -5,12 +5,14 @@ import Organization from './containers/Organization.js'
 import Home from './pages/Home'
 import CreateOrganization from './components/CreateOrganization'
 import CreateCategory from './components/CreateCategory'
+import FaqEditor from './components/FaqEditor'
 import Faq from './pages/Faq'
 import Contact from './pages/Contact'
 import AdminHome from './pages/AdminHome'
 import SignIn from './pages/SignIn'
 import UpdateRuru from './components/UpdateRuru'
 import About from './pages/About'
+
 
 // import {
 //   Home,
@@ -29,10 +31,12 @@ export default class Routes extends Component {
     return (
       <Switch>
         <Route exact path="/" component={ Home } />
+
         <Route path="/about" component={ About } />
         <Route exact path="/admin/:categoryId/create-category" component={ CreateCategory } />
-
+        <Route exact path="/admin/:faqId/create-faq" component={ FaqEditor } />      
         <Route exact path="/admin/:organizationId/create-organization" component={ CreateOrganization } />
+       <Route exact path="/admin/create-faq" component={ FaqEditor } />
         <Route exact path="/admin/create-category" component={ CreateCategory } />
         <Route exact path="/admin/create-organization" component={ CreateOrganization } />
         <Route exact path="/admin/signin" component={ SignIn } />

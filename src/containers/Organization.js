@@ -47,35 +47,36 @@ export class Organization extends PureComponent {
 
     return(
 
-      <div className="organization">
+      <div className="organization ">
         <div className="routeToThisOrg">
           <BreadCrumb {...match} />
         </div>
-        <div className="organization-info">
-          <div className="organization-logo"><img src={ logo } alt='logo_of_organization' /></div>
-          <div className="name"><h2>{ name }</h2></div>
-          <div className="about"><p>{ about }</p></div>
-          <div className="features">
-            <h3>They can help you with:</h3>
+        <div className="organization-info main-container">
+          <div className="organization-info">
+            <div className="organization-logo"><img src={ logo } alt='logo_of_organization' /></div>
+            <div className="name"><h2>{ name }</h2></div>
+            <div className="about"><p>{ about }</p></div>
+            <div className="features">
+              <h3>They can help you with:</h3>
+              <ul>
+
+                { features === undefined ? null :features.map(this.renderFeatures.bind(this)) }
+              </ul>
+            </div>
+          </div>
+
+          <div className="contact-org">
+            <h3>Contact</h3>
             <ul>
 
-              { features === undefined ? null :features.map(this.renderFeatures.bind(this)) }
+              <li>Website: { website }</li>
+              <li>Phone: { phone }</li>
+              <li>Address: { adress }</li>
             </ul>
           </div>
+
+          <div className="facebook">{ this.renderFB(facebook) }</div>
         </div>
-
-        <div className="contact-org">
-          <h3>Contact</h3>
-          <ul>
-
-            <li>Website: { website }</li>
-            <li>Phone: { phone }</li>
-            <li>Address: { adress }</li>
-          </ul>
-        </div>
-
-        <div className="facebook">{ this.renderFB(facebook) }</div>
-
         <Maps address={ adress }/>
       </div>
     )

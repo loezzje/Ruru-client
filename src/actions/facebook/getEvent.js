@@ -7,7 +7,8 @@ graph.setAccessToken("EAAc01ZAOvEecBAFPZAISvVcd3yElCVKrviDjQAxJb4ZCDhiYMIZANB6L9
 
 
 
-  export default () => {
+  export default (id) => {
+    console.log(id)
     return (dispatch) => {
       graph
        .get("/717575798435027/events?fields=id,name,cover", function(err, res) {

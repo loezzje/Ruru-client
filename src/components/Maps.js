@@ -53,7 +53,7 @@ import ruruIcon from '../assets/logos/RURU_eye.png'
 
 
   render() {
-    
+
     return(
       <div id="map" ref="thamap">
         <div className="map" ref="thamap"></div>

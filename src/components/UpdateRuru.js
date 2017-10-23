@@ -19,7 +19,8 @@ class UpdateRuru extends PureComponent {
       instagram,
       facebook,
       twitter,
-      fireRedirect: false
+      fireRedirect: false,
+      redirect: false,
     }
   }
 
@@ -117,6 +118,7 @@ class UpdateRuru extends PureComponent {
 
     const ruruId = this.props.ruru[0]._id
     this.props.updateRuru(ruruId, NewRuru)
+    this.setState({redirect: true})
 
   }
 
@@ -125,8 +127,9 @@ class UpdateRuru extends PureComponent {
       this.setRuru()
     }
 
-    const { fireRedirect } = this.state;
+    const { fireRedirect, redirect } = this.state;
     if (fireRedirect) { return <Redirect to='/admin/signin' /> }
+    if (redirect) { return <Redirect to='/admin' /> }
 
     return (
       <div className="editor">

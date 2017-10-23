@@ -59,10 +59,10 @@ export class AdminHome extends PureComponent {
 
   render() {
     const { fireRedirect } = this.state;
-    
+
     if (fireRedirect) return <Redirect to='/admin/signin' />
 
-    return(
+    return (
       <div className='adminpage'>
         <header>
           <h2>ADMIN HOME</h2>

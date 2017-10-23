@@ -25,20 +25,20 @@ class FaqEditor extends PureComponent {
   }
 
   setFaqState() {
-    const {faq, faqs, categories} = this.props
+    const {thisFaq, faqs, categories} = this.props
     if (faqs === undefined ) {
       return null
     }
     this.state = {
-      question: faq.question,
-      answer: faq.answer,
+      question: thisFaq.question,
+      answer: thisFaq.answer,
       categories: categories.filter(this.containsCategory).map(cat => cat._id),
     }
   }
 
-  containsCategory = (faq) => {
+  containsCategory = (thisFaq) => {
     const { category } = this.props
-    return faq.categories.includes(category._id)
+    return thisFaq.categories.includes(category._id)
   }
 
   updateQuestion(event, value) {
@@ -104,7 +104,7 @@ class FaqEditor extends PureComponent {
 
     else {
 
-      this.props.updateFaq(this.props.faq._id, newFaq)
+      this.props.updateFaq(this.props.thisFaq._id, newFaq)
       this.setState({redirect: true})
     }
 
@@ -166,8 +166,8 @@ class FaqEditor extends PureComponent {
   }
 }
 
-const mapStateToProps = ({ faqs, categories }, { match }) => {
-  const faq = faqs.reduce((prev, next) => {
+const mapStateToProps = ({ faq, categories }, { match }) => {
+  const thisFaq = faq.reduce((prev, next) => {
     if (next._id === match.params.faqId) {
       return next
     }
@@ -175,8 +175,8 @@ const mapStateToProps = ({ faqs, categories }, { match }) => {
   }, {})
 
   return {
-    faqs,
     faq,
+    thisFaq,
     categories
   }
 }

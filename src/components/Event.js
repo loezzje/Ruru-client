@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react'
-import './TopicCard.css'
 
 class Event extends PureComponent {
   render() {

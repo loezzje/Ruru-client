@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
-import './About.css'
+import './Events.css'
 import facebookEvents from '../actions/facebook/get'
 import Event from '../components/Event'
 
@@ -18,7 +18,7 @@ export class Events extends PureComponent {
   render() {
     if(this.props.fbEvents.data === undefined ){return null}
     return(
-      <div className='aboutpage main-container'>
+      <div className='eventpage main-container'>
         <header>
           <h3>EVENTS</h3>
         </header>

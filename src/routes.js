@@ -3,13 +3,14 @@ import { Switch, Route } from 'react-router-dom'
 import TopicCardList from './pages/TopicCardList'
 import Organization from './containers/Organization.js'
 import Home from './pages/Home'
-import CreateOrganization from './components/CreateOrganization'
-import CreateCategory from './components/CreateCategory'
+import OrganizationEditor from './components/editors/OrganizationEditor'
+import CategoryEditor from './components/editors/CategoryEditor'
+import FaqEditor from './components/editors/FaqEditor'
 import Faq from './pages/Faq'
 import Contact from './pages/Contact'
 import AdminHome from './pages/AdminHome'
 import SignIn from './pages/SignIn'
-import UpdateRuru from './components/UpdateRuru'
+import RuruEditor from './components/editors/RuruEditor'
 
 // import {
 //   Home,
@@ -29,12 +30,13 @@ export default class Routes extends Component {
       <Switch>
         <Route exact path="/" component={ Home } />
         <Route path="/about" render={ () => <p>"About us" page</p> } />
-        <Route exact path="/admin/:categoryId/create-category" component={ CreateCategory } />
-        <Route exact path="/admin/:organizationId/create-organization" component={ CreateOrganization } />
-        <Route exact path="/admin/create-category" component={ CreateCategory } />
-        <Route exact path="/admin/create-organization" component={ CreateOrganization } />
+        <Route exact path="/admin/:categoryId/create-category" component={ CategoryEditor } />
+        <Route exact path="/admin/:organizationId/create-organization" component={ OrganizationEditor } />
+        <Route exact path="/admin/:faqId/create-faq" component={ FaqEditor } />
+        <Route exact path="/admin/create-category" component={ CategoryEditor } />
+        <Route exact path="/admin/create-organization" component={ OrganizationEditor } />
         <Route exact path="/admin/signin" component={ SignIn } />
-        <Route exact path="/admin/update-ruru" component={ UpdateRuru } />
+        <Route exact path="/admin/update-ruru" component={ RuruEditor } />
         <Route path="/admin" component={ AdminHome } />
         <Route path="/faq" component={ Faq } />
         <Route path="/contact" component={ Contact } />

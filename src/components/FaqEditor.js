@@ -1,11 +1,11 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router'
-import createFaq from '../../actions/faqs/create'
-import updateFaq from '../../actions/faqs/update'
-import fetchFaqs from '../../actions/faqs/fetch'
-import fetchCategories from '../../actions/categories/fetch'
-import '../Forms.css'
+import createFaq from '../actions/faq/create'
+import updateFaq from '../actions/faq/update'
+import fetchFaqs from '../actions/faq/fetch'
+import fetchCategories from '../actions/categories/fetch'
+import './Forms.css'
 
 class FaqEditor extends PureComponent {
 

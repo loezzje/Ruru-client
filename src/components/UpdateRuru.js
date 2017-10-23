@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 import fetchRuru from '../actions/ruru/fetch'
 import updateRuru from '../actions/ruru/update'
 import './Forms.css'
@@ -132,6 +132,7 @@ class UpdateRuru extends PureComponent {
     if (redirect) { return <Redirect to='/admin' /> }
 
     return (
+      <div>
       <div className="editor">
           <p>About Ruru:</p>
           <input
@@ -199,6 +200,8 @@ class UpdateRuru extends PureComponent {
           <div className="actions">
             <button className="submitbutton" onClick={this.saveRuru.bind(this)}>Update</button>
           </div>
+      </div>
+      <div className="back"><Link to='/admin'>Back to overview</Link></div>
       </div>
     )
   }

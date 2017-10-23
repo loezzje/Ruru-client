@@ -10,7 +10,13 @@ graph.setAccessToken("EAAc01ZAOvEecBAJxElf1SiQKz2Mvh8KttLgvBodKy2PZCkLmhPbor4RV4
   export default () => {
     return (dispatch) => {
       graph
+<<<<<<< HEAD
        .get("/717575798435027/events?fields=id,name,cover", function(err, res) {
+||||||| merged common ancestors
+       .get("/TristanKwant.Photography/events?fields=id,name,cover,description,place", function(err, res) {
+=======
+       .get("/TristanKwant.Photography/events?fields=id,name,cover,description,place,start_time", function(err, res) {
+>>>>>>> Setup basic event-component
          console.log(res);
          dispatch({
            type: FETCH_EVENT,

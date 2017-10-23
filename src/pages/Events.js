@@ -10,6 +10,7 @@ export class Events extends PureComponent {
   }
 
   render() {
+    if(this.props.fbEvents.data === undefined ){return null}
     return(
       <div className='aboutpage main-container'>
         <header>
@@ -17,8 +18,12 @@ export class Events extends PureComponent {
         </header>
 
         <main>
-          <p>taking events from fb</p>
-
+          <div className="test-eventy" >
+          <img src={this.props.fbEvents.data[1].cover.source} alt="pand" />
+          <p>{this.props.fbEvents.data[1].name}</p>
+          <p>{this.props.fbEvents.data[1].description}</p>
+          <p>{this.props.fbEvents.data[1].place.name}</p>
+          </div>
 
         </main>
       </div>

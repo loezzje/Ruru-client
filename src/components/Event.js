@@ -3,18 +3,19 @@ import './TopicCard.css'
 
 class Event extends PureComponent {
   render() {
-    const { image, name, description, location, date } = this.props
+    const { cover, name, description, place, start_time } = this.props
+
 
     return (
       <article className="event-item">
         <div className='small-cover'>
-          <img src={ image } alt='fbcover' />
+          <img src={ cover.source } alt='fbcover' />
         </div>
           <h3 className="event-title">{ name }</h3>
-          <p>{ date }</p>
+          <p>{ start_time === undefined ? "no date" : start_time }</p>
         <div className="event-details">
-          <p>{ location }</p>
-          <p>{ description }</p>
+          <p>{ place === undefined ? "no location set" : place.name }</p>
+          <p>{ description === undefined ? "no description" : description }</p>
         </div>
       </article>
     )

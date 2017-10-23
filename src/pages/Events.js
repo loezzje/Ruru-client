@@ -2,11 +2,17 @@ import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import './About.css'
 import facebookEvents from '../actions/facebook/get'
+import Event from '../components/Event'
 
 export class Events extends PureComponent {
   componentWillMount() {
     const { facebookEvents } = this.props
     facebookEvents()
+  }
+
+  renderEvent(event){
+    if(this.props.fbEvents.data === undefined ){return null}
+    return <Event key={event.id} { ...event } />
   }
 
   render() {
@@ -18,13 +24,9 @@ export class Events extends PureComponent {
         </header>
 
         <main>
-          <div className="test-eventy" >
-          <img src={this.props.fbEvents.data[1].cover.source} alt="pand" />
-          <p>{this.props.fbEvents.data[1].name}</p>
-          <p>{this.props.fbEvents.data[1].description}</p>
-          <p>{this.props.fbEvents.data[1].place.name}</p>
+          <div className="events" >
+            {this.props.fbEvents.data.map(this.renderEvent.bind(this))}
           </div>
-
         </main>
       </div>
     )

@@ -140,16 +140,6 @@ class OrganizationEditor extends PureComponent {
     }
   }
 
-  // containsOrganization = (category) => {
-  //   return (this.state.categoryIds.includes(category._id))
-  // }
-
-//   containsOrganization = (category) => {
-//
-//   return this.state.categoryIds.includes(category._id)
-// }
-
-
   validate() {
     const isNameValid = this.validateName()
     this.setState({
@@ -251,22 +241,23 @@ class OrganizationEditor extends PureComponent {
 
           <p>Features:</p>
 
-          <div className="instruction"><p>please seperate different features by a semicolon (e.g. ';')</p></div>
+          <div className="instruction"><p>Please seperate different features by a semicolon ;</p></div>
 
           <input type="text"
             value={this.state.features}
             onChange={this.updateFeatures.bind(this)}
             className="feature-1"
-            placeholder="first feature"/>
+            placeholder="e.g. First feature; Second feature "/>
 
           <p>Logo:</p>
-          <div className="instruction"><p>***add help text for size and file type of logo.</p></div>
+          <div className="instruction">
+          <p>Paste the link of the image address below. Choose the smallest size you can find.</p></div>
 
           <input type="text"
             value={this.state.logo}
             onChange={this.updateLogo.bind(this)}
             className="logo"
-            placeholder="e.g. 'mylogo.jpg'"/>
+            placeholder="e.g. http://www.thisorganizationslogo.nl/images/logo.jpg"/>
 
           <p>Website:</p>
 
@@ -274,7 +265,7 @@ class OrganizationEditor extends PureComponent {
             value={this.state.website}
             onChange={this.updateWebsite.bind(this)}
             className="website"
-            placeholder="e.g. www.thiswebsite.nl" />
+            placeholder="www.example.nl" />
 
           <p>Phone number:</p>
 
@@ -297,8 +288,7 @@ class OrganizationEditor extends PureComponent {
           <input type="text"
             value={this.state.facebook}
             onChange={this.updateFacebook.bind(this)}
-            className="facebook"
-            placeholder="link to the facebook page"/>
+            className="facebook"/>
 
           <div className="edit-cats">
             <p>Categories:</p>

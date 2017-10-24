@@ -70,7 +70,7 @@ export class Organization extends PureComponent {
             <ul>
 
               <li>Website: { website }</li>
-              <li>Phone: { phone }</li>
+              <li>Phone: +31(0){ phone }</li>
               <li>Address: { address }</li>
             </ul>
           </div>

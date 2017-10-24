@@ -207,6 +207,10 @@ class OrganizationEditor extends PureComponent {
 
   }
 
+  inFrontPage(){
+    return this.state.frontpage || false
+  }
+
   render() {
     const { categories } = this.props
     const { redirect, fireRedirect } = this.state;
@@ -315,12 +319,12 @@ class OrganizationEditor extends PureComponent {
             <input type="radio"
             name="frontpage"
             value="false"
-            checked={this.state.frontpage === false}
+            checked={(!this.inFrontPage())}
             onChange={this.updateFrontPage.bind(this)}/><label>No</label>
             <input type="radio"
             name="frontpage"
             value="true"
-            checked={this.state.frontpage === true}
+            checked={this.inFrontPage()}
             onChange={this.updateFrontPage.bind(this)} /><label>Yes</label>
           </div>
           <div className="submitbutton">

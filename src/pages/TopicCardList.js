@@ -49,7 +49,9 @@ class TopicCardList extends PureComponent {
     return (
       <div className="catpage main-container">
         <div className="catheader"><CategoryButton { ...this.props.category } /></div>
-        <div className="orgs">{ this.mapOrganisationsFromCategory() }</div>
+        <div className="topicorgs">
+          { this.mapOrganisationsFromCategory() }
+        </div>
       </div>
     )
   }

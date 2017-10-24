@@ -53,12 +53,6 @@ class CategoryEditor extends PureComponent {
     });
   };
 
-  updateFrontPage = (event, value) => {
-    this.setState({
-    frontpage: event.target.value,
-    });
-  };
-
   updateTagline = (event, value) => {
     this.setState({
     tagline: event.target.value,
@@ -115,6 +109,10 @@ class CategoryEditor extends PureComponent {
 
   }
 
+  inFrontPage(){
+    return this.state.frontpage || false
+  }
+
   render() {
 
     const { redirect, fireRedirect } = this.state;
@@ -166,12 +164,12 @@ class CategoryEditor extends PureComponent {
                 <input type="radio"
                 name="frontpage"
                 value="false"
-                checked={this.state.frontpage === false}
+                checked={(!this.inFrontPage())}
                 onChange={this.updateFrontPage.bind(this)}/> False
                 <input type="radio"
                 name="frontpage"
                 value="true"
-                checked={this.state.frontpage === true}
+                checked={this.inFrontPage()}
                 onChange={this.updateFrontPage.bind(this)} /> True
               <br />
               </div>

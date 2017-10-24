@@ -10,7 +10,7 @@ graph.setAccessToken("EAAc01ZAOvEecBANRpqM7CLZBaHCD6wG6sr2WkIWZAVLqJFdjTJNt0iuZC
   export default () => {
     return (dispatch) => {
       graph
-       .get("/TristanKwant.Photography/events?fields=id,name,cover,description,place,start_time", function(err, res) {
+       .get("/717575798435027/events?fields=id,name,cover,description,place,start_time", function(err, res) {
          console.log(res);
          dispatch({
            type: FETCH_EVENT,

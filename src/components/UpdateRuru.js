@@ -132,7 +132,7 @@ class UpdateRuru extends PureComponent {
     if (redirect) { return <Redirect to='/admin' /> }
 
     return (
-      <div>
+      <div className="main-container updatecontainer">
       <div className="editor">
           <p>About Ruru:</p>
           <textarea
@@ -195,7 +195,7 @@ class UpdateRuru extends PureComponent {
             className="twitter"
             value={this.state.twitter}
             onChange={this.updateTwitter.bind(this)}
-            onKeyDown={this.updateTwitter.bind(this)} /><br /><br />
+            onKeyDown={this.updateTwitter.bind(this)} />
 
           <div className="submitbutton">
             <input type="submit"

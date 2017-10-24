@@ -10,7 +10,7 @@ import ListItemAdmin from '../components/ListItemAdmin'
 import './AdminHome.css'
 
 function truncate(str, no_words) {
-  return str.split(" ").splice(0, no_words).join(" ") + "  ..."
+  return str.split(" ").splice(0, no_words).join(" ") + " ..."
 }
 
 export class AdminHome extends PureComponent {
@@ -45,7 +45,7 @@ export class AdminHome extends PureComponent {
   }
 
   renderFaq(faq) {
-    return <ListItemAdmin key={faq._id} name={truncate(faq.question, 5)} path={`/admin/${faq._id}/create-faq`} />
+    return <ListItemAdmin key={faq._id} name={truncate(faq.question, 6)} path={`/admin/${faq._id}/create-faq`} />
   }
 
   signOut(event) {
@@ -91,7 +91,7 @@ export class AdminHome extends PureComponent {
             <ul>
               { this.props.faq.map(this.renderFaq.bind(this)) }
             </ul>
-            <div className="addbutton"><Link to={{ pathname: '/admin/create-faq'}}>Add</Link></div>
+            <div className="addbutton"><Link to={{ pathname: '/admin/create-faq'}}>Add FAQ</Link></div>
           </div>
           <div className="rurustatus">
             <p>CURRENT RURU-INFO</p>
@@ -129,7 +129,7 @@ export class AdminHome extends PureComponent {
                 </tbody>
               </table>
             </div>
-            <div className="addbutton"><Link to={{ pathname: '/admin/update-ruru'}}>Edit</Link></div>
+            <div className="addbutton"><Link to={{ pathname: '/admin/update-ruru'}}>Edit RURU-info</Link></div>
           </div>
         </main>
       </div>

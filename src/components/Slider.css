@@ -1,10 +1,20 @@
+.slideName {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100px;
+  padding: 30px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5); }
+
 .silderimage {
+  position: relative;
   overflow: hidden; }
   .silderimage img {
     width: 100%; }
 
 .slick-track {
-  height: 200px;
+  height: 180px;
   overflow: hidden; }
 
 .slick-next {

@@ -10,13 +10,15 @@ export class Contact extends PureComponent {
 
     return(
       <div className='contactpage main-container'>
-        <header>
-          <h3>Contact</h3>
-        </header>
+          <header>
+            <h3>Contact</h3>
+          </header>
 
-        <main>
-          <p>Keen to help us grow? Send us an <Mailto email={ email } obfuscate={true}>e-mail</Mailto>.</p>
-        </main>
+        <div className="contactcontainer">
+          <main>
+            <p>Keen to help us grow? Send us an <Mailto email={ email } obfuscate={true}>e-mail</Mailto>.</p>
+          </main>
+        </div>
       </div>
     )
   }

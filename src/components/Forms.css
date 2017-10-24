@@ -1,3 +1,6 @@
+.main-container {
+  padding-top: 1em; }
+
 .editor-container {
   margin-left: 1em;
   margin-right: 1em;
@@ -10,27 +13,28 @@
 .back {
   margin: 1.5em; }
   .back a {
-    background-color: #a16a81;
+    background-color: #413c31;
     font-size: 13px;
     padding: 0.5em;
     padding-left: 1em;
     padding-right: 1em;
     border-radius: 1em;
     text-decoration: none;
-    color: #ffffff; }
+    color: #ffffff;
+    box-shadow: 0px 1px 4px black; }
 
 .editor {
-  background-color: #398b7d;
+  background-color: #ffffff;
   padding: 2em;
   margin: 1em;
-  border-radius: 20px; }
+  box-shadow: 0px 1px 4px grey; }
   .editor p {
     font-weight: bold;
     margin: 5px 0; }
-    .editor p span {
-      display: inline-block;
-      margin: 5px 0; }
-    .editor p a {
+  .editor span {
+    display: inline-block;
+    margin: 5px 0; }
+    .editor span a {
       color: #ffffff;
       background-color: #987314;
       text-decoration: none;
@@ -38,27 +42,34 @@
       border-radius: 6px; }
   .editor input {
     width: 80%;
+    font-size: 13px;
     margin-bottom: 1em;
     padding: 0.5em;
-    border: none;
     border-radius: 0.5em; }
   .editor textarea {
     width: 80%;
+    font-size: 13px;
     height: 100px;
     padding: 0.5em;
-    border: none;
+    border-width: 2px;
+    border-style: inset;
     border-radius: 0.5em; }
+  .editor .instruction {
+    font-size: 12px; }
   .editor .check {
     width: 2em; }
   .editor .submitbutton {
     margin-top: 1em;
     width: 200px; }
     .editor .submitbutton input {
-      background-color: #000000;
+      background-color: #398b7d;
+      box-shadow: 0px 1px 4px grey;
+      border: none;
       color: white;
       font-size: 13px; }
-  .editor .instruction {
-    font-size: 12px; }
 
 .edit-cats input {
   width: 20px; }
+
+.edit-cats label {
+  font-size: 12px; }

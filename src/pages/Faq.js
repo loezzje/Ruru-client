@@ -16,14 +16,16 @@ export class Faq extends PureComponent {
   render() {
     return(
       <div className='faqpage main-container'>
-        <header>
-          <h3>FAQ</h3>
-          <p>Here answer some frequently asked questions about our organization and about refugees in general.</p>
-        </header>
 
-        <main>
-          { this.props.faq.map(this.renderFaq.bind(this)) }
-        </main>
+          <header>
+            <h3>FAQ</h3>
+            <p>Here answer some frequently asked questions about our organization and about refugees in general.</p>
+          </header>
+        <div className="faqcontainer">
+          <main>
+            { this.props.faq.map(this.renderFaq.bind(this)) }
+          </main>
+        </div>
       </div>
     )
   }

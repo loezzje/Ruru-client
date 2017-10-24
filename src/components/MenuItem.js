@@ -49,14 +49,24 @@ class MenuItem extends PureComponent {
 
   mapOrganisations() {
     const { organizations} = this.props
+    if(organizations.name === null){
+      console.log("did")
+      return null
+    } else if (organizations.name) {
+      console.log(organizations)
+      return this.renderSubMenu(organizations)
+    } else {
+      return organizations.map(this.renderSubMenu.bind(this))
+    }
+    // return organizations.map(this.renderSubMenu.bind(this))
 
-    return organizations !== null ? organizations.map(this.renderSubMenu.bind(this)) : null
+    // return organizations !== null ? organizations.map(this.renderSubMenu.bind(this)) : null
   }
 
   render() {
     const { name, organizations } = this.props
 
-    if (organizations[0] === null) return null
+    if (organizations === null) return null
 
     return (
       <li className="menu-item">

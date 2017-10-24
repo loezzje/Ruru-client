@@ -132,7 +132,7 @@ class UpdateRuru extends PureComponent {
     if (redirect) { return <Redirect to='/admin' /> }
 
     return (
-      <div className="main-container">
+      <div className="main-container updatecontainer">
       <div className="editor">
           <p>About Ruru:</p>
           <textarea

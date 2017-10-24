@@ -18,8 +18,11 @@ class TopicCardList extends PureComponent {
       const { category } = this.props
       if (category === null) {
         return null
-      } else if (category.organizations.length === 0) {
+      } else if (category.organizations === null) {
         return null
+      } else if (category.organizations.name) {
+
+        return this.renderTopic(category.organizations)
       } else {
         return category.organizations.map(this.renderTopic.bind(this))
       }

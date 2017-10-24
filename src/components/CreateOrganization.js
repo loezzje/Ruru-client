@@ -223,85 +223,85 @@ class OrganizationEditor extends PureComponent {
     }
 
     return (
-      <div className="editor-container ">
+      <div className="editor-container">
         <div className="editor">
-        <form>Name of the Organization:
-        <br />
+        <form>
+
+          <p>Name of the Organization:</p>
+
           <input type="text"
             value={this.state.name}
             onChange={this.updateName.bind(this)}
             className="name" />
-          <br />
-          (English) description:
-          <br />
+
+          <p>(English) description:</p>
+
           <input type="text"
             value={this.state.tagline}
             onChange={this.updateTagline.bind(this)}
             className="tagline"
             placeholder="e.g. Immigration and naturalization office"/>
-          <br />
-          About the organization:
-          <br />
+
+          <p>About the organization:</p>
+
           <input type="text"
             value={this.state.about}
             onChange={this.updateAbout.bind(this)}
             className="about" />
-          <br />
-          Features:
-          <br />
-          please seperate different features by a semicolon (e.g. ';')
-          <br />
+
+          <p>Features:</p>
+
+          <div className="instruction"><p>please seperate different features by a semicolon (e.g. ';')</p></div>
+
           <input type="text"
             value={this.state.features}
             onChange={this.updateFeatures.bind(this)}
             className="feature-1"
             placeholder="first feature"/>
-          <br />
-          Logo:
-          <br />
-          ***add help text for size and file type of logo.
-          <br />
+
+          <p>Logo:</p>
+          <div className="instruction"><p>***add help text for size and file type of logo.</p></div>
+
           <input type="text"
             value={this.state.logo}
             onChange={this.updateLogo.bind(this)}
             className="logo"
             placeholder="e.g. 'mylogo.jpg'"/>
-          <br />
-          Website:
-          <br />
+
+          <p>Website:</p>
+
           <input type="text"
             value={this.state.website}
             onChange={this.updateWebsite.bind(this)}
             className="website"
             placeholder="e.g. www.thiswebsite.nl" />
-          <br />
-          Phone number:
-          <br />
+
+          <p>Phone number:</p>
+
           <input type="text"
             value={this.state.phone}
             onChange={this.updatePhone.bind(this)}
             className="phone"
             placeholder="e.g. 0612345678"/>
-          <br />
-          Address:
-          <br />
+
+          <p>Address:</p>
+
           <input type="text"
             value={this.state.address}
             onChange={this.updateAddress.bind(this)}
             className="address"
             placeholder="e.g. Street 1, 1234XX Amsterdam"/>
-          <br />
-          Facebook:
-          <br />
+
+          <p>Facebook:</p>
+
           <input type="text"
             value={this.state.facebook}
             onChange={this.updateFacebook.bind(this)}
             className="facebook"
             placeholder="link to the facebook page"/>
-          <br />
+
           <div className="edit-cats">
-          Categories:
-          <br />
+            <p>Categories:</p>
             {categories.map((category) => (
               <div key={category._id}><input type="checkbox"
               value={category._id}
@@ -313,26 +313,25 @@ class OrganizationEditor extends PureComponent {
               }/>
               <label>{category.name}</label></div>
             ))}
-            <br />
           </div>
           <div className="edit-cats">
-          Show on Front page?
-          <br />
+            <p>Show on Front page?</p>
             <input type="radio"
             name="frontpage"
             value="false"
             checked={(!this.inFrontPage())}
-            onChange={this.updateFrontPage.bind(this)}/> No
+            onChange={this.updateFrontPage.bind(this)}/><label>No</label>
             <input type="radio"
             name="frontpage"
             value="true"
             checked={this.inFrontPage()}
-            onChange={this.updateFrontPage.bind(this)} /> Yes
-          <br />
+            onChange={this.updateFrontPage.bind(this)} /><label>Yes</label>
           </div>
-          <input type="submit"
-            value="Submit"
-            onClick={this.saveOrganization.bind(this)} />
+          <div className="submitbutton">
+            <input type="submit"
+              value="Submit"
+              onClick={this.saveOrganization.bind(this)} />
+          </div>
           </form>
         </div>
         <div className="back"><Link to='/admin'>Back to overview</Link></div>

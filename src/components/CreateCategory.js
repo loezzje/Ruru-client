@@ -151,7 +151,7 @@ class CategoryEditor extends PureComponent {
 
             <p>Icon:</p>
 
-            <p className="instruction">please choose an Icon of your liking on <span><a href="https://material.io/icons/" target="_blank" rel="noopener noreferrer">this page</a></span>. Copy the name in the field below.</p>
+            <p className="instruction">please choose an Icon of your liking on <span><a href="https://material.io/icons/" target="_blank" rel="noopener noreferrer">this page</a></span>  . Copy the name in the field below.</p>
 
             <input type="text"
               value={this.state.icon}

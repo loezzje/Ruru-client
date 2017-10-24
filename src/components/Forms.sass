@@ -1,5 +1,9 @@
 @import themeRuru.sass
 
+.main-container.updatecontainer
+  padding-top: 1em
+  padding-bottom: 1em
+
 .editor-container
   margin-left: 1em
   margin-right: 1em
@@ -12,7 +16,7 @@
 .back
   margin: 1.5em
   a
-    background-color: $lilac
+    background-color: $brown-dark
     font-size: 13px
     padding: 0.5em
     padding-left: 1em
@@ -20,43 +24,48 @@
     border-radius: 1em
     text-decoration: none
     color: $white
-
+    box-shadow: 0px 1px 4px black
 
 .editor
-  background-color: $green
-  // min-width: 480px
+  background-color: $white
   padding: 2em
   margin: 1em
-  // margin-right: 5em
-  border-radius: 20px
+  box-shadow: 0px 1px 4px grey
 
   p
     font-weight: bold
-    // line-height: 0.2em
     margin: 5px 0
-    span
-      display: inline-block
-      margin: 5px 0
+
+  span
+    display: inline-block
+    margin: 5px 0
+
     a
       color: $white
       background-color: $brown
+      //box-shadow: 0px 1px 2px $brown-dark
       text-decoration: none
       padding: 0.5em
       border-radius: 6px
 
   input
     width: 80%
+    font-size: 13px
     margin-bottom: 1em
     padding: 0.5em
-    border: none
     border-radius: 0.5em
 
   textarea
     width: 80%
+    font-size: 13px
     height: 100px
     padding: 0.5em
-    border: none
+    border-width: 2px
+    border-style: inset
     border-radius: 0.5em
+
+  .instruction
+    font-size: 12px
 
   .check
     width: 2em
@@ -66,13 +75,15 @@
     width: 200px
 
     input
-      background-color: $black
+      background-color: $green
+      box-shadow: 0px 1px 4px grey
+      border: none
       color: white
       font-size: 13px
-
-  .instruction
-    font-size: 12px
 
 .edit-cats
   input
     width: 20px
+
+  label
+    font-size: 12px

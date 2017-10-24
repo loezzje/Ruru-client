@@ -35,5 +35,7 @@
     margin: 0 auto; }
   .main-container {
     padding: 0 40px; }
+  .navbar.main-container {
+    background-color: white; }
   .homepage {
     padding-bottom: 3em; } }

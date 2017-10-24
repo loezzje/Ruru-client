@@ -39,7 +39,7 @@ export class Organization extends PureComponent {
   }
 
   render() {
-    const { match, menuShow, name, logo, about, features, website, phone, adress, facebook, } = this.props
+    const { match, menuShow, name, logo, about, features, website, phone, address, facebook, } = this.props
 
     if (menuShow) {
       return null
@@ -71,13 +71,13 @@ export class Organization extends PureComponent {
 
               <li>Website: { website }</li>
               <li>Phone: { phone }</li>
-              <li>Address: { adress }</li>
+              <li>Address: { address }</li>
             </ul>
           </div>
 
           <div className="facebook">{ this.renderFB(facebook) }</div>
         </div>
-        <Maps address={ adress }/>
+        <Maps address={ address }/>
       </div>
     )
   }

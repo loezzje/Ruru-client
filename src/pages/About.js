@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import Logo from '../assets/logos/ruruLogo.png'
+import Maps from '../components/Maps'
 import './About.css'
 
 export class About extends PureComponent {
@@ -18,18 +19,32 @@ export class About extends PureComponent {
   }
 
   render() {
-    const { about } = this.props
+    const { about, phone, address } = this.props
 
     return(
       <div className='aboutpage main-container'>
-        <header>
-        <img className="big-logo" src={ Logo } alt="RURU icon"/>
-          <h3>ABOUT RURU</h3>
-        </header>
+        <br />
+        <div className="aboutcontainer">
+          <header>
+          <img className="big-logo" src={ Logo } alt="RURU icon"/>
+            <h3>ABOUT RURU</h3>
+          </header>
 
-        <main>
-          <p>{ this.renderAbout(about) }</p>
-        </main>
+          <main>
+            <div className="abouttext">
+              <p>{ this.renderAbout(about) }</p>
+            </div>
+
+            <div className="contact">
+              <h3>Contact</h3>
+              <ul>
+                <li>Phone: +31(0){ phone }</li>
+                <li>Address: { address }</li>
+              </ul>
+            </div>
+          </main>
+        </div>
+        <div className="map"><Maps address={ address }/></div>
       </div>
     )
   }

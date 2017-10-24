@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router'
+import { Link } from 'react-router-dom'
 import createCategory from '../actions/categories/create'
 import updateCategory from '../actions/categories/patch'
 import './Forms.css'
@@ -182,6 +183,7 @@ class CategoryEditor extends PureComponent {
             </div>
           </form>
         </div>
+        <div className="back"><Link to='/admin'>Back to overview</Link></div>
       </div>
     )
   }

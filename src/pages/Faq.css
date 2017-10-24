@@ -1,7 +1,12 @@
 .faqpage {
   text-align: center;
   padding-top: 1em;
-  padding-bottom: 2em; }
+  padding-bottom: 3em; }
   .faqpage p {
     margin-left: 1em;
     margin-right: 1em; }
+
+.faqcontainer {
+  background-color: #fff;
+  box-shadow: 0px 2px 4px grey;
+  padding: 1em; }

@@ -5,7 +5,7 @@ import auth from 'feathers-authentication-client'
 import superagent from 'superagent'
 
 const FEATHERS_TOKEN_KEY = 'ruru-api'
-const host = 'http://localhost:3030'
+const host = (process.env.NODE_ENV === 'production') ? 'https://ruru-server.herokuapp.com' : 'http://localhost:3030'
 
 const feathersClient = feathers()
   .configure(rest(host).superagent(superagent))

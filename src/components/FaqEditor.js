@@ -11,12 +11,12 @@ import './Forms.css'
 class FaqEditor extends PureComponent {
   constructor(props) {
     super()
-    const { question, answer, categories } = props
+    const { question, answer, categoriesId } = props
 
     this.state = {
       question,
       answer,
-      categories,
+      categoriesId,
     }
   }
 
@@ -32,7 +32,7 @@ class FaqEditor extends PureComponent {
     this.state = {
       question: thisFaq.question,
       answer: thisFaq.answer,
-      categories: thisFaq.categoriesId,
+      categoriesId: thisFaq.categoriesId,
     }
   }
 
@@ -50,22 +50,22 @@ class FaqEditor extends PureComponent {
   };
 
   handleCheck = (event, value) => {
-
-    if (!this.state.categories) {
-      this.setState({categories: [event.target.value]})
+      if (!this.state.categoriesId) {
+      this.setState({ categoriesId: [event.target.value]}
+      )
     }
-    var addCategories = this.state.categories
-    if (addCategories.includes(event.target.value)) {
-      var index = addCategories.indexOf(event.target.value)
-      addCategories.splice(index, 1)
-    } else {
-      addCategories.push(event.target.value)
-      this.setState({
-        categories: addCategories
+    else {
+      var faqCategories = this.state.categoriesId
+      faqCategories.includes(event.target.value) ?
+        faqCategories.splice(faqCategories.indexOf(event.target.value), 1) :
+        faqCategories.push(event.target.value)
+        console.log("****", faqCategories)
+
+       this.setState({
+        categoriesId: faqCategories
       })
     }
   }
-
 
 
   validate() {
@@ -83,9 +83,6 @@ class FaqEditor extends PureComponent {
     return question && question.length > 0
   }
 
-  containsCategory(category) {
-    return this.state.categories.includes(category._id)
-  }
 
   saveFaq(event) {
     event.preventDefault()
@@ -94,21 +91,21 @@ class FaqEditor extends PureComponent {
     const {
     question,
     answer,
-    categories,
+    categoriesId,
     } = this.state
 
     const newFaq = {
       question,
       answer,
-      categories
+      categoriesId
     }
 
-    if(!this.props.category._id)
-    {this.props.createFaq(newFaq)
-    this.setState({redirect: true})}
+    if(!this.props.thisFaq._id) {
+      this.props.createFaq(newFaq)
+      this.setState({redirect: true})
+    }
 
     else {
-
       this.props.updateFaq(this.props.thisFaq._id, newFaq)
       this.setState({redirect: true})
     }
@@ -152,13 +149,12 @@ class FaqEditor extends PureComponent {
                 value={category._id}
                 onClick={this.handleCheck.bind(this)}
                 defaultChecked={
-                  this.state.categories ?
-                  this.state.categories.includes(category._id) :
+                  this.state.categoriesId ?
+                  this.state.categoriesId.includes(category._id) :
                   false }/>
                 <label>{category.name}</label></div>
               ))}
               <br />
-            ))}
 
           </div>
             <div className="submitbutton">

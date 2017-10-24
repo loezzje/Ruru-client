@@ -10,7 +10,7 @@ import ListItemAdmin from '../components/ListItemAdmin'
 import './AdminHome.css'
 
 function truncate(str, no_words) {
-  return str.split(" ").splice(0, no_words).join(" ");
+  return str.split(" ").splice(0, no_words).join(" ") + "  ..."
 }
 
 export class AdminHome extends PureComponent {
@@ -63,11 +63,9 @@ export class AdminHome extends PureComponent {
     if (fireRedirect) return <Redirect to='/admin/signin' />
 
     return (
-      <div className='adminpage'>
+      <div className='adminpage main-container'>
         <header>
           <h2>ADMIN HOME</h2>
-          <p>Introduction to admin.</p>
-          <hr />
           <button onClick={this.signOut.bind(this)}>Sign out</button>
         </header>
 
@@ -97,6 +95,40 @@ export class AdminHome extends PureComponent {
           </div>
           <div className="rurustatus">
             <p>CURRENT RURU-INFO</p>
+            <div className="ruruinfos">
+              <table>
+                <tbody>
+                <tr>
+                  <th>E-mail</th>
+                  <td>{ this.props.ruru[0] === undefined ? null : this.props.ruru[0].email }</td>
+                </tr>
+                <tr>
+                  <th>Phone</th>
+                  <td>{ this.props.ruru[0] === undefined ? null : this.props.ruru[0].phone }</td>
+                </tr>
+                <tr>
+                  <th>Address</th>
+                  <td>{ this.props.ruru[0] === undefined ? null : this.props.ruru[0].address }</td>
+                </tr>
+                <tr>
+                  <th>Instagram</th>
+                  <td>{ this.props.ruru[0] === undefined ? null : this.props.ruru[0].instagram }</td>
+                </tr>
+                <tr>
+                  <th>Facebook</th>
+                  <td>{ this.props.ruru[0] === undefined ? null : this.props.ruru[0].facebook }</td>
+                </tr>
+                <tr>
+                  <th>Twitter</th>
+                  <td>{ this.props.ruru[0] === undefined ? null : this.props.ruru[0].twitter }</td>
+                </tr>
+                <tr>
+                  <th>About</th>
+                  <td>{ this.props.ruru[0] === undefined ? null : this.props.ruru[0].about }</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
             <div className="addbutton"><Link to={{ pathname: '/admin/update-ruru'}}>Edit</Link></div>
           </div>
         </main>
@@ -105,7 +137,7 @@ export class AdminHome extends PureComponent {
   }
 }
 
-const mapStateToProps = ({ faq, organizations, categories, currentUser }) => ({ faq, organizations, categories, currentUser })
+const mapStateToProps = ({ faq, organizations, categories, currentUser, ruru }) => ({ faq, organizations, categories, currentUser, ruru })
 const mapDispatchToProps = { fetchFaq, fetchOrganizations, fetchCategories, signOut }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AdminHome)

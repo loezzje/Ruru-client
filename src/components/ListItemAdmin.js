@@ -31,9 +31,10 @@ class ListItemAdmin extends PureComponent {
   render() {
     return (
       <li className="listitem-admin">
-        <span>{ this.props.name }</span>
+        <span>{ this.props.name }
         <Link to={{ pathname: this.props.path }} onClick={this.deleteEntry.bind(this)}>Delete</Link>
         <Link to={{ pathname: this.props.path }}>Edit</Link>
+        </span>
       </li>
     )
   }

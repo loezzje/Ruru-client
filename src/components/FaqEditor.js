@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router'
+import { Link } from 'react-router-dom'
 import createFaq from '../actions/faq/create'
 import updateFaq from '../actions/faq/update'
 import fetchFaqs from '../actions/faq/fetch'
@@ -132,13 +133,13 @@ class FaqEditor extends PureComponent {
           <form>
             <p>Question:</p>
 
-            <input type="text"
+            <textarea type="text"
               value={this.state.question}
               onChange={this.updateQuestion.bind(this)}
               className="question" />
             <p>Answer:</p>
 
-            <input type="text"
+            <textarea type="text"
               value={this.state.answer}
               onChange={this.updateAnswer.bind(this)}
               className="answer" />
@@ -158,7 +159,7 @@ class FaqEditor extends PureComponent {
               ))}
               <br />
             ))}
-            <br />
+
           </div>
             <div className="submitbutton">
               <input type="submit"
@@ -167,6 +168,7 @@ class FaqEditor extends PureComponent {
             </div>
           </form>
         </div>
+        <div className="back"><Link to='/admin'>Back to overview</Link></div>
       </div>
     )
   }

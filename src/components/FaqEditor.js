@@ -89,7 +89,7 @@ class FaqEditor extends PureComponent {
   saveFaq(event) {
     event.preventDefault()
     if (!this.validate()) return
-    
+
     const {
     question,
     answer,
@@ -111,7 +111,6 @@ class FaqEditor extends PureComponent {
       this.props.updateFaq(this.props.thisFaq._id, newFaq)
       this.setState({redirect: true})
     }
-
   }
 
   render() {
@@ -137,7 +136,6 @@ class FaqEditor extends PureComponent {
               value={this.state.question}
               onChange={this.updateQuestion.bind(this)}
               className="question" />
-
             <p>Answer:</p>
 
             <input type="text"
@@ -152,7 +150,10 @@ class FaqEditor extends PureComponent {
                 <div key={category._id}><input type="checkbox"
                 value={category._id}
                 onClick={this.handleCheck.bind(this)}
-                defaultChecked={this.containsCategory(category)} />
+                defaultChecked={
+                  this.state.categories ?
+                  this.state.categories.includes(category._id) :
+                  false }/>
                 <label>{category.name}</label></div>
               ))}
               <br />

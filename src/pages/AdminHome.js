@@ -10,7 +10,9 @@ import ListItemAdmin from '../components/ListItemAdmin'
 import './AdminHome.css'
 
 function truncate(str, no_words) {
-  return str.split(" ").splice(0, no_words).join(" ") + " ..."
+  if (str.split(" ").length > 6)
+    return (str.split(" ").splice(0, no_words).join(" ")) + "...";
+  else return str
 }
 
 export class AdminHome extends PureComponent {

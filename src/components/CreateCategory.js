@@ -151,12 +151,13 @@ class CategoryEditor extends PureComponent {
 
             <p>Icon:</p>
 
-            <p className="instruction">please choose an Icon of your liking on <span><a href="https://material.io/icons/" target="_blank" rel="noopener noreferrer">this page</a></span>  . Copy the name in the field below.</p>
-
+            <p className="instruction">Choose an Icon of your liking on <span><a href="https://material.io/icons/" target="_blank" rel="noopener noreferrer">this page</a></span> Copy the name in the field below.</p>
+            <p className="instruction">If the name consists of two words, seperate by underscore _</p>
             <input type="text"
               value={this.state.icon}
               onChange={this.updateIcon.bind(this)}
-              className="icon" />
+              className="icon"
+              placeholder="your_icon" />
 
               <div className="edit-cats">
               Show on Front page?

@@ -14,4 +14,11 @@ yarn start
 ```
 Also make sure you have the [ruruAPI](https://github.com/loezzje/Ruru-API) running
 
+![ruru](https://raw.githubusercontent.com/loezzje/Ruru-client/master/src/assets/screenshots/Foto%2024-10-17%2014%2005%2054.png)
 ![ruru](https://raw.githubusercontent.com/loezzje/Ruru-client/master/src/assets/screenshots/Foto%2024-10-17%2014%2003%2026.png)
+![ruru](https://raw.githubusercontent.com/loezzje/Ruru-client/master/src/assets/screenshots/Foto%2024-10-17%2014%2003%2059.png)
+
+
+
+
+
